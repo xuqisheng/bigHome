@@ -1,3 +1,4 @@
+var requierjs = require('../../utils/require.js');
 var sliderWidth = 45; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp()
 Page({
@@ -33,5 +34,13 @@ Page({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
+  },
+  getcs:function(e){
+    requierjs.wxGetData('https://www.easy-mock.com/mock/5bdff342e4de0a208bdfa7f3/example/upload', '', 'post')
+    .then((res) => {
+           console.log(res.data)
+    }).catch((errMsg) => {
+    });
+
   }
 });

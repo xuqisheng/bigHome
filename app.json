@@ -15,7 +15,7 @@
     "pages/logs/logs",
     "pages/yk/index",
     "pages/yy/index",
-    "pages/yyresult/index"
+    "pages/yy_result/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

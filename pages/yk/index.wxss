@@ -152,13 +152,15 @@ page, .page, .page__bd {
   margin-left: 13rpx;
   background-color: #fff;
   float: right;
-  border: #00ADA9 .5px solid;
   color: #00ADA9;
   font-size: 24rpx;
   line-height: 40rpx;
   vertical-align: middle;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 3px;  
+}
+.panel_btn::after,.panel_btn_f::after{
+  border: #00ADA9 1px solid !important;
 }
 .panel_btn_f{
   color: #fff;

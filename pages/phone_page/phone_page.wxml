@@ -25,7 +25,7 @@
     </view>
 
     <view class='fork' bindtap='fork'>
-      <image src='../images/fork.png'></image>
+      <image src='../../images/phone_page/fork.png'></image>
     </view>
 
 
