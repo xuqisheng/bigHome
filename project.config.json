@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
 	"description": "项目配置文件",
-=======
-	"description": "项目配置文件。",
->>>>>>> zhang
 	"packOptions": {
 		"ignore": []
 	},
@@ -12,26 +8,15 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-<<<<<<< HEAD
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.2",
 	"appid": "wx5874f4082dc3491d",
-	"projectname": "text",
+	"projectname": "bigHome",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-=======
-		"newFeature": true,
-		"uglifyFileName": true,
-		"nodeModules": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
-	"appid": "wx5874f4082dc3491d",
-	"projectname": "WX-BGY",
->>>>>>> zhang
 	"isGameTourist": false,
 	"condition": {
 		"search": {
