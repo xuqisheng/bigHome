@@ -31,7 +31,7 @@
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
-              <button class='panel_btn_f' hover-class='btn_hover1'>取消预约</button>
+              <button class='panel_btn_f' hover-class='btn_hover1' bindtap='getcs'>取消预约</button>
             </view>
           </view>
           <view class='panel__container'>
