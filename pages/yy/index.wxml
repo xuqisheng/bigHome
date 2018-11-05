@@ -1,0 +1,101 @@
+<!--pages/yy/yy.wxml-->
+<view class='content'>
+  <view class='head'>
+    <image src='../../image/room.png' class='headImg'></image>
+    <view class='headInfo'>
+      <text class='headName'>BIG+碧家国际社区深圳天安云谷店</text>
+      <image src='../../image/local.png' class='loaclIcon'></image>
+      <text class='loaclInfo'>雪岗北路2号</text>
+    </view>
+  </view>
+  <view class='form'>
+    <view class='roomBox'>
+      <text class='rt'>指定房型</text>
+      <text class='tc' wx:if='{{!showRoomValue}}' bindtap='showRt'>请选择房型</text>
+      <text class='tn' wx:if='{{showRoomValue}}' bindtap='showRt'>{{roomTypeValue}}</text>
+      <image src='../../image/line.png' class='imgIine'></image>
+      <image src='../../image/go.png' class='imgGo' bindtap='showRt'></image>
+    </view>
+    <view class='roomBox'>
+      <text class='rt'>指定房间</text>
+      <text class='tc' wx:if='{{!showRoomNameValue}}' bindtap='showR'>请选择房间</text>
+      <text class='tn' wx:if='{{showRoomNameValue}}' bindtap='showR'>{{roomName}}</text>
+      <image src='../../image/line.png' class='imgIine'></image>
+      <image src='../../image/go.png' class='imgGo' bindtap='showR'></image>
+    </view>
+    <view class='roomBox'>
+      <text class='rt'>联系人</text>
+      <input class='ti' bindblur='getName' bindconfirm='getName' placeholder='请填写联系人姓名' placeholder-style='color: #c6c6c6;font-size:28rpx;'></input>
+      <image src='../../image/line.png' class='imgIine'></image>
+    </view>
+    <view class='roomBox'>
+      <text class='rt'>手机号</text>
+      <input class='ti'type='number' bindblur='getPhone' bindconfirm='getPhone' placeholder='请填写手机号码' placeholder-style='color: #c6c6c6;font-size:28rpx;'></input>
+      <image src='../../image/line.png' class='imgIine'></image>
+    </view>
+    <view class='roomBox'>
+      <text class='rt'>看房日期</text>
+      <text class='tc' wx:if='{{!dateValue}}' bindtap='showDp'>请选择看房日期</text>
+      <text class='tn' wx:if='{{dateValue}}' bindtap='showDp'>{{year}}-{{month}}-{{day}}</text>
+      <image src='../../image/line.png' class='imgIine'></image>
+      <image src='../../image/go.png' class='imgGo' bindtap='showDp'></image>
+    </view>
+    <view class='cBtn'>
+      <button class='btn' hover-class='btn_hover' bindtap='submitAll'>提交预约</button>
+    </view>
+  </view>
+  <view class='data_picker' wx:if='{{showDatepicker}}'>
+    <view class='cBox'>
+      <view class='cancle' hover-class='hCancle' bindtap='closeDp'>取消</view>
+      <text class='cText'>看房日期</text>
+      <view class='cSure' hover-class='hCancle' bindtap='confirmDp'>确定</view>
+    </view>
+    <picker-view indicator-class="chosenClass" value="{{value}}" bindchange="chooseDate" class='dpick'>
+      <picker-view-column>
+        <view wx:for="{{years}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+      <text class='unit' style='margin-left:2rpx;'>年</text>
+      <picker-view-column>
+        <view wx:for="{{months}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+      <text class='unit'>月</text>
+      <picker-view-column>
+        <view wx:for="{{days}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+      <text class='unit'>日</text>
+      <picker-view-column>
+        <view wx:for="{{hours}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+      <text class='unit'>时</text>
+      <picker-view-column>
+        <view wx:for="{{minutes}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+      <text class='unit'>分</text>
+    </picker-view>
+  </view>
+  <view class='data_picker' wx:if='{{showRoomTypePicker}}'>
+    <view class='cBox'>
+      <view class='cancle' hover-class='hCancle' bindtap='closeRt'>取消</view>
+      <text class='cText'>指定房型</text>
+      <view class='cSure' hover-class='hCancle' bindtap='confirmRT'>确定</view>
+    </view>
+    <picker-view indicator-class="chosenClass" value="{{roomTypeValue}}" bindchange="chooseType" class='dpick'>
+      <picker-view-column>
+        <view wx:for="{{roomTypes}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class='data_picker' wx:if='{{showRoomPicker}}'>
+    <view class='cBox'>
+      <view class='cancle' hover-class='hCancle' bindtap='closeR'>取消</view>
+      <text class='cText'>指定房间</text>
+      <view class='cSure' hover-class='hCancle' bindtap='confirmR'>确定</view>
+    </view>
+    <picker-view indicator-class="chosenClass" value="{{roomValue}}" bindchange="chooseName" class='dpick'>
+      <picker-view-column>
+        <view wx:for="{{roomNames}}" style="line-height: 50px">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class='mask' wx:if='{{showRoomTypePicker || showDatepicker || showRoomPicker}}'></view>
+</view>

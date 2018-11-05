@@ -1,0 +1,58 @@
+/* pages/integral_page/integral_page.wxss */
+.integral{
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+.available{
+  width: 100%;
+  height: 240px;
+  position: relative;
+}
+.available image{
+  width: 100%;
+  height: 100%;
+}
+.available .yuan{
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  margin-left: -65px;
+}
+.yong{
+  position:absolute;
+  left: 44%;
+  top: 40%;
+  font-size: 14px;
+  color: #3AA1D5;
+}
+.detail{
+  width: 100%;
+}
+.money{
+  width:100%;
+  height: 26px;
+  padding-top: 18px;
+}
+.money image{
+  width: 16px;
+  height: 16px;
+  padding-left: 16px;
+  vertical-align: middle;
+}
+.money p{
+  font-size: 14px;
+  color: #444444;
+  padding-left: 14px;
+}
+.counts{
+  position: absolute;
+  left: 48%;
+  top: 52%;
+  color: #3AA1D5;
+  font-size: 30px;
+}

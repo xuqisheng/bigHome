@@ -1,0 +1,157 @@
+/* pages/my_page/my_page.wxss */
+
+.my_container{
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  background:#D3D3D3 ;
+  position: relative;
+}
+.land{
+  width: 100%;
+  height: 240px;
+  float: left;
+  padding-left: 40px;
+  padding-top: 40px;
+  z-index: 999;
+}
+.city{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 240px;
+}
+ .heart{
+  width: 84px;
+  height: 84px;
+  float: left;
+  z-index: 999;
+}
+.landing{
+  float: left;
+  padding-left: 20px;
+  color: #fff;
+}
+.landing p{
+   line-height: 84px;
+   font-size: 18px;
+}
+.option{
+  width: 90%;
+  margin: auto;
+  z-index: 999;
+}
+.collection{
+  height: 126px;
+  margin-top: -90px;
+  background:#fff;
+  border-radius: 4px;
+}
+.look{
+  padding-top: 22px;
+}
+.look image{
+  width: 22px;
+  height: 22px;
+  padding-left: 25px;
+  float: left;
+}
+.look span{
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+}
+.look p{
+  padding-left: 25px;
+  color: #444444;
+  font-size: 16px;
+  float: left;
+}
+.collect{
+  padding-top: 50px;
+}
+.collect image{
+  width: 22px;
+  height: 22px;
+  padding-left: 25px;
+  float: left;
+}
+.collect span{
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+}
+.collect p{
+  padding-left: 25px;
+  color: #444444;
+  font-size: 16px;
+  float: left;
+}
+.service{
+  height: 184px;
+  background: #fff;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+.carBag{
+  padding-top: 24px;
+}
+.carBag image{
+  width: 22px;
+  height: 22px;
+  padding-left: 25px;
+  float: left;
+}
+.carBag span{
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+}
+.carBag p{
+  padding-left: 25px;
+  color: #444444;
+  font-size: 16px;
+  float: left;
+}
+.integral{
+  padding-top: 54px;
+}
+.contact{
+  padding-top: 54px;
+}
+.download{
+  height: 68px;
+  background: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+.foot {
+  width: 100%;
+  display: flex;
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999; */
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.foot dl {
+  flex: 1;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.foot dl dd {
+  display: block;
+  font-size: 10px;
+  color: #999;
+}
+.footImg {
+  width: 22px;
+  height: 22px;
+}

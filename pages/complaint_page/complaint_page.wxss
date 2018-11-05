@@ -1,0 +1,214 @@
+/* pages/complaint_page/complaint_page.wxss */
+
+.complaint {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  background: #eee;
+}
+
+.problem {
+  width: 100%;
+  height: 244px;
+  background: #fff;
+}
+
+.category {
+  width: 90%;
+  height: 60px;
+  background: #fff;
+  line-height: 60px;
+  margin: auto;
+}
+
+.category p {
+  float: left;
+  color: #444;
+  font-size: 15px;
+}
+
+.category span {
+  color: red;
+}
+
+.check {
+  float: right;
+  padding-left: 50px;
+}
+
+.check p {
+  color: #bcbcbc;
+  font-size: 14px;
+}
+
+.category image {
+  width: 9px;
+  height: 15px;
+  padding-left: 10px;
+}
+
+.describe {
+  width: 90%;
+  height: 184px;
+  margin: auto;
+}
+
+.describe p {
+  color: #444;
+  font-size: 15px;
+}
+
+.describe span {
+  color: red;
+}
+
+.area {
+  width: 100%;
+  height: 150px;
+  padding-top: 6px;
+  font-size: 14px;
+  color: #bcbcbc;
+  position: relative;
+}
+
+.currentWordNumber {
+  font-size: 12px;
+  color: gray;
+  position: absolute;
+  right: 0;
+  bottom: 26px;
+}
+
+.upload {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10px;
+}
+
+.upload p {
+  font-size: 15px;
+  color: #444;
+  padding-left: 28px;
+  padding-top: 12px;
+  display: block;
+}
+
+.xiang {
+  display: inline-block;
+  width: 90px;
+  height: 83px;
+  border: 1px solid #eee;
+  margin: 20px;
+  position: relative;
+  background: #eee;
+}
+
+.xiang image {
+  width: 28px;
+  height: 22px;
+  position: absolute;
+  left: 35%;
+  top: 10%;
+}
+
+.xiang text {
+  display: inline-block;
+  width: 79px;
+  height: 26px;
+  font-size: 10px;
+  color: #bcbcbc;
+  position: absolute;
+  left: 14%;
+  top: 50%;
+  line-break: 26px;
+}
+
+.xiang p {
+  font-size: 10px;
+  position: absolute;
+  top: 60%;
+  color: #bcbcbc;
+  font-size: 10px;
+}
+
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.img {
+  width: 78px;
+  height: 84px;
+  padding-left: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 14px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.store {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.store p {
+  color: #444;
+  font-size: 15px;
+  padding-left: 28px;
+  padding-top: 28px;
+  display: block;
+}
+
+.address image {
+  width: 9px;
+  height: 15px;
+  float: right;
+  padding-right: 28px;
+  margin-top: -16px;
+}
+
+.pick {
+  margin-top: -20px;
+}
+
+.Submission {
+  width: 100%;
+  height: 50px;
+}
+
+.Submission text {
+  display: block;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 15px;
+  background: #00ada9;
+  border: none;
+}
+
+.picker {
+  font-size: 14px;
+  color: #444;
+  padding-left: 26px;
+  padding-top: 20px;
+}
+
+.close {
+  position: absolute;
+  top: -16%;
+  right: 0%;
+}

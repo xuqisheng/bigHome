@@ -1,0 +1,102 @@
+/* pages/phone_page/phone_page.wxss */
+
+.phoneContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+.phoneLand {
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+}
+
+.phoneLand .phone {
+  font-size: 16px;
+  color: #444;
+  padding-left: 38px;
+  font-weight: bold;
+}
+
+.phoneLand input {
+  display: block;
+  width: 80%;
+  margin: auto;
+  color: #999;
+  font-size: 14px;
+  border-bottom: 1px solid #dadada;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.phoneLand .ipt {
+  padding-top: 20px;
+  display: block;
+}
+
+.verification {
+  position: relative;
+}
+
+.left {
+  width: 84px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  display: inline-block;
+  background: #808080;
+  font-weight: bold;
+  letter-spacing: 5px;
+  position: absolute;
+  right: 36px;
+  top: 15px;
+}
+
+.phoneTest{
+  position: relative;
+}
+
+.getcode {
+  width:84px;
+  height: 30px;
+  position:absolute;
+  right: 36px;
+  top: 15px;
+  font-size: 12px;
+  background:#808080;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+}
+
+.sign {
+  width: 308px;
+  height: 44px;
+  padding-top: 100px;
+  margin: auto;
+}
+
+.sign button {
+  background: #00ADA9;
+  color: #fff;
+  font-size: 16px;
+}
+
+.sign p {
+  color: #d6d6d6;
+  font-size: 12px;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+}
+
+.fork image {
+  width: 26px;
+  height: 26px;
+  margin: auto;
+  display: block;
+  padding-top: 100px;
+}

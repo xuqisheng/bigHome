@@ -1,0 +1,101 @@
+<!--pages/my_page/my_page.wxml-->
+<view class="my_container">
+
+ <image src="../images/city.png" class='city'></image>
+  <!-- 注册登陆 -->
+  <view class="land">
+    <image src="../images/8.png" class="heart"></image>
+    <view class="landing">
+      <p>注册</p> /
+      <p bindtap="Landfall">登陆</p>
+    </view>
+  </view>
+
+  <!-- 个人中心选项 -->
+  <view class="option">
+
+    <!-- 我的约看，我的收藏 -->
+    <view class='collection'>
+      <view class="look">
+        <image src='../images/10.png'></image>
+        <p>我的约看</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+
+      <view class="collect">
+        <image src='../images/9.png'></image>
+        <p>我的收藏</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+    </view>
+
+    <!-- 我的卡包，我的积分，联系客服 -->
+    <view class="service">
+
+     <view class="carBag" bindtap="cardBag">
+        <image src='../images/12.png'></image>
+        <p>我的卡包</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+
+      <view class="carBag integral" bindtap='integral'>
+        <image src='../images/13.png'></image>
+        <p>我的积分</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+
+      <view class="carBag contact" bindtap='customerService'>
+        <image src='../images/14.png'></image>
+        <p>联系客服</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+    </view>
+
+     <!-- 下载APP -->
+     <view class="download">
+      <view class="carBag">
+        <image src='../images/15.png'></image>
+        <p>下载APP</p>
+        <span>
+          <image src='../images/11.png'></image>
+        </span>
+      </view>
+     </view>
+
+  </view>
+
+
+  <view class="foot">
+    <dl bindtap="homePage">
+      <dt>
+        <image src="../images/4.png" class="footImg"></image>
+      </dt>
+      <dd>首页</dd>
+    </dl>
+    <dl>
+      <dt>
+        <image src="../images/2.png" class="footImg"></image>
+      </dt>
+      <dd>约看</dd>
+    </dl>
+    <dl bindtap="my">
+      <dt>
+        <image src="../images/3.png" class="footImg"></image>
+      </dt>
+      <dd>我的</dd>
+    </dl>
+  </view>
+
+
+
+</view>

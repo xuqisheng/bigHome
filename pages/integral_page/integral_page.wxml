@@ -1,0 +1,19 @@
+<!--pages/integral_page/integral_page.wxml-->
+<view class="integral">
+  
+<view class='available'>
+<image src='../images/headBg.png'></image>
+<image src='../images/yuan.png' class="yuan"></image>
+<text class='yong'>可用积分</text>
+<text class='counts'>{{counts}}</text>
+</view>
+
+<view class='detail'>
+
+<view class='money'>
+<image src='../images/money.png'></image><p>积分明细</p>
+</view>
+
+</view>
+
+</view>

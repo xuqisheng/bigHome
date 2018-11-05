@@ -1,0 +1,20 @@
+<!--pages/cardBag_page/cardBag_page.wxml-->
+<view class="containerCar">
+  <image src="../images/bg.png"></image>
+  <view class="nav bc_white">
+    <view class="{{selected?'red':'default'}}" bindtap="selected">现金券</view>
+    <view class="{{selected1?'red':'default'}}" bindtap="selected1">券码</view>
+  </view>
+  <view class="{{selected?'show':'hidden'}}">
+
+    <view class="noTime">
+      <image src="../images/none.png"></image>
+      <text>暂无数据</text>
+    </view>
+
+  </view>
+  <view class="{{selected1?'show':'hidden'}}">for activity</view>
+  <view class='see'>
+    <p>查看已失效的优惠券</p>
+  </view>
+</view>

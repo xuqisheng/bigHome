@@ -1,0 +1,28 @@
+<!--pages/service_page/service_page.wxml-->
+<view class="servicePage">
+
+  <view class='customerService'>
+   
+   <view class="contact">
+    <image src='../images/service.png'></image><text>客服电话</text>
+    <p>400-0000-887</p>
+    <p>(周一至周日: 8:30-17:30)</p>
+    <image src='../images/11.png' class="jian"></image>
+   </view>
+ 
+   <view class="customeSrviceMailbox">
+    <image src='../images/email.png'></image><text>客服邮箱</text>
+    <p>bigplusservice@countrygarden.com.cn</p>
+    <image src='../images/11.png' class="jians"></image>
+   </view>
+    
+    <view class="complaintProposal" bindtap='complaint'>
+    <image src='../images/complaint.png'></image><text>投诉建议</text>
+    <p>您的满意就是我们的动力</p>
+    <image src='../images/11.png' class="jians"></image>
+   </view>
+
+
+  </view>
+
+</view>

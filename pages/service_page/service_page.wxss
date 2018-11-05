@@ -1,0 +1,115 @@
+/* pages/service_page/service_page.wxss */
+
+.servicePage {
+  position: fixed;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background: #EEEEEE;
+}
+.customerService{
+  width: 100%;
+  height: 280px;
+  background: #fff;
+  z-index: 999;
+  margin-top: 18px;
+}
+
+.contact{
+  width: 90%;
+  height: 90px;
+  margin: auto;
+  border-bottom:1px solid #E6E6E6;
+  padding-top: 20px;
+  position: relative;
+}
+
+.contact image{
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.contact text{
+  font-size: 15px;
+  color: #444444;
+  padding-left: 20px;
+  font-weight: bold;
+}
+.contact p{
+  color: #999999;
+  font-size: 12px;
+  display: block;
+  width: 90%;
+  padding-left: 36px;
+  padding-top: 10px;
+}
+
+.jian{
+  position: absolute;
+  right: 0;
+  top: 45px;
+}
+
+.jians{
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+
+.customeSrviceMailbox{
+  width: 90%;
+  height: 60px;
+  margin: auto;
+  border-bottom:1px solid #E6E6E6;
+  padding-top: 20px;
+  position: relative;
+}
+
+.customeSrviceMailbox image{
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.customeSrviceMailbox text{
+  font-size: 15px;
+  color: #444444;
+  padding-left: 20px;
+  font-weight: bold;
+}
+.customeSrviceMailbox p{
+  color: #999999;
+  font-size: 12px;
+  display: block;
+  width: 90%;
+  padding-left: 36px;
+  padding-top: 10px;
+}
+
+.complaintProposal{
+  width: 90%;
+  height: 60px;
+  margin: auto;
+  padding-top: 20px;
+  position: relative;
+}
+
+.complaintProposal image{
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.complaintProposal text{
+  font-size: 15px;
+  color: #444444;
+  padding-left: 20px;
+  font-weight: bold;
+}
+.complaintProposal p{
+  color: #999999;
+  font-size: 12px;
+  display: block;
+  width: 90%;
+  padding-left: 36px;
+  padding-top: 10px;
+}

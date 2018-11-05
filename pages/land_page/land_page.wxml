@@ -1,0 +1,19 @@
+<!--pages/land_page/land_page.wxml-->
+<view class="landPage">
+
+<view class="recommend">
+<text>推荐方式登录</text>
+</view>
+
+<!-- 微信授权登录 -->
+<view class="wxland">
+<p><image src="../images/wx.png"></image></p>
+<text>微信授权登录</text>
+</view>
+
+<view class="phoneLand" bindtap="phoneNumber">
+<p><image src="../images/phone.png"></image></p>
+<text>手机快捷登录</text>
+</view>
+
+</view>
