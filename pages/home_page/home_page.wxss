@@ -232,6 +232,7 @@ swiper.read_swiper image {
   background: #fff;
   height: 37px;
   border-radius: 4px 0 0 4px;
+  overflow: hidden;
 }
 .inputBox {
   width: 240px;

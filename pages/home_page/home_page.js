@@ -25,28 +25,21 @@ Page({
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
+      currentCity: '请选择位置'
     },
   },
   onLoad() {
+    this.getSetting()
+  },
+  getSetting() {//获取授权信息
     let that = this
     wx.getSetting({
       success(res) {
-        if (!res.authSetting['scope.userLocation']) {//没设置定位去授权定位
-          // that.setData({
-          //   showModal: true
-          // })
+        if (!res.authSetting['scope.userLocation']) {//没授权定位先授权定位，已授权定位直接定位
           wx.authorize({
             scope: 'scope.userLocation',
             success(res) {
-              wx.getLocation({
-                type: 'wgs84',
-                success(res) {
-                  console.log(res)
-                },
-                fail(res) {
-                  console.log(res)
-                }
-              })
+              that.getLocation()
             },
             fail(res) {
               console.log(res)
@@ -54,20 +47,45 @@ Page({
           })
           //展示弹框
         } else {//没授权
-          wx.getLocation({
-            type: 'wgs84',
-            success(res) {
-              console.log(res)
-            },
-            fail(res) {
-              console.log(res)
-            }
-          })
+          that.getLocation()
         }
       },
       fail(res) {
         console.log(res.errMsg)
       }
+    })
+  },
+  getLocation() {//获取定位坐标
+    let that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        console.log(res)
+        that.getLocalName(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+  getLocalName(loacl) {//获取定位城市
+    let that = this
+    wx.request({
+      url: 'https://api.map.baidu.com/geocoder/v2/?ak=pym8zhqkvt4tVePByovcKg617lBG9XdB&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json',
+      data: {},
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        // success  
+        console.log(res);
+        let city = res.data.result.addressComponent.city;
+        that.setData({ currentCity: city });
+      },
+      fail: function () {
+        that.setData({ currentCity: "获取定位失败" });
+      },
+
     })
   },
   userNameInput: function (e) {
@@ -97,15 +115,16 @@ Page({
     this.setData({
       showModal: false
     })
-    wx.authorize({
-      scope: 'scope.userLocation',
-      success(res) {
-        console.log(res)
-      },
-      fail(res) {
-        console.log(999)
-      }
-    })
+    this.getSetting()
+    // wx.authorize({
+    //   scope: 'scope.userLocation',
+    //   success(res) {
+    //     console.log(res)
+    //   },
+    //   fail(res) {
+    //     console.log(999)
+    //   }
+    // })
 
     // var that = this;
     // app.getPermission(that);
