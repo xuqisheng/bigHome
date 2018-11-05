@@ -1,10 +1,10 @@
 <!--pages/yy/yy.wxml-->
 <view class='content'>
   <view class='head'>
-    <image src='../../image/room.png' class='headImg'></image>
+    <image src='../../images/yy_page/room.png' class='headImg'></image>
     <view class='headInfo'>
       <text class='headName'>BIG+碧家国际社区深圳天安云谷店</text>
-      <image src='../../image/local.png' class='loaclIcon'></image>
+      <image src='../../images/yy_page/local.png' class='loaclIcon'></image>
       <text class='loaclInfo'>雪岗北路2号</text>
     </view>
   </view>
@@ -13,32 +13,32 @@
       <text class='rt'>指定房型</text>
       <text class='tc' wx:if='{{!showRoomValue}}' bindtap='showRt'>请选择房型</text>
       <text class='tn' wx:if='{{showRoomValue}}' bindtap='showRt'>{{roomTypeValue}}</text>
-      <image src='../../image/line.png' class='imgIine'></image>
-      <image src='../../image/go.png' class='imgGo' bindtap='showRt'></image>
+      <image src='../../images/yy_page/line.png' class='imgIine'></image>
+      <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showRt'></image>
     </view>
     <view class='roomBox'>
       <text class='rt'>指定房间</text>
       <text class='tc' wx:if='{{!showRoomNameValue}}' bindtap='showR'>请选择房间</text>
       <text class='tn' wx:if='{{showRoomNameValue}}' bindtap='showR'>{{roomName}}</text>
-      <image src='../../image/line.png' class='imgIine'></image>
-      <image src='../../image/go.png' class='imgGo' bindtap='showR'></image>
+      <image src='../../images/yy_page/line.png' class='imgIine'></image>
+      <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showR'></image>
     </view>
     <view class='roomBox'>
       <text class='rt'>联系人</text>
       <input class='ti' bindblur='getName' bindconfirm='getName' placeholder='请填写联系人姓名' placeholder-style='color: #c6c6c6;font-size:28rpx;'></input>
-      <image src='../../image/line.png' class='imgIine'></image>
+      <image src='../../images/yy_page/line.png' class='imgIine'></image>
     </view>
     <view class='roomBox'>
       <text class='rt'>手机号</text>
       <input class='ti'type='number' bindblur='getPhone' bindconfirm='getPhone' placeholder='请填写手机号码' placeholder-style='color: #c6c6c6;font-size:28rpx;'></input>
-      <image src='../../image/line.png' class='imgIine'></image>
+      <image src='../../images/yy_page/line.png' class='imgIine'></image>
     </view>
     <view class='roomBox'>
       <text class='rt'>看房日期</text>
       <text class='tc' wx:if='{{!dateValue}}' bindtap='showDp'>请选择看房日期</text>
       <text class='tn' wx:if='{{dateValue}}' bindtap='showDp'>{{year}}-{{month}}-{{day}}</text>
-      <image src='../../image/line.png' class='imgIine'></image>
-      <image src='../../image/go.png' class='imgGo' bindtap='showDp'></image>
+      <image src='../../images/yy_page/line.png' class='imgIine'></image>
+      <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showDp'></image>
     </view>
     <view class='cBtn'>
       <button class='btn' hover-class='btn_hover' bindtap='submitAll'>提交预约</button>

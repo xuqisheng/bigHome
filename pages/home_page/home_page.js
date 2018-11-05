@@ -6,17 +6,17 @@ Page({
     swiper: {
       // banner
       imgUrls: [{
-        imgs: "../images/1.png",
-        title: "合租、整租分散式房源",
-      },
-      {
-        imgs: "../images/7.png",
-        title: "￥2900/月起",
-      },
-      {
-        imgs: "../images/1.png",
-        title: "￥2090/月起",
-      },
+        imgs: "../../images/home_page/1.png",
+          title: "合租、整租分散式房源",
+        },
+        {
+          imgs: "../../images/home_page/7.png",
+          title: "￥2900/月起",
+        },
+        {
+          imgs: "../../images/home_page/1.png",
+          title: "￥2090/月起",
+        },
       ],
       indicatorDotss: true, //是否显示面板指示点
       autoplayss: true, //是否自动切换

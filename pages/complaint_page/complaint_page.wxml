@@ -10,7 +10,7 @@
       <view class='check'>
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
           <p>{{array[index]}}</p>
-          <image src="../images/11.png"></image>
+          <image src="../../images/complaint_page/11.png"></image>
         </picker>
       </view>
     </view>
@@ -29,7 +29,7 @@
   <view class='upload'>
     <p>上传图片:</p>
     <view class="xiang" bindtap='addPic1' wx:if="{{imgbox.length<6}}">
-      <image src='../images/xiang.png'></image>
+      <image src='../../images/complaint_page/xiang.png'></image>
       <text>单张不超过3M</text>
       <p>(最多6张)</p>
     </view>
@@ -50,7 +50,7 @@
           {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
         </view>
       </picker>
-      <image src="../images/11.png"></image>
+      <image src="../../images/complaint_page/11.png"></image>
     </view>
   </view>
 
