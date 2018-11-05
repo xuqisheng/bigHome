@@ -10,6 +10,17 @@
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel">
+      <view class='mask' wx:if='{{showCancelBox}}'></view>
+      <view class='ccbox' wx:if='{{showCancelBox}}'>
+      <view class='tbox'>
+        <text>温馨提示</text>
+        <text>您确定取消预约的订单吗？</text>
+        </view>
+        <view class='cc-cx'>
+        <button hover-class='cc-b-h' bindtap='caCancel'>取消</button>
+        <button hover-class='cc-b-h' bindtap='ceCancel'>确认</button>
+        </view>
+      </view>
         <view class="panel__content" hidden="{{activeIndex != 0}}">
           <view class='panel__container'>
             <view class='panel_info_state'>
@@ -31,7 +42,7 @@
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
-              <button class='panel_btn_f' hover-class='btn_hover1' bindtap='getcs'>取消预约</button>
+              <button class='panel_btn_f' hover-class='btn_hover1' bindtap='ceyy'>取消预约</button>
             </view>
           </view>
           <view class='panel__container'>

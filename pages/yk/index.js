@@ -8,6 +8,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     localInfoBottom: 0,
+    showCancelBox:0
   },
   onLoad: function () {
     var that = this;
@@ -35,12 +36,24 @@ Page({
       activeIndex: e.currentTarget.id
     });
   },
-  getcs:function(e){
-    requierjs.wxGetData('https://www.easy-mock.com/mock/5bdff342e4de0a208bdfa7f3/example/upload', '', 'post')
-    .then((res) => {
-           console.log(res.data)
-    }).catch((errMsg) => {
-    });
-
+  ceCancel:function(e){
+    this.setData({
+      showCancelBox: 0
+    })
+  },
+  caCancel: function (e) {
+    this.setData({
+      showCancelBox: 0
+    })
+    // requierjs.wxGetData()
+    // .then((res) => {
+    //        console.log(res.data)
+    // }).catch((errMsg) => {
+    // });
+  },
+  ceyy:function(e){
+    this.setData({
+      showCancelBox : 1
+    })
   }
 });
