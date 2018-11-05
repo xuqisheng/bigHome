@@ -6,15 +6,15 @@ Page({
     swiper: {
       // banner
       imgUrls: [{
-          imgs: "../images/1.png",
+        imgs: "../../images/home_page/1.png",
           title: "合租、整租分散式房源",
         },
         {
-          imgs: "../images/7.png",
+          imgs: "../../images/home_page/7.png",
           title: "￥2900/月起",
         },
         {
-          imgs: "../images/1.png",
+          imgs: "../../images/home_page/1.png",
           title: "￥2090/月起",
         },
       ],

@@ -1,8 +1,8 @@
 <!--pages/yyresult/yyresult.wxml-->
 <view class='contant'>
   <view class='head'>
-  <image src='../../image/yy_s.png' class='img1'></image>
-  <image src='../../image/yy_sb.png' class='img2'></image>
+  <image src='../../images/yyresult_page/yy_s.png' class='img1'></image>
+  <image src='../../images/yyresult_page/yy_sb.png' class='img2'></image>
   <text class='su'>预约成功</text>
   <view class='btns'>
   <button class='btn' hover-class='btnc'>查看日程</button>

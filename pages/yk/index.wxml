@@ -18,16 +18,16 @@
               <text class='panel_info'>看房日期:2018-06-25 23:42</text>
             </view>
             <view class='panel_detail'>
-              <image src='../../image/unsplash.png' class='panel_img'></image>
+              <image src='../../images/yk_page/unsplash.png' class='panel_img'></image>
               <view class='panel_detail_info'>
                 <text class='panel__name'>BIG+碧家国际社区深圳东门店</text>
-                <image src='../../image/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
+                <image src='../../images/yk_page/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
                 <text class='panel_local' id='local_info'>深圳市罗湖区深南东路3020号百货广场大厦东座19层（罗宝线地铁老街站C出口)</text>
-                <image src='../../image/type.png' class='panel_icon2'></image>
+                <image src='../../images/yk_page/type.png' class='panel_icon2'></image>
                 <text class='panel_type'>房型：舒适典雅一居室 C23</text>
               </view>
             </view>
-            <image src='../../image/line.png' class='cutline'></image>
+            <image src='../../images/yk_page/line.png' class='cutline'></image>
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
@@ -41,16 +41,16 @@
               <text class='panel_info'>看房日期:2018-06-25 23:42</text>
             </view>
             <view class='panel_detail'>
-              <image src='../../image/unsplash.png' class='panel_img'></image>
+              <image src='../../images/yk_page/unsplash.png' class='panel_img'></image>
               <view class='panel_detail_info'>
                 <text class='panel__name'>BIG+碧家国际社区深圳东门店</text>
-                <image src='../../image/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
+                <image src='../../images/yk_page/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
                 <text class='panel_local' id='local_info'>深圳市罗湖区深南东路3020号百货广场大厦东座19层（罗宝线地铁老街站C出口)</text>
-                <image src='../../image/type.png' class='panel_icon2'></image>
+                <image src='../../images/yk_page/type.png' class='panel_icon2'></image>
                 <text class='panel_type'>房型：舒适典雅一居室 C23</text>
               </view>
             </view>
-            <image src='../../image/line.png' class='cutline'></image>
+            <image src='../../images/yk_page/line.png' class='cutline'></image>
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
@@ -66,16 +66,16 @@
               <text class='panel_info'>看房日期:2018-06-25 23:42</text>
             </view>
             <view class='panel_detail'>
-              <image src='../../image/unsplash.png' class='panel_img'></image>
+              <image src='../../images/yk_page/unsplash.png' class='panel_img'></image>
               <view class='panel_detail_info'>
                 <text class='panel__name'>BIG+碧家国际社区深圳东门店</text>
-                <image src='../../image/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
+                <image src='../../images/yk_page/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
                 <text class='panel_local' id='local_info'>深圳市罗湖区深南东路3020号百货广场大厦东座19层（罗宝线地铁老街站C出口)</text>
-                <image src='../../image/type.png' class='panel_icon2'></image>
+                <image src='../../images/yk_page/type.png' class='panel_icon2'></image>
                 <text class='panel_type'>房型：舒适典雅一居室 C23</text>
               </view>
             </view>
-            <image src='../../image/line.png' class='cutline'></image>
+            <image src='../../images/yk_page/line.png' class='cutline'></image>
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
@@ -91,16 +91,16 @@
               <text class='panel_info'>看房日期:2018-06-25 23:42</text>
             </view>
             <view class='panel_detail'>
-              <image src='../../image/unsplash.png' class='panel_img'></image>
+              <image src='../../images/yk_page/unsplash.png' class='panel_img'></image>
               <view class='panel_detail_info'>
                 <text class='panel__name'>BIG+碧家国际社区深圳东门店</text>
-                <image src='../../image/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
+                <image src='../../images/yk_page/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
                 <text class='panel_local' id='local_info'>深圳市罗湖区深南东路3020号百货广场大厦东座19层（罗宝线地铁老街站C出口)</text>
-                <image src='../../image/type.png' class='panel_icon2' ></image>
+                <image src='../../images/yk_page/type.png' class='panel_icon2' ></image>
                 <text class='panel_type' >房型：舒适典雅一居室 C23</text>
               </view>
             </view>
-            <image src='../../image/line.png' class='cutline'></image>
+            <image src='../../images/yk_page/line.png' class='cutline'></image>
             <view class='btn_group'>
               <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
               <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
@@ -113,16 +113,16 @@
             <text class='panel_info'>看房日期:2018-06-25 23:42</text>
           </view>
           <view class='panel_detail'>
-            <image src='../../image/unsplash.png' class='panel_img'></image>
+            <image src='../../images/yk_page/unsplash.png' class='panel_img'></image>
             <view class='panel_detail_info'>
               <text class='panel__name'>BIG+碧家国际社区深圳东门店</text>
-              <image src='../../image/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
+              <image src='../../images/yk_page/local.png' class='panel_icon1' style='bottom:{{localInfoBottom}}px'></image>
               <text class='panel_local' id='local_info'>深圳市罗湖区深南东路3020号百货广场大厦东座19层（罗宝线地铁老街站C出口)</text>
-              <image src='../../image/type.png' class='panel_icon2'></image>
+              <image src='../../images/yk_page/type.png' class='panel_icon2'></image>
               <text class='panel_type'>房型：舒适典雅一居室 C23</text>
             </view>
           </view>
-          <image src='../../image/line.png' class='cutline'></image>
+          <image src='../../images/yk_page/line.png' class='cutline'></image>
           <view class='btn_group'>
             <button class='panel_btn' hover-class='btn_hover'>导航门店</button>
             <button class='panel_btn' hover-class='btn_hover'>电话联系</button>
@@ -131,9 +131,9 @@
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
           <view class='panel__nomore'>
-            <image src='../../image/none.png'></image>
+            <image src='../../images/yk_page/none.png'></image>
             <view class='none_text'>还木有相关结果</view>
-            <image src='../../image/none_bg.png'></image>
+            <image src='../../images/yk_page/none_bg.png'></image>
           </view>
         </view>
       </view>

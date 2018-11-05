@@ -2,8 +2,8 @@
 <view class="integral">
   
 <view class='available'>
-<image src='../images/headBg.png'></image>
-<image src='../images/yuan.png' class="yuan"></image>
+<image src='../../images/integral_page/headBg.png'></image>
+<image src='../../images/integral_page/yuan.png' class="yuan"></image>
 <text class='yong'>可用积分</text>
 <text class='counts'>{{counts}}</text>
 </view>
@@ -11,7 +11,7 @@
 <view class='detail'>
 
 <view class='money'>
-<image src='../images/money.png'></image><p>积分明细</p>
+<image src='../../images/integral_page/money.png'></image><p>积分明细</p>
 </view>
 
 </view>

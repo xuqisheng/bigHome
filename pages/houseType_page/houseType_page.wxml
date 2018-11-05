@@ -25,13 +25,13 @@
   <!-- 下面列表 -->
   <view class='xiangqing'>
     <view class='xiangqing_img'>
-      <image src='../images/1.png'></image>
+      <image src='../../images/houseType_page/1.png'></image>
     </view>
     <view class='xiangqing_info'>
       <text class='title'>舒适一居室</text>
       <view class='house'>1房1厨1卫 | 45m²</view>
       <view class='locats'>
-      <image src='../images/dingWei.png'></image>
+      <image src='../../images/houseType_page/dingWei.png'></image>
       <text>广东省佛山市港隆国际盗宝隆国际盗宝隆国际盗宝</text>
       </view>
       <view class='prix'>

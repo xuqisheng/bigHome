@@ -35,7 +35,7 @@
   </view> -->
   <view class="address">
     <view class="search">
-      <image src='../images/ding.png' class='ding' bindtap='location'></image>
+      <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
       <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="请选择位置"/>
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
@@ -45,7 +45,7 @@
   <view class="font">
  
     <p>
-      <image src="../images/5.png" class="column"></image>碧家推荐</p>
+      <image src="../../images/home_page/5.png" class="column"></image>碧家推荐</p>
     <span class="recommend">每次推荐，只为找到属于你的房</span>
     <span class="more" bindtap="housingResources">更多房源 ></span>
 
@@ -66,7 +66,7 @@
   <view class="font">
 
     <p>
-      <image src="../images/5.png" class="column"></image>碧家房型</p>
+      <image src="../../images/home_page/5.png" class="column"></image>碧家房型</p>
     <span class="recommend">在碧家，一床一物只为住的更好</span>
     <span class="more" bindtap="houseType">更多房型 ></span>
 
@@ -102,7 +102,7 @@
 
 
   <view class="big">
-    <image src='../images/6.png'></image>
+    <image src='../../images/home_page/6.png'></image>
     <span>碧家*城市梦想充电站</span>
   </view>
 
