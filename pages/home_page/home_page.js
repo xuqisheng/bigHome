@@ -6,17 +6,17 @@ Page({
     swiper: {
       // banner
       imgUrls: [{
-          imgs: "../images/1.png",
-          title: "合租、整租分散式房源",
-        },
-        {
-          imgs: "../images/7.png",
-          title: "￥2900/月起",
-        },
-        {
-          imgs: "../images/1.png",
-          title: "￥2090/月起",
-        },
+        imgs: "../images/1.png",
+        title: "合租、整租分散式房源",
+      },
+      {
+        imgs: "../images/7.png",
+        title: "￥2900/月起",
+      },
+      {
+        imgs: "../images/1.png",
+        title: "￥2090/月起",
+      },
       ],
       indicatorDotss: true, //是否显示面板指示点
       autoplayss: true, //是否自动切换
@@ -24,34 +24,45 @@ Page({
       durations: 1000, //  滑动动画时长1s
       current: 0,
       showModal: false, //弹窗默认隐藏
-      userName:null,
+      userName: null,
     },
   },
-  onLoad(){
+  onLoad() {
     let that = this
     wx.getSetting({
       success(res) {
-        if (!res.authSetting['scope.userLocation']){//没设置定位去授权定位
+        if (!res.authSetting['scope.userLocation']) {//没设置定位去授权定位
           // that.setData({
           //   showModal: true
           // })
           wx.authorize({
             scope: 'scope.userLocation',
             success(res) {
-              console.log(res)
+              wx.getLocation({
+                type: 'wgs84',
+                success(res) {
+                  console.log(res)
+                },
+                fail(res) {
+                  console.log(res)
+                }
+              })
             },
             fail(res) {
-              console.log(999)
+              console.log(res)
             }
           })
           //展示弹框
-        } else if (!res.authSetting['scope.userInfo']) {//没获取用户信息
-          // wx.authorize({
-          //   scope: 'scope.userInfo',
-          //   success(res) {
-          //     console.log(res)
-          //   }
-          // })
+        } else {//没授权
+          wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+              console.log(res)
+            },
+            fail(res) {
+              console.log(res)
+            }
+          })
         }
       },
       fail(res) {
@@ -59,13 +70,13 @@ Page({
       }
     })
   },
-  userNameInput: function(e) {
+  userNameInput: function (e) {
     this.setData({
       addr: e.detail.value
     })
   },
-  look: function(e) {
-    if (this.data.addr == undefined || this.data.addr== '') {
+  look: function (e) {
+    if (this.data.addr == undefined || this.data.addr == '') {
       wx.showModal({
         title: '提示',
         content: '请选择地理位置'
@@ -76,22 +87,22 @@ Page({
       })
     }
   },
-  durationChange: function(e) {
+  durationChange: function (e) {
     this.setData({
       duration: e.detail.value
     })
   },
   //允许
-  yes: function() {
+  yes: function () {
     this.setData({
       showModal: false
     })
     wx.authorize({
       scope: 'scope.userLocation',
-      success(res){
+      success(res) {
         console.log(res)
       },
-      fail(res){
+      fail(res) {
         console.log(999)
       }
     })
@@ -103,7 +114,7 @@ Page({
     // })
   },
   // 首页图片展示轮播箭头
-  prevImg: function() {
+  prevImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
@@ -112,7 +123,7 @@ Page({
     })
   },
   // 首页图片展示轮播箭头
-  nextImg: function() {
+  nextImg: function () {
     console.log(2);
     var swiper = this.data.swiper;
     var current = swiper.current;
@@ -122,13 +133,13 @@ Page({
     })
   },
   //跳转我的页面
-  my: function() {
+  my: function () {
     wx.navigateTo({
       url: "../my_page/my_page"
     });
   },
   //开启定位跳转至地图
-  location: function() {
+  location: function () {
     if (this.data.alearyAddr) {
       app.getPermission(this);
     } else {
@@ -138,19 +149,19 @@ Page({
     }
   },
   //不允许
-  no: function() {
+  no: function () {
     this.setData({
       showModal: false
     })
   },
   //更多房源
-  housingResources:function(){
+  housingResources: function () {
     wx.navigateTo({
       url: '../housingResources_page/housingResources_page',
     })
   },
   //更多房型
-  houseType:function(){
+  houseType: function () {
     wx.navigateTo({
       url: '../houseType_page/houseType_page',
     })
