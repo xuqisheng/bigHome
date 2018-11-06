@@ -81,6 +81,7 @@ Page({
         console.log(res);
         let city = res.data.result.addressComponent.city;
         that.setData({ currentCity: city });
+        app.globalData.localInfo = res.data.result.addressComponent
       },
       fail: function () {
         that.setData({ currentCity: "获取定位失败" });
