@@ -29,6 +29,7 @@
   height: 84px;
   float: left;
   z-index: 999;
+  border-radius: 50%;
 }
 .landing{
   float: left;

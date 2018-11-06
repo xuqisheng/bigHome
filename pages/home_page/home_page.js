@@ -42,7 +42,7 @@ Page({
               that.getLocation()
             },
             fail(res) {
-              console.log(res)
+              console.log(res.errMsg)
             }
           })
           //展示弹框
@@ -60,11 +60,10 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success(res) {
-        console.log(res)
         that.getLocalName(res)
       },
       fail(res) {
-        console.log(res)
+        console.log(res.errMsg)
       }
     })
   },
@@ -78,7 +77,6 @@ Page({
       },
       success: function (res) {
         // success  
-        console.log(res);
         let city = res.data.result.addressComponent.city;
         that.setData({ currentCity: city });
         app.globalData.localInfo = res.data.result.addressComponent
@@ -86,7 +84,6 @@ Page({
       fail: function () {
         that.setData({ currentCity: "获取定位失败" });
       },
-
     })
   },
   userNameInput: function (e) {
@@ -144,7 +141,6 @@ Page({
   },
   // 首页图片展示轮播箭头
   nextImg: function () {
-    console.log(2);
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
