@@ -2,7 +2,7 @@ const date = new Date()
 const nowYear = date.getFullYear()
 const nowMonth = date.getMonth() + 1
 const nowDay = date.getDate()
-const nowHour = date.getHours() - 1
+const nowHour = date.getHours()
 const nowMinute = date.getMinutes()
 let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const hours = []
@@ -27,6 +27,8 @@ let setDate = function (year, month, day, hour, minute, _th) {
   let yearIdx = 9999
   let monthIdx = 0
   let dayIdx = 0
+  let hourIdx = 0
+  let minuteIdx = 0
   let hours = []
   let minutes = []
 
@@ -41,46 +43,67 @@ let setDate = function (year, month, day, hour, minute, _th) {
   })
   // 重新设置月份列表
   for (let i = 1; i <= monthsNum; i++) {
+    if (i < 10) {
+      i = '0' + i
+    }
     months.push(i)
   }
   months.map((v, idx) => {
-    if (v === month) {
+    if (+v == +month) {
       monthIdx = idx
     }
   })
   // 重新设置日期列表
   for (let i = 1; i <= daysNum; i++) {
+    if (i < 10) {
+      i = '0' + i
+    }
     days.push(i)
   }
   days.map((v, idx) => {
-    if (v === day) {
+    if (+v == +day) {
       dayIdx = idx
     }
   })
   for (let i = 1; i <= 23; i++) {
-    if (i < 10) {
+    if(i < 10){
       i = '0' + i
     }
     hours.push(i)
   }
+  hours.map((v, idx) => {
+    if (+v == +hour) {
+      hourIdx = idx
+    }
+  })
   for (let i = 1; i <= 59; i++) {
     if (i < 10) {
       i = '0' + i
     }
     minutes.push(i)
   }
+  minutes.map((v, idx) => {
+    if (+v == +minute) {
+        minuteIdx = idx
+    }
+  })
+  var day1 = day,hour1 = hour,month1 = month,minute1 = minute;
+  if (day1 < 10) {day1 = '0' + day1;}
+  if (month1 < 10) {day1 = '0' + month1;}
+  if (hour1 < 10) {hour1 = '0' + day1;}
+  if (minute1 < 10) {minute1 = '0' + day1;}
   _th.setData({
     years: years,//年份列表
     months: months,//月份列表
     days: days,//日期列
     hours: hours,
     minutes: minutes,
-    value: [yearIdx, monthIdx, dayIdx, nowHour, nowMinute],
+    value: [yearIdx, monthIdx, dayIdx, hourIdx, minuteIdx],
     year: year,
-    month: month,
-    day: day,
-    hour: hour,
-    minute: minute
+    month: month1,
+    day: day1,
+    hour: hour1,
+    minute: minute1
   })
 }
 
@@ -120,7 +143,7 @@ Page({
 
   },
   chooseDate: function (e) {
-    const val = e.detail.value
+    var val = e.detail.value
     setDate(this.data.years[val[0]], this.data.months[val[1]], this.data.days[val[2]], this.data.hours[val[3]], this.data.minutes[val[4]], this)
   },
   chooseType: function (e) {
@@ -194,6 +217,9 @@ Page({
     phone: e.detail.value
   },
   submitAll: function (e) {
-    console.log('穿透了，你点到了！！！！')
+    //这里需要请求数据，判断是否成功以后再进行路由跳转
+    wx.navigateTo({
+      url: '../yy_result/index'
+    })
   },
 });

@@ -36,7 +36,7 @@
     <view class='roomBox'>
       <text class='rt'>看房日期</text>
       <text class='tc' wx:if='{{!dateValue}}' bindtap='showDp'>请选择看房日期</text>
-      <text class='tn' wx:if='{{dateValue}}' bindtap='showDp'>{{year}}-{{month}}-{{day}}</text>
+      <text class='tn' wx:if='{{dateValue}}' bindtap='showDp'>{{year}}-{{month}}-{{day}} {{hour}}:{{minute}}</text>
       <image src='../../images/yy_page/line.png' class='imgIine'></image>
       <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showDp'></image>
     </view>
