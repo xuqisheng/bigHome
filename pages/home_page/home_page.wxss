@@ -320,23 +320,29 @@ swiper.read_swiper image {
 }
 
 .recommends {
-  width: 45%;
+  width:  calc(30% + 98*1rpx);
+  width:  -webkit-bcalc(30% + 98*1rpx);
   height: 14px;
   margin: auto;
   font-size: 12px;
   text-align: center;
   margin-top: 30px;
-  color: #d6d6d6;
-  border-top: 1px solid #999999;
+  color: #999899;
+  border-top: 1rpx solid #999999;
   position: relative;
 }
 .recommends text{
   position: absolute;
-  top: -14px;
-  left: 28%;
+  max-width: 144rpx;
+  left: 50%;
+  transform: translate(-50%,-50%);
   background: #fff;
   padding: 0 10px;
   color:#444444;
-  font-size: 18px;
+  font-size: 30rpx;
   font-weight: bold;
+}
+.recommends p{
+  font-size: 24rpx;
+  margin-top: 19rpx;
 }
