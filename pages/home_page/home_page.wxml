@@ -7,7 +7,7 @@
         <swiper-item>
           <image src="{{item.imgs}}" class="slide-image"></image>
         </swiper-item>
-      </block>     
+      </block>
     </swiper>
     <view class='ceshi_next' bindtap='prevImg'>
       <text class='icon iconfont icon-you'></text>
@@ -36,68 +36,54 @@
   <view class="address">
     <view class="search">
       <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}"/>
+      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" />
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>
 
   <!-- 碧家推荐 -->
   <view class="font">
- 
-    <p>
-      <image src="../../images/home_page/5.png" class="column"></image>碧家推荐</p>
-    <span class="recommend">每次推荐，只为找到属于你的房</span>
-    <span class="more" bindtap="housingResources">更多房源 ></span>
-
+    <view class='fontHead'>
+      <image src="../../images/home_page/5.png"></image>
+      <text>碧家推荐</text>
+    </view>
+    <view class='fontInfo'>
+      <text class="recommend">每次推荐，只为找到属于你的房</text>
+      <text class="more" bindtap="housingResources">更多房源 ></text>
+    </view>
     <!-- 碧家推荐图片 -->
-    <view>
-      <swiper>
-        <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-          <image src="{{item.imgs}}" />
-          <text class='title'>{{item.title}}</text>
-        </swiper-item>
-      </swiper>
-    </view>
-     
-  
-  </view>
-
-  <!-- 房型推荐 -->
-  <view class="font">
-
-    <p>
-      <image src="../../images/home_page/5.png" class="column"></image>碧家房型</p>
-    <span class="recommend">在碧家，一床一物只为住的更好</span>
-    <span class="more" bindtap="houseType">更多房型 ></span>
-
-    <!-- 碧家房型图片 -->
-    <view>
-      <swiper>
-        <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-          <image src="{{item.imgs}}" />
-          <text class='title'>{{item.title}}</text>
-        </swiper-item>
-      </swiper>
-    </view>
-
+    <swiper class='swiper'next-margin="120rpx">
+      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
+        <image src="{{item.imgs}}" />
+        <view class='swiperText'>
+        <view style=' position: relative;'>
+          <view class='text12'>
+            <text class='title1'>{{item.title1}}</text>
+            <text class='title2'>{{item.title2}}</text>
+          </view>
+          <text class='title3'>{{item.title3}}</text>
+        </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 
   <view class="fonts">
-    <view class="recommends ">
-    <text>碧家服务</text>
+    <view class="recommends">
+      <view class='line'></view>
+      <text>碧家服务</text>
+      <view class='line'></view>
     </view>
-    <p class="heart">碧家心服务，比你更懂你</p>
+    <text  class="heart">碧家心服务，比你更懂你</text>
   </view>
 
   <!-- 服务展示图片 -->
-  <view class="font">
-    <view>
-      <swiper indicator-dots="{{swiper.indicatorDotss}}" autoplay="{{swiper.autoplayss}}" interval="{{swiper.intervals}}" vertical="{{swiper.isVertical}}" duration="{{swiper.durations}}" circular='false'>
+  <view class='dispalyimg'>
+      <swiper indicator-dots="{{swiper.indicatorDotss}}" autoplay="{{swiper.autoplayss}}" interval="{{swiper.intervals}}" vertical="{{swiper.isVertical}}" duration="{{swiper.durations}}" circular='false' class='dispalyimgs'>
         <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItems" wx:key="index">
           <image src="{{item.imgs}}" />
         </swiper-item>
       </swiper>
-    </view>
   </view>
 
 
