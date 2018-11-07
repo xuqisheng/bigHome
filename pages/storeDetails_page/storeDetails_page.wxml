@@ -1,0 +1,183 @@
+<!--pages/storeDetails_page/storeDetails_page.wxml-->
+<view class="storeDetails">
+
+  <view class='details'>
+    <!-- 首页图片轮展 -->
+    <view class='pic'>
+      <swiper class='read_swiper' current="{{swiperCurrent}}" bindchange="swiperChange">
+        <block wx:for="{{swiper.imgUrls}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item.imgs}}" class="slide-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <text>{{swiperCurrent+1}}/{{current}}</text>
+    </view>
+
+    <!-- 房情描述 -->
+    <view class='miao'>
+      <p>BIG+碧家国际社区上海国家会展中心店</p>
+      <p>城市梦想充电站</p>
+      <span>地铁附近</span>
+      <span style="margin-left:10px">配套完善</span>
+      <span style="margin-left:10px">交通便利</span>
+      <span style="margin-left:10px">家电齐全</span>
+      <text></text>
+      <view class='lu'>
+        <image src='../../images/storeDetails_page/ditu.png'></image>
+        华徐公路：1199号
+      </view>
+    </view>
+
+    <view class='xian'></view>
+
+    <!-- 公寓介绍，服务详情 -->
+    <view class='jieShao'>
+      <!-- 公寓介绍 -->
+      <view class="gongYu">
+        <p>公寓介绍</p>
+        <p>碧家国际社区</p>
+      </view>
+      <!-- 管家介绍 -->
+      <view class='guanJia'>
+        <p>管家介绍</p>
+        <p>联系管家</p>
+        <text class="txts">
+           余告之曰其形也翩若惊鸿婉若游龙荣曜秋菊华茂春松。髣髴兮若轻云之蔽月，飘飖兮若流风之回雪。远而望之，皎若太阳升朝霞；迫而察之，灼若芙蕖出渌波。秾纤得衷，修短合度。肩若削成，腰如约素。
+           </text>
+      </view>
+      <!-- 公区介绍 -->
+      <view class='guanJia'>
+        <p>公区介绍</p>
+        <text class="txts">
+           余告之曰其形也翩若惊鸿婉若游龙荣曜秋菊华茂春松。髣髴兮若轻云之蔽月，飘飖兮若流风之回雪。远而望之，皎若太阳升朝霞；迫而察之，灼若芙蕖出渌波。秾纤得衷，修短合度。肩若削成，腰如约素。
+           </text>
+      </view>
+      <!-- 设施服务 -->
+      <view class='sheShi'>
+        <p>设施服务</p>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/ting.png'></image>
+          </dt>
+          <dd>停车位</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/kuai.png'></image>
+          </dt>
+          <dd>快递箱</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/xiu.png'></image>
+          </dt>
+          <dd>休闲吧</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/men.png'></image>
+          </dt>
+          <dd>门禁密码</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/xi.png'></image>
+          </dt>
+          <dd>洗衣房</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/jian.png'></image>
+          </dt>
+          <dd>健身房</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/chu.png'></image>
+          </dt>
+          <dd>公共厨房</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/zao.png'></image>
+          </dt>
+          <dd>淋浴间</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/wei.png'></image>
+          </dt>
+          <dd>公共卫生间</dd>
+        </dl>
+        <dl>
+          <dt>
+            <image src='../../images/storeDetails_page/dian.png'></image>
+          </dt>
+          <dd>电梯</dd>
+        </dl>
+     
+      </view>
+         <p class="more">更多设施服务</p>
+    </view>
+
+    <view class='xian'></view>
+
+    <view class='housess'>
+      <p>房型选择</p>
+      <dl>
+        <dt>
+          <image src='../../images/home_page/1.png'></image>
+        </dt>
+        <dd style="font-size:15px;color:#444444;padding-top:10px">北欧风一居室-大床</dd>
+        <dd style="font-size:14px;color:#999999;padding-top:10px">一房一厅一卫/45m</dd>
+        <dd style="font-size:16px;color:#00ADA9;padding-top:30px">￥3100-3560元/月</dd>
+      </dl>
+      <dl>
+        <dt>
+          <image src='../../images/home_page/1.png'></image>
+        </dt>
+        <dd style="font-size:15px;color:#444444;padding-top:10px">北欧风一居室-大床</dd>
+        <dd style="font-size:14px;color:#999999;padding-top:10px">一房一厅一卫/45m</dd>
+        <dd style="font-size:16px;color:#00ADA9;padding-top:30px">￥3100-3560元/月</dd>
+      </dl>
+      <dl>
+        <dt>
+          <image src='../../images/home_page/1.png'></image>
+        </dt>
+        <dd style="font-size:15px;color:#444444;padding-top:10px">北欧风一居室-大床</dd>
+        <dd style="font-size:14px;color:#999999;padding-top:10px">一房一厅一卫/45m</dd>
+        <dd style="font-size:16px;color:#00ADA9;padding-top:30px">￥3100-3560元/月</dd>
+      </dl>
+    </view>
+        <p class="more">更多房型</p>
+    <view class='xian'></view>
+
+    <view class='address'>
+      <p>门店电话和地址</p>
+      <view class='men'>
+        <image src='../../images/storeDetails_page/dianhua.png'></image><p>门店电话：
+        <span>18810553645</span></p>
+      </view>
+      <view class='men'>
+        <image src='../../images/storeDetails_page/dianhua.png'></image><p>徐华公路：
+        <span>1199号</span></p>
+      </view>
+      <view class='maps'>
+      </view>
+      <p class="mores" color="#D1D1D1">我是有底线的</p>
+    </view>
+    
+
+    <view class='btns'>
+      <view class='yuyue'>
+         <image src='../../images/storeDetails_page/xing.png'></image><span> 收藏</span>
+      </view>
+        <view class='kan'>
+         <span> 预约看房</span>
+      </view>
+    </view>
+   
+  </view>
+
+</view>

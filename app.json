@@ -1,8 +1,9 @@
 {
   "pages":[
+    "pages/storeDetails_page/storeDetails_page",
+    "pages/grant_page/grant_page",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
-    "pages/grant_page/grant_page",
     "pages/phone_page/phone_page",
     "pages/housingResources_page/housingResources_page",
     "pages/houseType_page/houseType_page",

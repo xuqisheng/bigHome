@@ -1,41 +1,67 @@
-.flex{  
-  display: flex;  
-}  
-.up-pic{  
-  /* padding:20rpx 24rpx; */  
-  width: 100%;  
-  justify-content: center;  
-}  
-.pic-box{  
-  margin-top:20rpx;  
-  flex-flow:wrap;  
-   width:95%;   
-}  
-.ap-box{  
-   position: relative;  
-}  
-.add-pic{  
-  width: 160rpx;  
-  height: 160rpx;  
-  margin-right: 20rpx;  
-  position: relative;  
-  margin: 20rpx 30rpx 20rpx 30rpx;  
-}  
-.img-de{  
-  width:45rpx;  
-  height:45rpx;  
-  border-radius:50%;  
-  position:absolute;  
-  right:-41rpx;  
-  top:5rpx;  
+.maps {
+  position: relative;
 }
-.hong-contant .teamwork-btn{
-   width: 360rpx;  
-  height: 88rpx;  
-  border-radius: 50rpx;  
-  color: white;  
-  background-color:#14a1fd;  
-  margin: 0 auto;  
-  margin-top: 80rpx;  
-  margin-bottom: 40rpx; 
+
+.houses {
+  width: 96%;
+  height: 260px;
+  background: #fff;
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  margin-left: 6px;
+  margin-right: 5px;
+}
+
+cover-view {
+  display: block;
+}
+
+.houses cover-image {
+  width: 100%;
+  height: 170px;
+}
+
+.houses .p {
+  display: flex;
+  flex-wrap: wrap;
+  display: block;
+  font-size: 16px;
+  color: #444;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.sp {
+  padding-left: 10px;
+}
+
+.houses .sp cover-view {
+  font-size: 12px;
+  display: inline-block;
+  width: 64px;
+  height: 24px;
+  background: #00ada9;
+  text-align: center;
+  line-height: 24px;
+  margin-left: 8px;
+  color: #fff;
+  margin-top: 35px;
+}
+
+.qian {
+  position: absolute;
+  right: 4%;
+  top: 70%;
+  font-size: 12px;
+  color: #444;
+}
+
+.moneyYue {
+  position: absolute;
+  right: 6%;
+  top: 76%;
+  font-size: 16pt;
+  color: #00ada9;
 }
