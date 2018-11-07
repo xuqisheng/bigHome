@@ -70,16 +70,15 @@ Page({
   getLocalName(loacl) {//获取定位城市
     let that = this
     wx.request({
-      url: 'https://api.map.baidu.com/geocoder/v2/?ak=pym8zhqkvt4tVePByovcKg617lBG9XdB&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json',
+      url: 'https://apis.map.qq.com/ws/geocoder/v1/?key=CTJBZ-6HVH3-2XO32-Y4SSL-MTOWK-KFF4A&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json&get_poi=1',
       data: {},
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        // success  
-        let city = res.data.result.addressComponent.city;
+        let city = res.data.result.address_component.city;
         that.setData({ currentCity: city });
-        app.globalData.localInfo = res.data.result.addressComponent
+        app.globalData.localInfo = res.data.result.address_component
       },
       fail: function () {
         that.setData({ currentCity: "获取定位失败" });
