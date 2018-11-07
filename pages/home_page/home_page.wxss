@@ -129,22 +129,23 @@ swiper {
 }
 
 .big {
-  width: 100%;
-  height: 40px;
+  display: flex;
+  flex-direction: row;
   text-align: center;
-  padding-top: 15px;
+  margin-top: 48rpx;
+  margin-bottom: 34rpx;
 }
 
 .big image {
-  width: 40px;
-  height: 15px;
+  width: 78rpx;
+  height: 30rpx;
+  padding-right: 31rpx
 }
 
-.big span {
+.big text {
   color: #c8c8c8;
-  font-size: 12px;
-  display: inline-block;
-  padding-left: 15px;
+  font-size: 24rpx;
+  line-height: 30rpx;
 }
 
 .ceshi_swiper {
