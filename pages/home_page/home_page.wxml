@@ -10,10 +10,10 @@
       </block>
     </swiper>
     <view class='ceshi_next' bindtap='prevImg'>
-      <text class='icon iconfont icon-you'></text>
+      <image src='../../images/home_page/gonext.png'></image>
     </view>
     <view class='ceshi_prew' bindtap='nextImg'>
-      <text class='icon iconfont icon-zuo'>  </text>
+      <image src='../../images/home_page/gopre.png'></image>
     </view>
   </view>
 
