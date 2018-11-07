@@ -23,7 +23,7 @@
     </view>
   </view>
   <view wx:else class="land">
-    <image src="../../images/my_page/8.png" class="heart"></image>
+    <image bindtap="Landfall" src="../../images/my_page/8.png" class="heart"></image>
     <view class="landing">
       <p bindtap="Landfall">注册 / 登陆</p>
     </view>
