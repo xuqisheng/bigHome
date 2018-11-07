@@ -136,7 +136,7 @@ Page({
     // })
   },
   // 首页图片展示轮播箭头
-  prevImg: function () {
+  nextImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
@@ -145,7 +145,7 @@ Page({
     })
   },
   // 首页图片展示轮播箭头
-  nextImg: function () {
+  prevImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
