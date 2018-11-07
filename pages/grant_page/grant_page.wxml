@@ -1,18 +1,21 @@
-   <!-- 选择图片 -->
-        <view class='up-pic'>
-          <view class='flex pic-box'>
-            <block wx:key="imgbox" wx:for="{{imgbox}}">
-              <view class='ap-box'>
-                <view class='add-pic'>
-                  <image class='add-pic' src='{{item}}'></image>
-                  <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
-                    <image class='img' src='/img/img/icon_close2@2x.png'></image>   //右上角的删除按钮图片
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
-              <image class='img' src='/img/img/add_pic@2x.png'></image>    //+号图片
-            </view>
-          </view>
-        </view>
+<cover-view class='maps'>
+
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" circles="{{circles}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange"
+    show-location style="width: 100%; height: {{view.Height}}px;">
+    
+    
+    <cover-view class='houses'>
+
+    <cover-image src='../../images/home_page/1.png'></cover-image>
+    <cover-view class='p'>BIG+碧家国际社区深圳塘坑地铁站店</cover-view>
+    <cover-view class='sp'>
+     <cover-view>地铁附近</cover-view>
+    <cover-view>配套完善</cover-view>
+    <cover-view>交通便利</cover-view>
+    <cover-view>家电齐全</cover-view>
+    </cover-view>
+    <cover-view class='qian'>可签约</cover-view>
+    <cover-view class='moneyYue'>￥2900/月起</cover-view>
+  </cover-view>
+    </map>
+</cover-view>
