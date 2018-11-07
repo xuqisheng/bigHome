@@ -92,7 +92,7 @@ Page({
   },
   fork:function(){
     wx.navigateTo({
-      url: '../land_page/land_page',
+      url: '../land_page/index',
     })
   },
   //验证码
