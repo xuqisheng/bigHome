@@ -334,11 +334,11 @@ swiper.read_swiper image {
 }
 .heart{
   font-size: 24rpx;
-  margin-top: 19rpx;
+  color:#999899;
 }
 .dispalyimg{
   width: 100%;
-  margin-top: 20rpx;
+  margin-top: 44rpx;
 }
 .dispalyimgs {
   height: 391rpx;
