@@ -27,11 +27,14 @@ Page({
     })
   },
   bindGetUserInfo: function (e) {
+    console.log(e)
     if (e.detail.userInfo) {
       wx.setStorageSync('userInfo', e.detail.userInfo)
+      console.log(99)
       this.login();
       //用户按了允许授权按钮
     } else {
+      console.log(199)
       return;
       //用户按了拒绝按钮
     }

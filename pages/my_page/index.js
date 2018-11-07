@@ -78,7 +78,7 @@ Page({
   //跳转登录页
   Landfall:function(){
     wx.navigateTo({
-      url: "../land_page/land_page"
+      url: "../land_page/index"
     });
   },
   // 跳转卡包详情页

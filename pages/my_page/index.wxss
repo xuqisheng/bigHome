@@ -62,7 +62,7 @@
   background: rgba(21,142,138,1);
   font-size: 24rpx;
   color:#fff;
-  line-height: 39rpx;
+  line-height: 40rpx;
   text-align: center;
   border-radius: 10rpx;
 }
