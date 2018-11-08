@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/shop-list/index",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
@@ -16,7 +15,8 @@
     "pages/logs/logs",
     "pages/yk/index",
     "pages/yy/index",
-    "pages/yy_result/index"
+    "pages/yy_result/index",
+    "pages/shop-list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
