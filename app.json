@@ -1,5 +1,6 @@
 {
-  "pages":[
+  "pages": [
+    "pages/shop-list/index",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
@@ -17,11 +18,11 @@
     "pages/yy/index",
     "pages/yy_result/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00ADA9",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
     "color": "#6e6d6b",
