@@ -1,8 +1,9 @@
 {
-  "pages": [
+  "pages":[
+    "pages/storeDetails_page/storeDetails_page",
+    "pages/grant_page/grant_page",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
-    "pages/grant_page/grant_page",
     "pages/phone_page/phone_page",
     "pages/housingResources_page/housingResources_page",
     "pages/houseType_page/houseType_page",
@@ -18,11 +19,11 @@
     "pages/yy_result/index",
     "pages/shop-list/index"
   ],
-  "window": {
-    "backgroundTextStyle": "light",
+  "window":{
+    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#00ADA9",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle":"#fff"
   },
   "tabBar": {
     "color": "#6e6d6b",

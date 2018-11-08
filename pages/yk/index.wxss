@@ -281,6 +281,7 @@ page, .page, .page__bd {
 .panel__nomore {
   position: absolute;
   width: 100%;
+  height: -webkit-calc(100% - 34*1pt);
   height: calc(100% - 34*1pt);
   text-align: center;
 }

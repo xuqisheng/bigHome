@@ -1,0 +1,326 @@
+/* pages/storeDetails_page/storeDetails_page.wxss */
+
+.storeDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.details {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.pic {
+  width: 100%;
+  height: 206px;
+  position: relative;
+}
+
+.read_swiper {
+  width: 100%;
+  height: 206px;
+}
+
+swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.pic text {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  color: #fff;
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.miao {
+  margin-left: 18px;
+  margin-top: 10px;
+}
+
+.miao p {
+  display: block;
+}
+
+.miao p:nth-child(1) {
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.miao p:nth-child(2) {
+  font-size: 12px;
+  color: #444;
+}
+
+.miao span {
+  width: 64px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  background: #00ada9;
+  color: #fff;
+}
+
+.miao text {
+  width: 90%;
+  border: 1px dashed #000;
+  display: block;
+  margin-top: 14px;
+}
+
+.lu image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.xian {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+}
+
+.lu {
+  width: 100%;
+  height: 30px;
+  font-size: 14px;
+  display: block;
+  color: #999;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.jieShao {
+  width: 90%;
+  margin: auto;
+  margin-top: 14px;
+}
+
+.gongYu {
+  height: 80px;
+  border-bottom: 1px solid #eee;
+}
+
+.gongYu p {
+  display: block;
+}
+
+.gongYu p:nth-child(1) {
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.gongYu p:nth-child(2) {
+  font-size: 14px;
+  color: #999;
+  margin-top: 14px;
+}
+
+.guanJia {
+  height: 162px;
+  margin-top: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.guanJia p:nth-child(1) {
+  font-size: 16px;
+  display: block;
+  color: #444;
+  font-weight: bold;
+  float: left;
+}
+
+.guanJia p:nth-child(2) {
+  display: block;
+  font-size: 14px;
+  float: right;
+  width: 66px;
+  height: 24px;
+  border: 1px solid #00ada9;
+  text-align: center;
+  line-height: 24px;
+  color: #00ada9;
+}
+
+.guanJia .txts {
+  width: 90%;
+  font-size: 14px;
+  text-indent: 25px;
+}
+
+.sheShi {
+  height: auto;
+  margin-top: 20px;
+}
+
+.sheShi p {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.sheShi dl {
+  float: left;
+  text-align: center;
+  width: 18%;
+  margin-top: 30px;
+}
+
+.sheShi dl dt image {
+  width: 24px;
+  height: 24px;
+  clear: both;
+}
+
+.sheShi dl dd {
+  font-size: 11px;
+  color: #444;
+  display: block;
+}
+
+.more {
+  display: block;
+  width: 90%;
+  height: 11px;
+  clear: both;
+  font-size: 10px;
+  color: #444;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.housess {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  margin-top: 14px;
+}
+
+.housess p {
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.housess dl {
+  display: block;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.housess dl dt image {
+  width: 160px;
+  height: 126px;
+  float: left;
+}
+
+.housess dl dd {
+  display: block;
+}
+
+.address {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.address p:nth-child(1) {
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.men {
+  font-size: 14px;
+  color: #444;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.men image {
+  width: 15px;
+  height: 13px;
+}
+
+.men span {
+  color: #00ada9;
+}
+
+.men p {
+  padding-left: 10px;
+}
+
+.maps {
+  width: 90%;
+  height: 178px;
+  border: 1px solid #000;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.mores {
+  display: block;
+  width: 90%;
+  height: 11px;
+  clear: both;
+  font-size: 10px;
+  color: #d1d1d1;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+.btns{
+  width: 100%;
+  height: 50px;
+  display: flex;
+}
+
+.yuyue{
+   width: 40%;
+   height: 50px;
+   text-align: center;
+   line-height: 50px;
+}
+
+.yuyue image{
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.yuyue span{
+  font-size:14px;
+  color: #00ADA9;
+  vertical-align: middle;
+}
+
+.kan{
+  width: 60%;
+  height: 50px;
+  background: #00ADA9;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 14px;
+}

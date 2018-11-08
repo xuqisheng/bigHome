@@ -36,78 +36,78 @@
 
 .font {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
 }
-
-.font p {
-  display: block;
-  text-indent: 20px;
+.fontHead{
+  display: flex;
+  flex-direction: row;
+  font-size: 36rpx;
   color: #444;
-  font-size: 18px;
-  padding-top: 30px;
-  font-weight: bold;
+  padding-left: 30rpx;
 }
-
-.recommend {
-  display: block;
-  text-indent: 33px;
+.fontHead text{
+  padding-left: 15rpx;
+}
+.fontHead image {
+  width: 8rpx;
+  height: 33rpx;
+  margin: auto 0;
+}
+.fontInfo{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-left: 30rpx;
+}
+.recommend{
+  font-size: 24rpx;
   color: #999899;
-  font-size: 12px;
-  padding-top: 6px;
+  margin: auto 0 auto 21rpx;
 }
-
-.column {
-  width: 8px;
-  height: 20px;
-  padding-right: 6px;
-  margin-bottom: -4px;
+.more{
+  position: absolute;
+  right:21rpx;
+  font-size: 28rpx;
+  color: #00ADA9;
+  bottom:2rpx;
 }
-
-.more {
-  display: block;
-  text-align: right;
-  color: #3aa1d5;
-  font-size: 14px;
-  margin-top: -20px;
-  margin-right: 6px;
-}
-
-.swiper {
+.swiper{
   height: 500rpx;
   width: 100%;
 }
-
-.swiper image {
-  height: 270px;
-  width: 180px;
-}
-
-swiper {
-  height: 250px;
-}
-
 .swiperItem image {
-  width: 90%;
-  height: 200px;
-  margin: 0;
-  padding: 20px 18px;
+  width: 539rpx;
+  margin: 20rpx 30rpx;
+  height: 359rpx;
 }
-
-.swiperItems image {
-  width: 90%;
-  margin: 0;
-  padding: 10px 18px;
-}
-
-.swiperItem text {
-  display: block;
+.swiperText{
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 5rpx;
+  left: 35rpx;
+  width: 539rpx;
 }
-
+.text12{
+  display: flex;
+  flex-direction: column;
+}
+.title1,.title2{
+  font-size: 32rpx;
+  color: #444   
+}
+.title3{
+  position: absolute;
+  bottom: 50rpx;
+  right: 10rpx;
+  font-size: 32rpx;
+  color: #00ADA9
+}
 .fonts {
   width: 100%;
-  height: 90px;
+  display: flex;
+  flex-direction: column;
+  text-align: center
 }
 
 .service {
@@ -119,14 +119,6 @@ swiper {
   font-size: 18px;
 }
 
-.heart {
-  width: 100%;
-  display: block;
-  text-align: center;
-  padding-top: 8px;
-  color: #999899;
-  font-size: 12px;
-}
 
 .big {
   display: flex;
@@ -153,45 +145,45 @@ swiper {
   position: relative;
 }
 
-.ceshi_prew text {
-  width: 10px;
-  height: 10px;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  transform: rotate(45deg);
-  display: block;
+.ceshi_prew image {
+  min-width: 19rpx;
+  min-height: 35rpx;
+  max-width: 19rpx;
+  max-height: 35rpx;
   position: absolute;
-  right: 15%;
-  top: 34%;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 17.5rpx;
 }
 
-.ceshi_next text {
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
-  transform: rotate(45deg);
-  display: block;
+.ceshi_next image {
+  min-width: 19rpx;
+  min-height: 35rpx;
+  max-width: 19rpx;
+  max-height: 35rpx;
   position: absolute;
-  left: 10%;
-  top: 34%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 17.5rpx;
 }
 
 .ceshi_next {
-  width: 22px;
-  height: 36px;
+  width: 45rpx;
+  height: 74rpx;
   position: absolute;
-  top: 80px;
-  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 52rpx;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .ceshi_prew {
-  width: 22px;
-  height: 36px;
+  width: 45rpx;
+  height: 74rpx;
   position: absolute;
-  top: 80px;
-  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 52rpx;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -209,7 +201,7 @@ swiper {
 }
 
 swiper.read_swiper {
-  height: 206px;
+  height: 412rpx;
 }
 
 swiper.read_swiper image {
@@ -220,9 +212,7 @@ swiper.read_swiper image {
 .address {
   display: flex;
   align-items:center;
-  width: 340px;
-  height: 39px;
-  margin-top: -22px;
+  margin-top: -39rpx;
   position: relative;
 }
 
@@ -231,35 +221,39 @@ swiper.read_swiper image {
   align-items:center;
   border: 1px solid #ccc;
   background: #fff;
-  height: 37px;
+  height: 78rpx;
   border-radius: 4px 0 0 4px;
   overflow: hidden;
+  min-width: 473rpx;
+  max-width: 473rpx;
 }
 .inputBox {
-  width: 240px;
-  height: 37px;
-  max-height: 37px;
+  max-width: 473rpx;
+  min-width: 473rpx;
+  height: 78rpx;
   background: #fff;
-  font-size: 14px;
+  font-size: 28rpx;
   position: relative;
   border-radius: 4px;
 }
 
 .ding {
-  width: 13px;
-  height: 18px;
-  max-height: 40px;
+  max-width: 26rpx;
+  min-width: 26rpx;
+  max-height: 36rpx;
+  min-height: 36rpx;
   z-index: 999;
-  margin:0 11px;
+  margin:0 22rpx;
   vertical-align: middle;
 }
 
 .btn {
-  width: 76px;
-  height: 39px;
-  font-size: 12px;
+  width: 149rpx;
+  min-width: 149rpx;
+  height: 80rpx;
+  font-size: 28rpx;
   background: #00ada9;
-  line-height: 40px;
+  line-height: 80rpx;
   text-align: center;
   color: #fff;
   border-radius: 0 4px 4px 0;
@@ -320,23 +314,38 @@ swiper.read_swiper image {
 }
 
 .recommends {
-  width: 45%;
-  height: 14px;
-  margin: auto;
   font-size: 12px;
-  text-align: center;
+  align-items: center;
   margin-top: 30px;
-  color: #d6d6d6;
-  border-top: 1px solid #999999;
-  position: relative;
+  color: #999899;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-justify-content : center
 }
+.line{
+  border-top: 1rpx #999 solid;
+  width:48rpx;
+  }
 .recommends text{
-  position: absolute;
-  top: -14px;
-  left: 28%;
   background: #fff;
-  padding: 0 10px;
   color:#444444;
-  font-size: 18px;
+  font-size: 30rpx;
   font-weight: bold;
+  padding: 0 10rpx;
+}
+.heart{
+  font-size: 24rpx;
+  color:#999899;
+}
+.dispalyimg{
+  width: 100%;
+  margin-top: 44rpx;
+}
+.dispalyimgs {
+  height: 391rpx;
+}
+.dispalyimg image{
+  width: 100%;
+  height: 391rpx;
 }

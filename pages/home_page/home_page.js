@@ -7,15 +7,21 @@ Page({
       // banner
       imgUrls: [{
         imgs: "../../images/home_page/1.png",
-          title: "合租、整租分散式房源",
+        title1: "BIG+碧家深圳东门店",
+        title2: "现代居家一居室·A15室",
+        title3: "￥2900/月起",
         },
         {
           imgs: "../../images/home_page/7.png",
-          title: "￥2900/月起",
+          title1:"BIG+碧家深圳东门店",
+          title2:"现代居家一居室·A15室",
+          title3: "￥2900/月起",
         },
         {
           imgs: "../../images/home_page/1.png",
-          title: "￥2090/月起",
+          title1: "BIG+碧家深圳东门店",
+          title2: "现代居家一居室·A15室",
+          title3: "￥2900/月起",
         },
       ],
       indicatorDotss: true, //是否显示面板指示点
@@ -130,7 +136,7 @@ Page({
     // })
   },
   // 首页图片展示轮播箭头
-  prevImg: function () {
+  nextImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
@@ -139,7 +145,7 @@ Page({
     })
   },
   // 首页图片展示轮播箭头
-  nextImg: function () {
+  prevImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
