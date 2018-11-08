@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/shop-list/index",
     "pages/storeDetails_page/storeDetails_page",
     "pages/grant_page/grant_page",
     "pages/home_page/home_page",
@@ -16,8 +17,7 @@
     "pages/logs/logs",
     "pages/yk/index",
     "pages/yy/index",
-    "pages/yy_result/index",
-    "pages/shop-list/index"
+    "pages/yy_result/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
