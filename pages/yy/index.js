@@ -7,6 +7,8 @@ const nowMinute = date.getMinutes()
 let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const hours = []
 const minutes = []
+const roomNames = []
+const roomTypes = []
 
 // 根据年月 获取当月的总天数
 let getDays = function (year, month) {
@@ -87,11 +89,10 @@ let setDate = function (year, month, day, hour, minute, _th) {
         minuteIdx = idx
     }
   })
-  var day1 = day,hour1 = hour,month1 = month,minute1 = minute;
-  if (day1 < 10) {day1 = '0' + day1;}
-  if (month1 < 10) {day1 = '0' + month1;}
-  if (hour1 < 10) {hour1 = '0' + day1;}
-  if (minute1 < 10) {minute1 = '0' + day1;}
+  if(String(hour).length<2) hour = '0' + hour
+  if (String(day).length < 2) day = '0' + day
+  if (String(month).length < 2) month = '0' + month
+  if (String(minute).length < 2) minute = '0' + minute
   _th.setData({
     years: years,//年份列表
     months: months,//月份列表
@@ -100,10 +101,10 @@ let setDate = function (year, month, day, hour, minute, _th) {
     minutes: minutes,
     value: [yearIdx, monthIdx, dayIdx, hourIdx, minuteIdx],
     year: year,
-    month: month1,
-    day: day1,
-    hour: hour1,
-    minute: minute1
+    month: month,
+    day: day,
+    hour: hour,
+    minute: minute
   })
 }
 
@@ -127,14 +128,16 @@ Page({
     showRoomPicker: 0,
     roomTypes: ['宽敞明亮', '精致简约', '经典舒适'], //房型
     roomType: '宽敞明亮', //选中的房型
-    roomTypeValue: '', //将选中的房型赋值给form
+    roomTypeValue: [0], //将选中的房型赋值给form
     showRoomValue: 0, //显示选中的房型
     roomNames: ['A01', 'A02', 'A03'], //房间号
     roomName: 'A01', //选中的房间
-    roomNameValue: '', //将选中的房间赋值给form
+    roomNameValue: [0], //将选中的房间赋值给form
     showRoomNameValue: 0, //显示选中的房间
     nameValue: '', //名字
-    phone: ''
+    phone: '',
+    showRoomValue1:0,
+    showRoomNameValue1:0
   },
   onLoad: function () {
     setDate(this.data.year, this.data.month, this.data.day, this.data.hour, this.data.minute, this)
@@ -150,12 +153,14 @@ Page({
     var index = e.detail.value
     this.setData({
       roomType: this.data.roomTypes[index[0]],
+      roomTypeValue : [index[0]]
     });
   },
   chooseName: function (e) {
     var index = e.detail.value
     this.setData({
       roomName: this.data.roomNames[index[0]],
+      roomNameValue : [index[0]]
     });
   },
   showDp: function (e) {
@@ -176,36 +181,40 @@ Page({
   },
   showRt: function (e) {
     this.setData({
-      showRoomTypePicker: 1
+      showRoomTypePicker: 1,
+      showRoomValue1:1
     })
   },
   closeRt: function (e) {
     this.setData({
-      showRoomTypePicker: 0
+      showRoomTypePicker: 0,
+      showRoomValue1:0
     })
   },
   confirmRT: function (e) {
     this.setData({
-      roomTypeValue: this.data.roomType,
       showRoomTypePicker: 0,
-      showRoomValue: 1
+      showRoomValue: 1,
+      showRoomValue1:0
     })
   },
   showR: function (e) {
     this.setData({
-      showRoomPicker: 1
+      showRoomPicker: 1,
+      showRoomNameValue1:1
     })
   },
   closeR: function (e) {
     this.setData({
-      showRoomPicker: 0
+      showRoomPicker: 0,
+      showRoomNameValue1:0
     })
   },
   confirmR: function (e) {
     this.setData({
-      roomNameValue: this.data.roomName,
       showRoomPicker: 0,
-      showRoomNameValue: 1
+      showRoomNameValue: 1,
+      showRoomNameValue1:0
     })
   },
   getName: function (e) {

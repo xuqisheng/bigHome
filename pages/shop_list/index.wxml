@@ -1,0 +1,23 @@
+<!--pages/shop-list/index.wxml-->
+<view class="mapContainer">
+  <map id="myMap" longitude="{{centerY}}" latitude="{{centerX}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
+    <cover-view class="controls">
+      <cover-view class="infocontainer">
+        <cover-view class="infoTop">
+          <cover-image class="image" src="{{hotelInfoMap.hotelImgSrc}}"></cover-image>
+        </cover-view>
+        <cover-view class="infoMiddle">
+          <cover-view class="shopName">{{hotelInfoMap.hotelName}}</cover-view>
+          <cover-view class="shopInfo">
+            <cover-view class="bookStatus" wx:if="{{hotelInfoMap.hotelBookStatus}}">可签约</cover-view>
+            <cover-view class="bookStatus" wx:else="{{hotelInfoMap.hotelBookStatus}}">已签约</cover-view>
+            <cover-view class="rent">{{hotelInfoMap.hotelRent}}</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="infobottom">
+      <cover-view class="btn" wx:for="{{hotelInfoMap.hotelInfo}}" wx:key="index">{{item}}</cover-view>
+    </cover-view>
+      </cover-view>
+    </cover-view>
+  </map>
+</view>

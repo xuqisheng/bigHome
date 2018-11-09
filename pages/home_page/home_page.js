@@ -31,11 +31,12 @@ Page({
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
-      currentCity: '请选择位置'
+      currentCity: '',
+      placeHolder:'请选择位置'
     },
   },
   onLoad() {
-    this.getSetting()
+    this.getLocation()
   },
   getSetting() {//获取授权信息
     let that = this
@@ -83,11 +84,11 @@ Page({
       },
       success: function (res) {
         let city = res.data.result.address_component.city;
-        that.setData({ currentCity: city });
+        that.setData({ currentCity: city, placeHolder:city });
         app.globalData.localInfo = res.data.result.address_component
       },
       fail: function () {
-        that.setData({ currentCity: "获取定位失败" });
+        that.setData({ currentCity: "获取定位失败", placeHolder:'获取定位失败'});
       },
     })
   },
@@ -97,16 +98,31 @@ Page({
     })
   },
   look: function (e) {
-    if (this.data.addr == undefined || this.data.addr == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请选择地理位置'
+    if (this.data.currentCity == undefined || this.data.currentCity == '') {
+      wx.openSetting({
+        success: (res) => {
+          if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
+            this.getLocation()
+          }
+        }, fail: function (res) {
+          console.log(res)
+        }
       })
-    } else if (this.data.addr != undefined) {
+    } else if (typeof(this.data.currentCity) != undefined) {
       wx.navigateTo({
-        url: '../my_page/my_page',
+        url: '../shop_list/index',
       })
     }
+  },
+  onFocus:function(e){
+    this.setData({
+      placeHolder: ''
+    })
+  },
+  onBlur:function(e){
+    this.setData({
+      placeHolder:this.data.currentCity
+    })
   },
   durationChange: function (e) {
     this.setData({
@@ -156,7 +172,7 @@ Page({
   //跳转我的页面
   my: function () {
     wx.navigateTo({
-      url: "../my_page/my_page"
+      url: "../my_page/index"
     });
   },
   //开启定位跳转至地图

@@ -10,10 +10,10 @@
       </block>
     </swiper>
     <view class='ceshi_next' bindtap='prevImg'>
-      <text class='icon iconfont icon-you'></text>
+      <image src='../../images/home_page/gonext.png'></image>
     </view>
     <view class='ceshi_prew' bindtap='nextImg'>
-      <text class='icon iconfont icon-zuo'>  </text>
+      <image src='../../images/home_page/gopre.png'></image>
     </view>
   </view>
 
@@ -36,7 +36,7 @@
   <view class="address">
     <view class="search">
       <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" />
+      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{placeHolder}}" bindfocus='onFocus' bindblur='onBlur' />
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>

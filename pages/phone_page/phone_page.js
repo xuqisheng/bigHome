@@ -118,10 +118,18 @@ Page({
       })
     }, 1000)
   },
+
   //获取到用户输入的手机号
   mobileInput: function (e) {
     this.setData({
       mobile: e.detail.value
+    })
+  },
+  //登录
+  land:function(){
+    wx.navigateTo({
+      url: '../my_page/index',
+
     })
   },
   //登录

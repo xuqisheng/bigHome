@@ -11,15 +11,15 @@
   <view class='form'>
     <view class='roomBox'>
       <text class='rt'>指定房型</text>
-      <text class='tc' wx:if='{{!showRoomValue}}' bindtap='showRt'>请选择房型</text>
-      <text class='tn' wx:if='{{showRoomValue}}' bindtap='showRt'>{{roomTypeValue}}</text>
+      <text class='tc' wx:if='{{!showRoomValue || showRoomValue1}}' bindtap='showRt'>请选择房型</text>
+      <text class='tn' wx:if='{{showRoomValue && !showRoomValue1}}' bindtap='showRt'>{{roomType}}</text>
       <image src='../../images/yy_page/line.png' class='imgIine'></image>
       <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showRt'></image>
     </view>
     <view class='roomBox'>
       <text class='rt'>指定房间</text>
-      <text class='tc' wx:if='{{!showRoomNameValue}}' bindtap='showR'>请选择房间</text>
-      <text class='tn' wx:if='{{showRoomNameValue}}' bindtap='showR'>{{roomName}}</text>
+      <text class='tc' wx:if='{{!showRoomNameValue || showRoomNameValue1}}' bindtap='showR'>请选择房间</text>
+      <text class='tn' wx:if='{{showRoomNameValue && !showRoomNameValue1}}' bindtap='showR'>{{roomName}}</text>
       <image src='../../images/yy_page/line.png' class='imgIine'></image>
       <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showR'></image>
     </view>
@@ -91,7 +91,7 @@
       <text class='cText'>指定房间</text>
       <view class='cSure' hover-class='hCancle' bindtap='confirmR'>确定</view>
     </view>
-    <picker-view indicator-class="chosenClass" value="{{roomValue}}" bindchange="chooseName" class='dpick'>
+    <picker-view indicator-class="chosenClass" value="{{roomNameValue}}" bindchange="chooseName" class='dpick'>
       <picker-view-column>
         <view wx:for="{{roomNames}}" style="line-height: 50px">{{item}}</view>
       </picker-view-column>

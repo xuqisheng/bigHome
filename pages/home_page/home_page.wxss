@@ -14,10 +14,6 @@
 .foot {
   width: 100%;
   display: flex;
-  /* position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 999; */
   background: #fff;
   border-top: 1px solid #eee;
 }
@@ -145,45 +141,45 @@
   position: relative;
 }
 
-.ceshi_prew text {
-  width: 10px;
-  height: 10px;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  transform: rotate(45deg);
-  display: block;
+.ceshi_prew image {
+  min-width: 19rpx;
+  min-height: 35rpx;
+  max-width: 19rpx;
+  max-height: 35rpx;
   position: absolute;
-  right: 15%;
-  top: 34%;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 17.5rpx;
 }
 
-.ceshi_next text {
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
-  transform: rotate(45deg);
-  display: block;
+.ceshi_next image {
+  min-width: 19rpx;
+  min-height: 35rpx;
+  max-width: 19rpx;
+  max-height: 35rpx;
   position: absolute;
-  left: 10%;
-  top: 34%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 17.5rpx;
 }
 
 .ceshi_next {
-  width: 22px;
-  height: 36px;
+  width: 45rpx;
+  height: 74rpx;
   position: absolute;
-  top: 80px;
-  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 52rpx;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .ceshi_prew {
-  width: 22px;
-  height: 36px;
+  width: 45rpx;
+  height: 74rpx;
   position: absolute;
-  top: 80px;
-  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 52rpx;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -201,7 +197,7 @@
 }
 
 swiper.read_swiper {
-  height: 206px;
+  height: 412rpx;
 }
 
 swiper.read_swiper image {
@@ -212,9 +208,7 @@ swiper.read_swiper image {
 .address {
   display: flex;
   align-items:center;
-  width: 340px;
-  height: 39px;
-  margin-top: -22px;
+  margin-top: -39rpx;
   position: relative;
 }
 
@@ -223,37 +217,42 @@ swiper.read_swiper image {
   align-items:center;
   border: 1px solid #ccc;
   background: #fff;
-  height: 37px;
+  height: 78rpx;
   border-radius: 4px 0 0 4px;
   overflow: hidden;
+  min-width: 473rpx;
+  max-width: 473rpx;
 }
 .inputBox {
-  width: 240px;
-  height: 37px;
-  max-height: 37px;
+  max-width: 473rpx;
+  min-width: 473rpx;
+  height: 78rpx;
   background: #fff;
-  font-size: 14px;
+  font-size: 28rpx;
   position: relative;
   border-radius: 4px;
 }
 
 .ding {
-  width: 13px;
-  height: 18px;
-  max-height: 40px;
+  max-width: 26rpx;
+  min-width: 26rpx;
+  max-height: 36rpx;
+  min-height: 36rpx;
   z-index: 999;
-  margin:0 11px;
+  margin:0 22rpx;
   vertical-align: middle;
 }
 
 .btn {
-  width: 76px;
-  height: 39px;
-  font-size: 12px;
+  width: 149rpx;
+  min-width: 149rpx;
+  height: 78rpx;
+  font-size: 28rpx;
   background: #00ada9;
-  line-height: 40px;
+  line-height: 80rpx;
   text-align: center;
   color: #fff;
+  border: #00ADA9 1px solid;
   border-radius: 0 4px 4px 0;
 }
 
