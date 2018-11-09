@@ -1,6 +1,11 @@
 // Http请求
-// obj= {url:'', data:'', method:'',token:''}
-/*require.wxGetData (obj).then( (res)=>{
+/*var rq = require("../../utils/require.js")
+let obj= {      
+  url:'hotel/getHotelList',
+  data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: "" },
+  method: 'post',
+  }
+ rq.wxGetData (obj).then( (res)=>{
  console.log(res);//正确返回结果
   //其他操作
       } ).catch ( (errMsg) => {
@@ -12,7 +17,7 @@ function wxGetData (obj) {
   var promise = new Promise((resolve, reject) => {
     var that = this;
     wx.request({
-      url: obj.url,
+      url: "http://bq2rfx.natappfree.cc/api/" + obj.url ,
       data: obj.data,
       method: obj.method,
       header: { 

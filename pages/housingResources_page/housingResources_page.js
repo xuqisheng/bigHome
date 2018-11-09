@@ -18,7 +18,7 @@ Page({
   },
   onLoad: function () {
     let obj = { 
-      url:'http://bgy.h-world.com/api/hotel/getHotelList',
+      url:'hotel/getHotelList',
       data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: ""},
       method:'post',
     }
