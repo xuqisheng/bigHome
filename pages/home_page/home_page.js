@@ -38,39 +38,6 @@ Page({
   },
   onLoad() {
     this.getLocation()
-    this.test()
-  },
-  test() {
-    // let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQzNDExMDE2MjcsInBheWxvYWQiOiJ7XCJtb2JpbGVcIjpcIjE4MDI5MzA5OTM4XCIsXCJwYXNzd29yZFwiOlwiYjRhZjgwNDAwOWNiMDM2YTRjY2RjMzM0MzFlZjlhYzlcIixcIm5ld1Bhc3N3b3JkXCI6bnVsbCxcInZhbGlkYXRlQ29kZVwiOm51bGwsXCJpZFwiOjE4MzE3MTYzMzQyLFwib3BlbklkXCI6bnVsbCxcInJlc2VydmF0aW9uSWRcIjpudWxsfSJ9.RlUEW35FaA9TZY38CbC-X9fsTBBW7unVbbneHpeuk58'
-    wx.login({
-      success: function (res) {
-        console.log(22)
-        wxGetData({
-          url: 'http://bgy.h-world.com/api/common/getFilterParams',
-          method: 'POST',
-          data:{
-            cityId:'34'
-          }
-        }).then(res => {
-          console.log(res)
-        })
-        // wx.request({
-        //   url: 'http://bgy.h-world.com/api/weixin/login',
-        //   method: 'GET',
-        //   header: {
-        //     'content-type': 'application/json'
-        //   },
-        //   data: {
-        //     wxMenberQO:{
-        //       code: res.code
-        //     }
-        //   },
-        //   success: function (res) {
-        //     console.log(res)
-        //   }
-        // })
-      }
-    })
   },
   getSetting() { //获取授权信息
     let that = this
