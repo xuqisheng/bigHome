@@ -1,3 +1,4 @@
+var rq = require("../../utils/require.js")
 Page({
   data: {
     content: [],
@@ -16,6 +17,16 @@ Page({
     xias: false,
   },
   onLoad: function () {
+    let obj = { 
+      url:'http://bgy.h-world.com/api/hotel/getHotelList',
+      data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: ""},
+      method:'post',
+    }
+    rq.wxGetData(obj).then((res) => {
+      console.log(res);
+    }).catch((errMsg) => {
+      console.log(errMsg);
+    });
     this.setData({
       money: ['不限','￥2000以下','￥2000-￥3500','￥3500-￥5000','￥5000以上'],
       sort:['价格从低到高','价格从高到低','距离从近到远']
