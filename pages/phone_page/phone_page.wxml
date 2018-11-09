@@ -4,16 +4,17 @@
   <view class="phoneLand">
 
     <text class='phone'>手机快捷登录</text>
-
-    <input placeholder="请输入手机号码"></input>
-
+     
+     <view class='please'>
+    <input type="text" maxlength='11'value="" bindinput ="mobileInput" placeholder="请输入手机号码" class="shuru"></input>
+     </view>
     <view class='verification'>
       <input placeholder="输入图形验证码" class="ipt"></input>
       <text class='left' bindtap='huanyizhang'>{{code}}</text>
     </view>
 
     <view class='phoneTest'>
-      <input placeholder='请输入手机验证码' class='ipt'></input>
+      <input placeholder='请输入手机验证码' class="ipts"></input>
       <view class='getcode' wx:if="{{isGet == false}}" bindtap='getCode'>获取验证码</view>
       <view class='getcode' wx:if="{{isGet == true}}">{{sec}}s后重新发送</view>
     </view>
