@@ -35,7 +35,7 @@ Page({
     },
   },
   onLoad() {
-    this.getSetting()
+    this.getLocation()
   },
   getSetting() {//获取授权信息
     let that = this
@@ -97,13 +97,16 @@ Page({
     })
   },
   look: function (e) {
-    wx.navigateTo({
-      url: '../shop_list/index',
-    })
     if (this.data.currentCity == undefined || this.data.currentCity == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请选择地理位置'
+      wx.openSetting({
+        success: (res) => {
+          console.log(999)
+          if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
+            this.getLocation()
+          }
+        }, fail: function (res) {
+          console.log(res)
+        }
       })
     } else if (this.data.currentCity != undefined) {
       wx.navigateTo({

@@ -21,20 +21,3 @@
     </cover-view>
   </map>
 </view>
-
-<!-- <view class="infocontainer">
-    <view class="infoTop">
-      <image src="{{hotelInfoMap.hotelImgSrc}}"></image>
-    </view>
-    <view class="infoMiddle">
-      <text class="shopName">{{hotelInfoMap.hotelName}}</text>
-      <view class="shopInfo">
-        <text class="bookStatus" wx:if="{{hotelInfoMap.hotelBookStatus}}">可签约</text>
-        <text class="bookStatus" wx:else="{{hotelInfoMap.hotelBookStatus}}">已签约</text>
-        <text class="rent">{{hotelInfoMap.hotelRent}}</text>
-      </view>
-    </view>
-    <view class="infobottom">
-      <text wx:for="{{hotelInfoMap.hotelInfo}}" wx:key="index">{{item}}</text>
-    </view>
-  </view> -->

@@ -36,6 +36,9 @@ Page({
     let that = this
     this.getHotalMarkerData()
   },
+  /**
+   * 初始化
+   */
   init() {
     let that = this
     wx.getLocation({
@@ -47,6 +50,9 @@ Page({
       }
     })
   },
+  /**
+   * 比较坐标，选定默认坐标
+   */
   comparedMark(data) {
     //比较流程，后续再补TODO
     let id = 0 //先默认取0
@@ -55,6 +61,9 @@ Page({
     })
     this.renderPage(data)
   },
+  /**
+   * 渲染页面
+   */
   renderPage(data) {
     let currentData = hotelData.find(item => item.id == this.data.currentId)
     this.setData({
