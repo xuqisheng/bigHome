@@ -9,6 +9,7 @@
         <span>*</span> 问题类别:</p>
       <view class='check'>
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <p wx:if="{{xuanZe}}">请选择</p>
           <p>{{array[index]}}</p>
           <image src="../../images/complaint_page/11.png"></image>
         </picker>
@@ -34,8 +35,8 @@
       <p>(最多6张)</p>
     </view>
     <block wx:key="imgbox" wx:for="{{imgbox}}" class="blocks">
-      <image class="weui-uploader__img" src='{{item}}' class='img'>
-            <p bindtap='imgDelete1' class="iconfont icon-close-circle close"></p>
+      <image class="weui-uploader__img" src='{{item}}' data-index='{{index}}' class='img' bindtap='previewImg'>
+        <p bindtap='imgDelete1' class="iconfont icon-close-circle close"></p>
       </image>
     </block>
 
@@ -47,7 +48,7 @@
     <view class='address'>
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
         <view class="picker">
-          {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+          {{multiArray[1][multiIndex[1]]}}
         </view>
       </picker>
       <image src="../../images/complaint_page/11.png"></image>

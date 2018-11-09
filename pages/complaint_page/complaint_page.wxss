@@ -205,6 +205,13 @@
   color: #444;
   padding-left: 26px;
   padding-top: 20px;
+  position: relative;
+}
+
+.wen{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .close {
