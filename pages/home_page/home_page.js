@@ -97,14 +97,17 @@ Page({
     })
   },
   look: function (e) {
-    if (this.data.addr == undefined || this.data.addr == '') {
+    wx.navigateTo({
+      url: '../shop_list/index',
+    })
+    if (this.data.currentCity == undefined || this.data.currentCity == '') {
       wx.showModal({
         title: '提示',
         content: '请选择地理位置'
       })
-    } else if (this.data.addr != undefined) {
+    } else if (this.data.currentCity != undefined) {
       wx.navigateTo({
-        url: '../my_page/my_page',
+        url: '../shop_list/index',
       })
     }
   },

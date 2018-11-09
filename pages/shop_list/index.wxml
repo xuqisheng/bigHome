@@ -1,6 +1,6 @@
 <!--pages/shop-list/index.wxml-->
 <view class="mapContainer">
-  <map id="myMap" longitude="113.324520" latitude="23.099994" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
+  <map id="myMap" longitude="{{centerY}}" latitude="{{centerX}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
     <cover-view class="controls">
       <cover-view class="infocontainer">
         <cover-view class="infoTop">

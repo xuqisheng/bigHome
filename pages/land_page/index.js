@@ -62,11 +62,11 @@ Page({
       return;
     }
 
-    //未登录过
+    //登录过
     wx.login({
       success: function (res) {
         wx.request({
-          url: 'https://api.it120.cc/shopmall/user/wxapp/login',//模拟登录接口
+          url: 'https://api.it120.cc/shopmall/user/wxapp/login',//登录接口
           data: {
             code: res.code
           },

@@ -10,8 +10,7 @@ Page({
     markers: [],
     centerX: '',
     centerY: '',
-    hotelInfoMap: {
-    },
+    hotelInfoMap: {},
     currentId: '',
   },
 
@@ -71,7 +70,6 @@ Page({
   onReady: function(e) {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
-    
   },
   getHotalMarkerData() {
     let that = this
@@ -123,7 +121,7 @@ Page({
     let markers = []
     for (let item of markersData) {
       item.clickStatus = false
-      if (item.id == id) { //进页面具体展示哪个地点，先默认取第一条，后续有数据再处理TODO
+      if (item.id == id) {
         item.clickStatus = true
       }
       let marker = this.markerClass(item)
