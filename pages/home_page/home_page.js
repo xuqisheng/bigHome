@@ -1,5 +1,6 @@
 var app = getApp();
 var that = this;
+let { wxGetData} = require("../../utils/require.js")
 Page({
   data: {
     addr: '',
@@ -31,7 +32,8 @@ Page({
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
-      currentCity: '请选择位置'
+      currentCity: '',
+      placeHolder:'请选择位置'
     },
   },
   onLoad() {
@@ -43,21 +45,30 @@ Page({
     wx.login({
       success: function (res) {
         console.log(22)
-        wx.request({
-          url: 'http://bgy.h-world.com/api/weixin/login',
-          method: 'GET',
-          header: {
-            'content-type': 'application/json'
-          },
-          data: {
-            wxMenberQO:{
-              code: res.code
-            }
-          },
-          success: function (res) {
-            console.log(res)
+        wxGetData({
+          url: 'http://bgy.h-world.com/api/common/getFilterParams',
+          method: 'POST',
+          data:{
+            cityId:'34'
           }
+        }).then(res => {
+          console.log(res)
         })
+        // wx.request({
+        //   url: 'http://bgy.h-world.com/api/weixin/login',
+        //   method: 'GET',
+        //   header: {
+        //     'content-type': 'application/json'
+        //   },
+        //   data: {
+        //     wxMenberQO:{
+        //       code: res.code
+        //     }
+        //   },
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
       }
     })
   },
@@ -107,15 +118,11 @@ Page({
       },
       success: function(res) {
         let city = res.data.result.address_component.city;
-        that.setData({
-          currentCity: city
-        });
+        that.setData({ currentCity: city, placeHolder:city });
         app.globalData.localInfo = res.data.result.address_component
       },
-      fail: function() {
-        that.setData({
-          currentCity: "获取定位失败"
-        });
+      fail: function () {
+        that.setData({ currentCity: "获取定位失败", placeHolder:'获取定位失败'});
       },
     })
   },
@@ -128,8 +135,7 @@ Page({
     if (this.data.currentCity == undefined || this.data.currentCity == '') {
       wx.openSetting({
         success: (res) => {
-          console.log(999)
-          if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
+          if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
             this.getLocation()
           }
         },
@@ -137,13 +143,23 @@ Page({
           console.log(res)
         }
       })
-    } else if (this.data.currentCity != undefined) {
+    } else if (typeof(this.data.currentCity) != undefined) {
       wx.navigateTo({
         url: '../shop_list/index',
       })
     }
   },
-  durationChange: function(e) {
+  onFocus:function(e){
+    this.setData({
+      placeHolder: ''
+    })
+  },
+  onBlur:function(e){
+    this.setData({
+      placeHolder:this.data.currentCity
+    })
+  },
+  durationChange: function (e) {
     this.setData({
       duration: e.detail.value
     })
@@ -191,7 +207,7 @@ Page({
   //跳转我的页面
   my: function() {
     wx.navigateTo({
-      url: "../my_page/my_page"
+      url: "../my_page/index"
     });
   },
   //开启定位跳转至地图

@@ -11,7 +11,8 @@ Page({
   data: {
     min: 15, //最少字数
     max: 150, //最多字数 (根据自己需求改变) 
-    array: ['请选择', '预约看房', '租客维修', '租客保洁'],
+    array: ['预约看房', '租客维修', '租客保洁'],
+    xuanZe:true,
     showRoomPicker: false, //设置data-picker默认为false,
     imgbox: '',
     multiIndex: [0, 0],
@@ -225,8 +226,9 @@ Page({
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+      xuanZe:false
     })
   },
-  //点击提交进行判断
+ 
 })

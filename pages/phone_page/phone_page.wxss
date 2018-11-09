@@ -9,36 +9,53 @@
 }
 
 .phoneLand {
-  width: 100%;
+  width: 90%;
   height: auto;
-  margin-top: 40px;
+  margin: 40px auto;
 }
 
 .phoneLand .phone {
   font-size: 16px;
   color: #444;
-  padding-left: 38px;
+  margin-left: 20px;
   font-weight: bold;
+}
+
+.please {
+  position: relative;
+  height: 55px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid #dadada;
+}
+
+.shuru {
+  position: absolute;
+  left: 0;
+  top: 25px;
 }
 
 .phoneLand input {
   display: block;
-  width: 80%;
+  width: 90%;
   margin: auto;
   color: #999;
   font-size: 14px;
-  border-bottom: 1px solid #dadada;
-  padding-top: 40px;
-  padding-bottom: 10px;
 }
 
 .phoneLand .ipt {
   padding-top: 20px;
   display: block;
+  width: 40%;
+  float: left;
 }
 
 .verification {
   position: relative;
+  height: 55px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid #dadada;
 }
 
 .left {
@@ -51,36 +68,49 @@
   font-weight: bold;
   letter-spacing: 5px;
   position: absolute;
-  right: 36px;
+  right: 0px;
   top: 15px;
 }
 
-.phoneTest{
+.phoneTest {
   position: relative;
+  height: 55px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid #dadada;
+}
+
+.phoneLand .ipts {
+  padding-top: 20px;
+  display: block;
+  width: 40%;
+  position: absolute;
+  left: 0;
+  top: 2px;
 }
 
 .getcode {
-  width:84px;
+  width: 84px;
   height: 30px;
-  position:absolute;
-  right: 36px;
+  position: absolute;
+  right: 0px;
   top: 15px;
   font-size: 12px;
-  background:#808080;
+  background: #808080;
   color: #fff;
   line-height: 30px;
   text-align: center;
 }
 
 .sign {
-  width: 308px;
+  width: 90%;
   height: 44px;
   padding-top: 100px;
   margin: auto;
 }
 
 .sign button {
-  background: #00ADA9;
+  background: #00ada9;
   color: #fff;
   font-size: 16px;
 }
@@ -93,10 +123,15 @@
   padding-top: 10px;
 }
 
-.fork image {
+.fork{
   width: 26px;
   height: 26px;
   margin: auto;
   display: block;
   padding-top: 100px;
+}
+
+.fork image {
+ width: 100%;
+ height: 100%;
 }
