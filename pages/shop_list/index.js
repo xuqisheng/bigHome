@@ -10,8 +10,7 @@ Page({
     markers: [],
     centerX: '',
     centerY: '',
-    hotelInfoMap: {
-    },
+    hotelInfoMap: {},
     currentId: '',
   },
 
@@ -37,6 +36,9 @@ Page({
     let that = this
     this.getHotalMarkerData()
   },
+  /**
+   * 初始化
+   */
   init() {
     let that = this
     wx.getLocation({
@@ -48,6 +50,9 @@ Page({
       }
     })
   },
+  /**
+   * 比较坐标，选定默认坐标
+   */
   comparedMark(data) {
     //比较流程，后续再补TODO
     let id = 0 //先默认取0
@@ -56,6 +61,9 @@ Page({
     })
     this.renderPage(data)
   },
+  /**
+   * 渲染页面
+   */
   renderPage(data) {
     let currentData = hotelData.find(item => item.id == this.data.currentId)
     this.setData({
@@ -71,7 +79,6 @@ Page({
   onReady: function(e) {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
-    
   },
   getHotalMarkerData() {
     let that = this
@@ -123,7 +130,7 @@ Page({
     let markers = []
     for (let item of markersData) {
       item.clickStatus = false
-      if (item.id == id) { //进页面具体展示哪个地点，先默认取第一条，后续有数据再处理TODO
+      if (item.id == id) {
         item.clickStatus = true
       }
       let marker = this.markerClass(item)

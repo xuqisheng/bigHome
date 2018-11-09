@@ -1,13 +1,16 @@
-//Http请求
-function wxGetData (url, data, method) {
+// Http请求
+// obj= {url:'', data:'', method:'',token:''}
+function wxGetData (obj) {
   var promise = new Promise((resolve, reject) => {
     var that = this;
-    var postData = data;
     wx.request({
-      url: url,
-      data: postData,
-      method: method,
-      header: { 'content-type': 'application/json' },
+      url: obj.url,
+      data: obj.data,
+      method: obj.method,
+      header: { 
+        'content-type': 'application/json',
+        'token': obj.token 
+      },
       success: function (res) {
         if (res.statusCode) {
           resolve(res);

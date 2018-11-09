@@ -36,7 +36,7 @@ Page({
     },
   },
   onLoad() {
-    this.getSetting()
+    this.getLocation()
   },
   getSetting() {//获取授权信息
     let that = this
@@ -84,11 +84,11 @@ Page({
       },
       success: function (res) {
         let city = res.data.result.address_component.city;
-        that.setData({ currentCity: city });
+        that.setData({ currentCity: city, placeHolder:city });
         app.globalData.localInfo = res.data.result.address_component
       },
       fail: function () {
-        that.setData({ currentCity: "获取定位失败" });
+        that.setData({ currentCity: "获取定位失败", placeHolder:'获取定位失败'});
       },
     })
   },
@@ -99,19 +99,29 @@ Page({
   },
   look: function (e) {
     if (this.data.currentCity == undefined || this.data.currentCity == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请选择地理位置'
+      wx.openSetting({
+        success: (res) => {
+          if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
+            this.getLocation()
+          }
+        }, fail: function (res) {
+          console.log(res)
+        }
       })
-    } else if (this.data.currentCity !== undefined) {
+    } else if (typeOf(this.data.currentCity) != undefined) {
       wx.navigateTo({
-        url: '../housingResources_page/housingResources_page'
+        url: '../shop_list/index',
       })
     }
   },
   onFocus:function(e){
     this.setData({
       placeHolder: ''
+    })
+  },
+  onBlur:function(e){
+    this.setData({
+      placeHolder:this.data.currentCity
     })
   },
   durationChange: function (e) {

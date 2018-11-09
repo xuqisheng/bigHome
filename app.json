@@ -16,7 +16,8 @@
     "pages/yy/index",
     "pages/yy_result/index",
     "pages/storeDetails_page/storeDetails_page",
-    "pages/grant_page/grant_page"
+    "pages/grant_page/grant_page",
+    "pages/shop_list/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

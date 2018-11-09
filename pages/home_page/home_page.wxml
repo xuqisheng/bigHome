@@ -36,7 +36,7 @@
   <view class="address">
     <view class="search">
       <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{placeHolder}}" bindfocus='onFocus' />
+      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{placeHolder}}" bindfocus='onFocus' bindblur='onBlur' />
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>
