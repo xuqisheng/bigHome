@@ -108,7 +108,7 @@ Page({
           console.log(res)
         }
       })
-    } else if (typeOf(this.data.currentCity) != undefined) {
+    } else if (typeof(this.data.currentCity) != undefined) {
       wx.navigateTo({
         url: '../shop_list/index',
       })
