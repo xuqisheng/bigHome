@@ -246,12 +246,13 @@ swiper.read_swiper image {
 .btn {
   width: 149rpx;
   min-width: 149rpx;
-  height: 80rpx;
+  height: 78rpx;
   font-size: 28rpx;
   background: #00ada9;
   line-height: 80rpx;
   text-align: center;
   color: #fff;
+  border: #00ADA9 1px solid;
   border-radius: 0 4px 4px 0;
 }
 

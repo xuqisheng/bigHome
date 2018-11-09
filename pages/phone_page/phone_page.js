@@ -118,7 +118,7 @@ Page({
   //登录
   land:function(){
     wx.navigateTo({
-      url: '../my_page/my_page',
+      url: '../my_page/index',
     })
   },
   

@@ -31,7 +31,8 @@ Page({
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
-      currentCity: '请选择位置'
+      currentCity: '',
+      placeHolder:'请选择位置'
     },
   },
   onLoad() {
@@ -97,16 +98,21 @@ Page({
     })
   },
   look: function (e) {
-    if (this.data.addr == undefined || this.data.addr == '') {
+    if (this.data.currentCity == undefined || this.data.currentCity == '') {
       wx.showModal({
         title: '提示',
         content: '请选择地理位置'
       })
-    } else if (this.data.addr != undefined) {
+    } else if (this.data.currentCity !== undefined) {
       wx.navigateTo({
-        url: '../my_page/my_page',
+        url: '../housingResources_page/housingResources_page'
       })
     }
+  },
+  onFocus:function(e){
+    this.setData({
+      placeHolder: ''
+    })
   },
   durationChange: function (e) {
     this.setData({
@@ -156,7 +162,7 @@ Page({
   //跳转我的页面
   my: function () {
     wx.navigateTo({
-      url: "../my_page/my_page"
+      url: "../my_page/index"
     });
   },
   //开启定位跳转至地图
