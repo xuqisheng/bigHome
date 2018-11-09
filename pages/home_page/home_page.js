@@ -6,15 +6,15 @@ Page({
     swiper: {
       // banner
       imgUrls: [{
-        imgs: "../../images/home_page/1.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
+          imgs: "../../images/home_page/1.png",
+          title1: "BIG+碧家深圳东门店",
+          title2: "现代居家一居室·A15室",
+          title3: "￥2900/月起",
         },
         {
           imgs: "../../images/home_page/7.png",
-          title1:"BIG+碧家深圳东门店",
-          title2:"现代居家一居室·A15室",
+          title1: "BIG+碧家深圳东门店",
+          title2: "现代居家一居室·A15室",
           title3: "￥2900/月起",
         },
         {
@@ -36,12 +36,36 @@ Page({
   },
   onLoad() {
     this.getLocation()
+    this.test()
   },
-  getSetting() {//获取授权信息
+  test() {
+    // let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQzNDExMDE2MjcsInBheWxvYWQiOiJ7XCJtb2JpbGVcIjpcIjE4MDI5MzA5OTM4XCIsXCJwYXNzd29yZFwiOlwiYjRhZjgwNDAwOWNiMDM2YTRjY2RjMzM0MzFlZjlhYzlcIixcIm5ld1Bhc3N3b3JkXCI6bnVsbCxcInZhbGlkYXRlQ29kZVwiOm51bGwsXCJpZFwiOjE4MzE3MTYzMzQyLFwib3BlbklkXCI6bnVsbCxcInJlc2VydmF0aW9uSWRcIjpudWxsfSJ9.RlUEW35FaA9TZY38CbC-X9fsTBBW7unVbbneHpeuk58'
+    wx.login({
+      success: function (res) {
+        console.log(22)
+        wx.request({
+          url: 'http://bgy.h-world.com/api/weixin/login',
+          method: 'GET',
+          header: {
+            'content-type': 'application/json'
+          },
+          data: {
+            wxMenberQO:{
+              code: res.code
+            }
+          },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      }
+    })
+  },
+  getSetting() { //获取授权信息
     let that = this
     wx.getSetting({
       success(res) {
-        if (!res.authSetting['scope.userLocation']) {//没授权定位先授权定位，已授权定位直接定位
+        if (!res.authSetting['scope.userLocation']) { //没授权定位先授权定位，已授权定位直接定位
           wx.authorize({
             scope: 'scope.userLocation',
             success(res) {
@@ -52,7 +76,7 @@ Page({
             }
           })
           //展示弹框
-        } else {//没授权
+        } else { //没授权
           that.getLocation()
         }
       },
@@ -61,7 +85,7 @@ Page({
       }
     })
   },
-  getLocation() {//获取定位坐标
+  getLocation() { //获取定位坐标
     let that = this
     wx.getLocation({
       type: 'wgs84',
@@ -73,7 +97,7 @@ Page({
       }
     })
   },
-  getLocalName(loacl) {//获取定位城市
+  getLocalName(loacl) { //获取定位城市
     let that = this
     wx.request({
       url: 'https://apis.map.qq.com/ws/geocoder/v1/?key=CTJBZ-6HVH3-2XO32-Y4SSL-MTOWK-KFF4A&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json&get_poi=1',
@@ -81,30 +105,35 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         let city = res.data.result.address_component.city;
-        that.setData({ currentCity: city });
+        that.setData({
+          currentCity: city
+        });
         app.globalData.localInfo = res.data.result.address_component
       },
-      fail: function () {
-        that.setData({ currentCity: "获取定位失败" });
+      fail: function() {
+        that.setData({
+          currentCity: "获取定位失败"
+        });
       },
     })
   },
-  userNameInput: function (e) {
+  userNameInput: function(e) {
     this.setData({
       addr: e.detail.value
     })
   },
-  look: function (e) {
+  look: function(e) {
     if (this.data.currentCity == undefined || this.data.currentCity == '') {
       wx.openSetting({
         success: (res) => {
           console.log(999)
-          if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
+          if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
             this.getLocation()
           }
-        }, fail: function (res) {
+        },
+        fail: function(res) {
           console.log(res)
         }
       })
@@ -114,13 +143,13 @@ Page({
       })
     }
   },
-  durationChange: function (e) {
+  durationChange: function(e) {
     this.setData({
       duration: e.detail.value
     })
   },
   //允许
-  yes: function () {
+  yes: function() {
     this.setData({
       showModal: false
     })
@@ -142,7 +171,7 @@ Page({
     // })
   },
   // 首页图片展示轮播箭头
-  nextImg: function () {
+  nextImg: function() {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
@@ -151,7 +180,7 @@ Page({
     })
   },
   // 首页图片展示轮播箭头
-  prevImg: function () {
+  prevImg: function() {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
@@ -160,13 +189,13 @@ Page({
     })
   },
   //跳转我的页面
-  my: function () {
+  my: function() {
     wx.navigateTo({
       url: "../my_page/my_page"
     });
   },
   //开启定位跳转至地图
-  location: function () {
+  location: function() {
     if (this.data.alearyAddr) {
       app.getPermission(this);
     } else {
@@ -176,19 +205,19 @@ Page({
     }
   },
   //不允许
-  no: function () {
+  no: function() {
     this.setData({
       showModal: false
     })
   },
   //更多房源
-  housingResources: function () {
+  housingResources: function() {
     wx.navigateTo({
       url: '../housingResources_page/housingResources_page',
     })
   },
   //更多房型
-  houseType: function () {
+  houseType: function() {
     wx.navigateTo({
       url: '../houseType_page/houseType_page',
     })
