@@ -29,7 +29,8 @@ Page({
       // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
       url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelDetail',
       data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
-      method: 'GET'
+      method: 'GET',
+      isMock: true
     }).then(res => {
       if (res.statusCode == '200') {
         let hotelData = res.data.data.detail
@@ -73,14 +74,14 @@ Page({
   // return
 
     let that = this
-    wxGetData({
-      // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
-      url:'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
-      data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
-      method: 'GET'
-    }).then(res=>{
-      console.log(res)
-    })
+    // wxGetData({
+    //   // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+    //   url:'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
+    //   data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
+    //   method: 'GET'
+    // }).then(res=>{
+    //   console.log(res)
+    // })
     this.getMapMarks()
   },
   /**
@@ -141,7 +142,8 @@ Page({
       // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
       url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
       data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
-      method: 'GET'
+      method: 'GET',
+      isMock: true
     }).then(res => {
       if (res.statusCode) {
         markersData = res.data.data.hotels
@@ -168,7 +170,8 @@ Page({
       // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
       url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelDetail',
       data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
-      method: 'GET'
+      method: 'GET',
+      isMock: true
     }).then(res => {
       if (res.statusCode == '200') {
         hotelData = res.data.data.detail
