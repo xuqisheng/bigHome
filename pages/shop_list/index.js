@@ -1,6 +1,7 @@
 // pages/shop-list/index.js
+let { wxGetData} = require("../../utils/require.js")
 let markersData = []
-let hotelData = []
+let hotelData = {}
 Page({
 
   /**
@@ -18,13 +19,32 @@ Page({
     console.log(e.type)
   },
   markertap(e) {
+    let that = this
     if (e.markerId == this.data.currentId) return
-    let currentData = hotelData.find(item => item.id == e.markerId)
     this.setData({
-      currentId: e.markerId,
-      hotelInfoMap: this.createHotelInfoMap(currentData),
-      markers: this.createMarker(e.markerId)
+      currentId: e.markerId
     })
+    //let currentData = hotelData.find(item => item.id == e.markerId)
+    wxGetData({
+      // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelDetail',
+      data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
+      method: 'GET'
+    }).then(res => {
+      if (res.statusCode == '200') {
+        let hotelData = res.data.data.detail
+        this.setData({
+          markers: that.createMarker(e.markerId),
+          hotelInfoMap: that.createHotelInfoMap(hotelData)
+        })
+      }
+    })
+    
+    // this.setData({
+    //   currentId: e.markerId,
+    //   hotelInfoMap: this.createHotelInfoMap(currentData),
+    //   markers: this.createMarker(e.markerId)
+    // })
   },
   controltap(e) {
     console.log(e.controlId)
@@ -33,20 +53,56 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+  //   wx.login({
+  //     success: function (res) {
+  //       console.log(res)
+  //       wxGetData({
+  //         // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+  //         url: 'http://bq2rfx.natappfree.cc/api/weixin/login',
+  //         data: {
+  //           wxMemberQO: {
+  //             code:res.code
+  //           }
+  //         },
+  //         method: 'GET'
+  //       }).then(res => {
+  //         console.log(res)
+  //       })
+  //     }
+  //   })
+  // return
+
     let that = this
-    this.getHotalMarkerData()
+    wxGetData({
+      // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+      url:'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
+      data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
+      method: 'GET'
+    }).then(res=>{
+      console.log(res)
+    })
+    this.getMapMarks()
   },
   /**
    * 初始化
    */
   init() {
     let that = this
+    let res = {
+      latitude:'22',
+      longitude:'222'
+    }
+    this.comparedMark(res) //比较坐标，用于展示离定位最近的默认坐标
+    return
     wx.getLocation({
       type: 'gcj02',
       success: (res) => {
         let latitude = res.latitude
         let longitude = res.longitude
         this.comparedMark(res) //比较坐标，用于展示离定位最近的默认坐标
+      },
+      fail:(res)=>{
+        console.log(res)
       }
     })
   },
@@ -55,9 +111,8 @@ Page({
    */
   comparedMark(data) {
     //比较流程，后续再补TODO
-    let id = 0 //先默认取0
     this.setData({
-      currentId: id
+      currentId: markersData[0].hotelId//先默认取第一条ID
     })
     this.renderPage(data)
   },
@@ -65,12 +120,12 @@ Page({
    * 渲染页面
    */
   renderPage(data) {
-    let currentData = hotelData.find(item => item.id == this.data.currentId)
+    //let currentData = hotelData.find(item => item.id == this.data.currentId)
     this.setData({
       centerX: data.latitude,
       centerY: data.longitude,
       markers: this.createMarker(this.data.currentId),
-      hotelInfoMap: this.createHotelInfoMap(currentData)
+      hotelInfoMap: this.createHotelInfoMap(hotelData)
     })
   },
   /**
@@ -80,57 +135,56 @@ Page({
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
   },
-  getHotalMarkerData() {
+  getMapMarks() {
     let that = this
-    wx.request({
-      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/mapMarkList',
-      success: function(res) {
-        if (res.statusCode) {
-          markersData = res.data.data
-          that.getHotalInfoData()
+    wxGetData({
+      // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
+      data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
+      method: 'GET'
+    }).then(res => {
+      if (res.statusCode) {
+        markersData = res.data.data.hotels
+          that.getHotelDetail()
         }
-      },
-      error: function(e) {
-        console.log(e)
+    })
+    // wx.request({
+    //   url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/mapMarkList',
+    //   success: function(res) {
+    //     if (res.statusCode) {
+    //       markersData = res.data.data
+    //       that.getHotelDetail()
+    //     }
+    //   },
+    //   error: function(e) {
+    //     console.log(e)
+    //   }
+    // })
+  },
+  getHotelDetail() {
+    let that = this
+
+    wxGetData({
+      // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelDetail',
+      data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
+      method: 'GET'
+    }).then(res => {
+      if (res.statusCode == '200') {
+        hotelData = res.data.data.detail
+        that.init()
       }
     })
   },
-  getHotalInfoData() {
-    let that = this
-    wx.request({
-      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelList',
-      success: function(res) {
-        if (res.statusCode) {
-          hotelData = res.data.data
-          that.init()
-        }
-      },
-      error: function(e) {
-        console.log(e)
-      }
-    })
-  },
+
   /**
-   * 获取当前酒店标识
-   */
-  // getCurrentMarkers:function() {
-  //   for (let item of mapData) {
-  //     if (item.id === '0') { //进页面具体展示哪个地点，先默认取第一条，后续有数据再处理TODO
-  //       item.clickStatus = true
-  //       this.setData({
-  //         currentId: item.id
-  //       })
-  //     }
-  //   }
-  // },
-  /**
-   * 获取酒店标识
+   * 处理酒店标识
    */
   createMarker: function(id) {
     let markers = []
     for (let item of markersData) {
       item.clickStatus = false
-      if (item.id == id) {
+      if (item.hotelId == id) {
         item.clickStatus = true
       }
       let marker = this.markerClass(item)
@@ -185,15 +239,15 @@ Page({
     ]
     return {
       iconPath: data.clickStatus ? iconPathArr[1] : iconPathArr[0],
-      id: data.id,
-      title: data.name,
+      id: data.hotelId,
+      title: data.hotelName,
       latitude: data.latitude,
       longitude: data.longitude,
       width: 50,
       height: 50,
       clickStatus: data.clickStatus ? true : false,
       callout: {
-        content: data.name,
+        content: data.hotelName,
         display: 'ALWAYS',
         bgColor: data.clickStatus ? '#00ADA9' : '#B4B4B4',
         borderRadius: 4,
@@ -209,11 +263,11 @@ Page({
   createHotelInfoMap(item) {
     // let currentData = hotelData.find(item => item.id == this.data.currentId)
     return {
-      hotelImgSrc: item.imageSrc,
-      hotelName: item.name,
+      hotelImgSrc: item.pictures[0],
+      hotelName: item.breafIntroduction,
       hotelBookStatus: item.bookStatus,
-      hotelRent: item.rent,
-      hotelInfo: item.configure
+      hotelRent: `¥${item.startingPrice} / 月起`,
+      hotelInfo: item.tags
     }
   },
   /**
