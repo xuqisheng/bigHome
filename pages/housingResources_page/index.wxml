@@ -16,39 +16,26 @@
     </view>
 
   </view>
-
-
-  <!-- <view class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-<view wx:for="{{content}}">
-<text class='txt'>{{item}}</text>
-<radio></radio>
-</view>
-</view> -->
-
   <!-- 下拉选择框 -->
   <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <label class="radio" wx:for="{{content}}">
+    <label class="radio" wx:for="{{content}}" wx:key='item'>
       <text>{{item}}</text>
       <radio />
     </label>
   </radio-group>
 
   <radio-group class="temp {{pxopens ? 'slidown' : 'slidup'}} {{pxshows ? 'disappear':''}}">
-    <label class="radio" wx:for="{{contents}}">
+    <label class="radio" wx:for="{{contents}}" wx:key='item'>
       {{item}}
       <radio />
     </label>
   </radio-group>
-
-
-
   <view class='bgs' wx:if="{{hidden}}"></view>
-  <view class='house'>
 
-    <view class='housing'>
+  <view class='house'>
       <image src='../../images/housingResources_page/di.png' class="di"></image>
       <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
-        <span class="yue">￥2090/月起</span>
+        <text class="yue">￥2090/月起</text>
       </p>
       <p class="fang">4个房型/剩余19套房源</p>
       <view class="xiangxi">
@@ -61,33 +48,11 @@
         <text>交通便利</text>
         <text>家电齐全</text>
       </view>
-    </view>
-
-    <view class='housing'>
-      <image src='../../images/housingResources_page/di.png' class="di"></image>
-      <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
-        <span class="yue">￥2090/月起</span>
-      </p>
-      <p class="fang">4个房型/剩余19套房源</p>
-      <view class="xiangxi">
-        <image src='../../images/housingResources_page/bi.png' class="bi"></image>
-        <span class="xiang">交通便利、敞亮舒适、拥有完善寓乐圈的梦想充电站</span>
-      </view>
-      <view class='locations'>
-        <text>地铁附近</text>
-        <text>配套完全</text>
-        <text>交通便利</text>
-        <text>家电齐全</text>
-      </view>
-    </view>
-
-
   </view>
-
+  <view class='noMoreBox'>
   <view class="noMore">
-    <view class="recommends ">
-      <text>没有更多了</text>
-    </view>
+    <view class="recommends "></view>
+      <text class='noMore_text'>没有更多了</text>
   </view>
-
   </view>
+</view>
