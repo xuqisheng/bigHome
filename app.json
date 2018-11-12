@@ -1,6 +1,5 @@
 {
   "pages":[
-        "pages/shop_list/index",
         "pages/housingResources_page/housingResources_page",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
@@ -18,7 +17,8 @@
     "pages/yy/index",
     "pages/yy_result/index",
     "pages/storeDetails_page/storeDetails_page",
-    "pages/grant_page/grant_page"
+    "pages/grant_page/grant_page",
+    "pages/shop_list/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
