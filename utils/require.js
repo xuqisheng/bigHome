@@ -18,11 +18,11 @@ let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQzNDExMDE2MjcsIn
 
 function wxGetData(obj) {
   const { url, isMock = false, method = 'GET' } = obj
-  const AjaxUrl = isMock ? url : "http://bq2rfx.natappfree.cc/api/" + url
+  const httpsUrl = isMock ? url : "http://bq2rfx.natappfree.cc/api/" + url
     var promise = new Promise((resolve, reject) => {
       var that = this;
       wx.request({
-        url: AjaxUrl,
+        url: httpsUrl,
         data: obj.data,
         method: method,
         header: {
