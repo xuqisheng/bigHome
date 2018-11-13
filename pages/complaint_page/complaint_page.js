@@ -74,7 +74,7 @@ Page({
   },
   wenti: function() {
     rq.wxGetData({
-      url: "http://py7tuv.natappfree.cc/api/member/addComplainXin",
+      url: "http://ajfppq.natappfree.cc/api/member/addComplainXin",
       data: {
         complaintsType: "预约看房",
         content: "内容",

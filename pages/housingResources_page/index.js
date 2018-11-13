@@ -18,8 +18,8 @@ Page({
     hotelListData: [],
   },
   onLoad: function() {
-    this.clearCache()//清空缓存
-    this.getHotelList()//第一次请求数据
+    this.clearCache() //清空缓存
+    this.getHotelList() //第一次请求数据
     this.setData({
       money: ['不限', '￥2000以下', '￥2000-￥3500', '￥3500-￥5000', '￥5000以上'],
       sort: ['价格从低到高', '价格从高到低', '距离从近到远']
@@ -80,13 +80,13 @@ Page({
     }
   },
   //清空缓存
-  clearCache:function(e){
+  clearCache: function(e) {
     this.setData({
-      hotelListData:[]
+      hotelListData: []
     })
   },
   //后台获取新数据并追加渲染
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     let that = this
     let obj = {
@@ -103,21 +103,36 @@ Page({
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
         that.setData({
-          hotelListData: res.data.data.hotels
+          hotelListData: this.res.data.data.hotels
+        })
+        wx.showToast({
+          title: '刷新成功!',
+          icon: 'success',
+          duration: 1000
         })
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       } else {
-        console.log(111)
+        wx.showToast({
+          title: '刷新失败！',
+          icon: 'none',
+          duration: 1000
+        })
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
     }).catch((errMsg) => {
-      console.log('刷新失败！');
+      wx.showToast({
+        title: '刷新失败！',
+        icon: 'none',
+        duration: 1000
+      })
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
     });
   },
   //请求列表
-  getHotelList: function(e) { 
+  getHotelList: function(e) {
     let that = this
     let obj = {
       url: 'http://ajfppq.natappfree.cc/api/hotel/getHotelList',
@@ -135,7 +150,7 @@ Page({
         that.setData({
           hotelListData: res.data.data.hotels
         })
-      }else{
+      } else {
         console.log(111)
       }
     }).catch((errMsg) => {
