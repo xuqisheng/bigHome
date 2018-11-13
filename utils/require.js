@@ -1,39 +1,40 @@
-// Http请求
+/** http使用说明
+ * desc 调用微信API wx.request发送请求
+ * @param  {url: String} 请求的地址
+ * @param  {isMock: Boolean, default:false} 是否mock数据
+ * @param  {method: String, default:'GET'} 请求方法
+ * @example 参考上述例子
+ */
+
 let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQ2MDQyNDgyMDgsInBheWxvYWQiOiJ7XCJtb2JpbGVcIjpcIjEzODIzNDU4MTMwXCIsXCJwYXNzd29yZFwiOlwiZGM0ODNlODBhN2EwYmQ5ZWY3MWQ4Y2Y5NzM2NzM5MjRcIixcIm5ld1Bhc3N3b3JkXCI6bnVsbCxcInZhbGlkYXRlQ29kZVwiOm51bGwsXCJpZFwiOjUwNTMsXCJvcGVuSWRcIjpudWxsLFwicmVzZXJ2YXRpb25JZFwiOm51bGx9In0.wdtRJE6ZJ5MIobO5O724Lbo3HuArdZmg--fZ1Wbq6NY'
-// obj= {url:'', data:'', method:'',token:''}
-/*require.wxGetData (obj).then( (res)=>{
- console.log(res);//正确返回结果
-  //其他操作
-      } ).catch ( (errMsg) => {
-   console.log(errMsg);//错误提示信息
-  //其他操作
- } );
-*/
-function wxGetData (obj) {
-  var promise = new Promise((resolve, reject) => {
-    var that = this;
-    wx.request({
-      url: obj.url,
-      data: obj.data,
-      method: obj.method,
-      header: { 
-        'content-type': 'application/json',
-        'member-access-token': token
-      },
-      success: function (res) {
-        if (res.statusCode) {
-          resolve(res);
-        } else {                
-          reject(res+'错误');
+
+function wxGetData(obj) {
+  const { url, isMock = false, method = 'GET' } = obj
+  const httpsUrl = isMock ? url : "http://bq2rfx.natappfree.cc/api/" + url
+    var promise = new Promise((resolve, reject) => {
+      var that = this;
+      wx.request({
+        url: httpsUrl,
+        data: obj.data,
+        method: method,
+        header: {
+          'content-type': 'application/json',
+          'member-access-token': token
+        },
+        success: function(res) {
+          if (res.statusCode) {
+            resolve(res);
+          } else {
+            reject(res + '错误');
+          }
+        },
+        error: function(e) {
+          reject('网络出错');
         }
-      },
-      error: function (e) {
-        reject('网络出错');
-      }
-    })
-  });
+      })
+    });
   return promise;
 }
-module.exports={
+module.exports = {
   wxGetData: wxGetData
 }

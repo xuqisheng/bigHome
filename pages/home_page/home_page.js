@@ -80,6 +80,7 @@ Page({
     wx.request({
       url: 'https://apis.map.qq.com/ws/geocoder/v1/?key=CTJBZ-6HVH3-2XO32-Y4SSL-MTOWK-KFF4A&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json&get_poi=1',
       data: {},
+      isMock: true,
       header: {
         'Content-Type': 'application/json'
       },
