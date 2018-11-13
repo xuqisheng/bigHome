@@ -4,6 +4,7 @@ let obj= {
   url:'hotel/getHotelList',
   data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: "" },
   method: 'post',
+  isMock: true
   }
  rq.wxGetData (obj).then( (res)=>{
    /*require.wxGetData (obj).then( (res)=>{

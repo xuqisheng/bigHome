@@ -7,20 +7,22 @@
   margin: 0px;
   width: 100%;
   height: 100%;
+  min-height: 100vh
 }
 
 .moneySort {
   width: 100%;
   float: left;
   background: #fff;
-  z-index: 999;
+  z-index: 1001;
 }
 
 .bgs {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  z-index: 999;
 }
 
 .nav-son {
@@ -35,6 +37,7 @@
   color: #444;
   font-size: 15px;
   font-weight: bold;
+  z-index: 1001;
 }
 
 /* 下拉框的样式 */
@@ -52,17 +55,18 @@
   background: #fff;
   position: absolute;
   top: 41px;
-  z-index: 999;
+  z-index: 1000;
+  border-bottom: #d1d1d1 solid 1px;
 }
 
-.temp label{
-  color: #444444;
+.temp label {
+  color: #444;
   font-size: 16px;
   display: block;
   text-align: center;
 }
 
-.temp label text{
+.temp label text {
   display: inline-block;
   width: 160px;
   height: 13px;
@@ -111,7 +115,6 @@
 .slidup {
   display: block;
   animation: slidup 0.2s ease-in both;
-  height: 0px;
 }
 
 .check {
@@ -144,75 +147,60 @@
   color: #444;
   padding-top: 12rpx;
 }
+
 .yue {
   font-size: 28rpx;
   color: #00ada9;
   float: right;
 }
+
 .fang {
   color: #9b9b9b;
   font-size: 24rpx;
   margin: 0 34rpx;
-  padding-top: 8rpx
+  padding-top: 8rpx;
 }
+
 .xiangxi {
   margin: 0 34rpx;
   display: flex;
   flex-direction: row;
   padding-top: 10rpx;
 }
+
 .bi {
   width: 24rpx;
   height: 24rpx;
-  margin: auto 0
+  margin: auto 0;
 }
+
 .xiang {
   font-size: 24rpx;
   color: #9b9b9b;
-  margin:auto 0 auto 8rpx;
+  margin: auto 0 auto 8rpx;
 }
 
 .locations {
   margin: 0 34rpx;
+  width: 630rpx
 }
 
-.locations text{
+.locations text {
   width: 96rpx;
   font-size: 20rpx;
   color: #a1a1a1;
   border: 1px solid #999;
   text-align: center;
-  padding: 5rpx
-}
-.locations > text:nth-of-type(n + 2){
-  margin-left: 10rpx
-}
-.noMoreBox{
-  position: absolute;
-  bottom: 41rpx;
-  left: 50%;
-  transform: translate(-50%,0)
-}
-.noMore{
-  margin-top: 80rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative
-}
-.recommends {
-  width: 265rpx;
-  border-top: 1px solid #E6E6E6;
+  padding: 5rpx;
+  display: inline-block;
 }
 
-.noMore_text {
-  background: #fff;
-  color: #d1d1d1;
-  font-size: 24rpx;
-  margin-top: -20rpx;
-  position: absolute;
-  padding: 0 5rpx;
-  z-index: 2
+.locations > text:nth-of-type(n + 2) {
+  margin-left: 10rpx;
+}
+
+.locations > text:nth-of-type(5n + 1) {
+  margin-left: 0rpx;
 }
 
 .jianShang {

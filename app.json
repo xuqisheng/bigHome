@@ -1,6 +1,6 @@
 {
   "pages":[
-        "pages/housingResources_page/index",
+    "pages/housingResources_page/index",
     "pages/home_page/home_page",
     "pages/complaint_page/complaint_page",
     "pages/phone_page/phone_page",
@@ -21,10 +21,10 @@
     "pages/shop_list/index"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#00ADA9",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff"
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#6e6d6b",

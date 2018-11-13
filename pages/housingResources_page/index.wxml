@@ -32,27 +32,19 @@
   </radio-group>
   <view class='bgs' wx:if="{{hidden}}"></view>
 
-  <view class='house'>
-      <image src='../../images/housingResources_page/di.png' class="di"></image>
-      <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
-        <text class="yue">￥2090/月起</text>
-      </p>
-      <p class="fang">4个房型/剩余19套房源</p>
-      <view class="xiangxi">
-        <image src='../../images/housingResources_page/bi.png' class="bi"></image>
-        <p class="xiang">交通便利、敞亮舒适、拥有完善寓乐圈的梦想充电站</p>
-      </view>
-      <view class='locations'>
-        <text>地铁附近</text>
-        <text>配套完全</text>
-        <text>交通便利</text>
-        <text>家电齐全</text>
-      </view>
-  </view>
-  <view class='noMoreBox'>
-  <view class="noMore">
-    <view class="recommends "></view>
-      <text class='noMore_text'>没有更多了</text>
-  </view>
+  <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
+    <image src='../../images/housingResources_page/di.png' class="di"></image>
+    <p class="pt">{{item.hotelName}}
+      <text class="yue">￥{{item.startingPrice}}/月起</text>
+    </p>
+    <p class="fang">{{item.roomTypeSum}}个房型/剩余{{item.roomSum}}套房源</p>
+    <view class="xiangxi">
+      <image src='../../images/housingResources_page/bi.png' class="bi"></image>
+      <p class="xiang" wx:if='{{item.breafIntroduction}}'>{{item.breafIntroduction}}</p>
+      <p class="xiang" wx:if='{{!item.breafIntroduction}}'>这款房比较神秘，需要您实地去探索</p>
+    </view>
+    <view class='locations'>
+      <text wx:for='{{item.tags}}' wx:key='index'>{{item}}</text>
+    </view>
   </view>
 </view>

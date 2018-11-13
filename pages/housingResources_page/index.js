@@ -15,25 +15,18 @@ Page({
     xia: false,
     shangs: true,
     xias: false,
+    hotelListData: [],
   },
-  onLoad: function () {
-    let obj = { 
-      url:'hotel/getHotelList',
-      data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: ""},
-      method:'post',
-    }
-    rq.wxGetData(obj).then((res) => {
-      console.log(res);
-    }).catch((errMsg) => {
-      console.log(errMsg);
-    });
+  onLoad: function() {
+    this.clearCache()//清空缓存
+    this.getHotelList()//第一次请求数据
     this.setData({
-      money: ['不限','￥2000以下','￥2000-￥3500','￥3500-￥5000','￥5000以上'],
-      sort:['价格从低到高','价格从高到低','距离从近到远']
+      money: ['不限', '￥2000以下', '￥2000-￥3500', '￥3500-￥5000', '￥5000以上'],
+      sort: ['价格从低到高', '价格从高到低', '距离从近到远']
     })
   },
   //价格
-  money: function (e) {
+  money: function(e) {
     if (this.data.pxopen) {
       this.setData({
         pxopen: false,
@@ -60,7 +53,7 @@ Page({
     }
   },
   //排序
-  sort: function (e) {
+  sort: function(e) {
     if (this.data.pxopens) {
       this.setData({
         pxopens: false,
@@ -85,5 +78,68 @@ Page({
         xias: true,
       })
     }
+  },
+  //清空缓存
+  clearCache:function(e){
+    this.setData({
+      hotelListData:[]
+    })
+  },
+  //后台获取新数据并追加渲染
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    let that = this
+    let obj = {
+      url: 'http://ajfppq.natappfree.cc/api/hotel/getHotelList',
+      data: {
+        pageNo: 0,
+        pageSize: 10,
+        cityId: "4406",
+        hotelNameLike: ""
+      },
+      method: 'POST',
+      isMock: true
+    }
+    rq.wxGetData(obj).then((res) => {
+      if (res.statusCode == 200) {
+        that.setData({
+          hotelListData: res.data.data.hotels
+        })
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      } else {
+        console.log(111)
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      }
+    }).catch((errMsg) => {
+      console.log('刷新失败！');
+    });
+  },
+  //请求列表
+  getHotelList: function(e) { 
+    let that = this
+    let obj = {
+      url: 'http://ajfppq.natappfree.cc/api/hotel/getHotelList',
+      data: {
+        pageNo: 0,
+        pageSize: 10,
+        cityId: "4406",
+        hotelNameLike: ""
+      },
+      method: 'POST',
+      isMock: true
+    }
+    rq.wxGetData(obj).then((res) => {
+      if (res.statusCode == 200) {
+        that.setData({
+          hotelListData: res.data.data.hotels
+        })
+      }else{
+        console.log(111)
+      }
+    }).catch((errMsg) => {
+      console.log('刷新失败！');
+    });
   }
 })
