@@ -2,7 +2,7 @@
   "pages":[
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
-    "pages/housingResources_page/housingResources_page",
+    "pages/housingResources_page/index",
     "pages/home_page/home_page",
     "pages/phone_page/phone_page",
     "pages/houseType_page/houseType_page",
