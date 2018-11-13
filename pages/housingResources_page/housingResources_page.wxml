@@ -1,11 +1,14 @@
 <view class="housingResources">
+   <view class='souFang'>地图搜房
+    <image src='../../images/housingResources_page/sou.png'></image>
+   </view>
   <view class='moneySort'>
     <!-- 价格 -->
     <view class="nav-son" bindtap="money">
       <view style='position: relative'>价格
         <span class="jianShang" wx:if="{{shang}}"></span>
         <span class="jianXia" wx:if="{{xia}}"></span>
-      </view>
+      </view>    
     </view>
     <!-- 排序 -->
     <view class="nav-son" bindtap="sort">
@@ -64,6 +67,44 @@
     </view>
 
     <view class='housing'>
+      <image src='../../images/housingResources_page/di.png' class="di"></image>
+      <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
+        <span class="yue">￥2090/月起</span>
+      </p>
+      <p class="fang">4个房型/剩余19套房源</p>
+      <view class="xiangxi">
+        <image src='../../images/housingResources_page/bi.png' class="bi"></image>
+        <span class="xiang">交通便利、敞亮舒适、拥有完善寓乐圈的梦想充电站</span>
+      </view>
+      <view class='locations'>
+        <text>地铁附近</text>
+        <text>配套完全</text>
+        <text>交通便利</text>
+        <text>家电齐全</text>
+      </view>
+    </view>
+
+
+       <view class='housing'>
+      <image src='../../images/housingResources_page/di.png' class="di"></image>
+      <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
+        <span class="yue">￥2090/月起</span>
+      </p>
+      <p class="fang">4个房型/剩余19套房源</p>
+      <view class="xiangxi">
+        <image src='../../images/housingResources_page/bi.png' class="bi"></image>
+        <span class="xiang">交通便利、敞亮舒适、拥有完善寓乐圈的梦想充电站</span>
+      </view>
+      <view class='locations'>
+        <text>地铁附近</text>
+        <text>配套完全</text>
+        <text>交通便利</text>
+        <text>家电齐全</text>
+      </view>
+    </view>
+
+
+       <view class='housing'>
       <image src='../../images/housingResources_page/di.png' class="di"></image>
       <p class="pt">BIG+碧家国际社区深圳塘坑地铁站店
         <span class="yue">￥2090/月起</span>

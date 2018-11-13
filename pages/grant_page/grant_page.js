@@ -1,10 +1,11 @@
+var rq = require("../../utils/require.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+       dates:[]
   },
 
   /**
@@ -61,5 +62,23 @@ Page({
    */
   onShareAppMessage: function () {
     
-  }
+  },
+  wenti: function () {
+    console.log(1)
+    rq.wxGetData({
+      url: "http://py7tuv.natappfree.cc/api/hotel/getHotelList",
+      data: {
+        cityId:"3101",
+        hotelNameLike:"",
+        pageNo:1,
+        pageSize:10
+      },
+      method: "POST",
+      isMock: true
+    }).then(res => {
+      if (res.statusCode == '200') {
+        console.log(res.data);
+      }
+    })
+  },
 })

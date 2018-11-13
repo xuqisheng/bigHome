@@ -6,7 +6,7 @@
       <block wx:for="{{swiper.imgUrls}}" wx:key="index">
         <swiper-item>
           <image src="{{item.imgs}}" class="slide-image"></image>
-        </swiper-item>
+        </swiper-item>    
       </block>
     </swiper>
     <view class='ceshi_next' bindtap='prevImg'>
@@ -68,6 +68,34 @@
     </swiper>
   </view>
 
+
+    <!-- 房型推荐 -->
+  <view class="font">
+    <view class='fontHead'>
+      <image src="../../images/home_page/5.png"></image>
+      <text>房型推荐</text>
+    </view>
+    <view class='fontInfo'>
+      <text class="recommend">在碧家，一床一物都为住得更好</text>
+      <text class="more" bindtap="housingResources">更多房型 ></text>
+    </view>
+    <!-- 碧家推荐图片 -->
+    <swiper class='swiper'next-margin="120rpx">
+      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
+        <image src="{{item.imgs}}" />
+        <view class='swiperText'>
+        <view style=' position: relative;'>
+          <view class='text12'>
+            <text class='title1'>{{item.title1}}</text>
+            <text class='title2'>{{item.title2}}</text>
+          </view>
+          <text class='title3'>{{item.title3}}</text>
+        </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
   <view class="fonts">
     <view class="recommends">
       <view class='line'></view>
@@ -92,27 +120,6 @@
     <text>碧家 · 城市梦想充电站</text>
   </view>
 
-  <!-- 首页底部 -->
-  <!-- <view class="foot">
-    <dl>
-      <dt>
-        <image src="../images/4.png" class="footImg"></image>
-      </dt>
-      <dd>首页</dd>
-    </dl>
-    <dl>
-      <dt>
-        <image src="../images/2.png" class="footImg"></image>
-      </dt>
-      <dd>约看</dd>
-    </dl>
-    <dl bindtap="my">
-      <dt>
-        <image src="../images/3.png" class="footImg"></image>
-      </dt>
-      <dd>我的</dd>
-    </dl>
-  </view> -->
 
 
 </view>

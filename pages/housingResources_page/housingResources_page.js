@@ -19,11 +19,11 @@ Page({
   onLoad: function () {
     let obj = { 
       url:'http://bgy.h-world.com/api/hotel/getHotelList',
-      data: { pageNo: 1, pageSize: 10, cityId: "4406", hotelNameLike: ""},
+      data: { pageNo: 1, pageSize: 10, cityId: "3101", hotelNameLike: ""},
       method:'post',
     }
     rq.wxGetData(obj).then((res) => {
-      console.log(res);
+      console.log(res.data.data);
     }).catch((errMsg) => {
       console.log(errMsg);
     });
