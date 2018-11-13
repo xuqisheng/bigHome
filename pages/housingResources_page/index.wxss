@@ -6,8 +6,7 @@
   padding: 0px;
   margin: 0px;
   width: 100%;
-  height: 100%;
-  min-height: 100vh
+  height: 100%
 }
 
 .moneySort {
@@ -21,7 +20,8 @@
   width: 100%;
   height: 100%;
   position: fixed;
-  background: transparent;
+  background:#999;
+  opacity: .4;
   z-index: 999;
 }
 
@@ -31,7 +31,6 @@
   height: 40px;
   text-align: center;
   line-height: 40px;
-  font-size: 18px;
   width: 50%;
   float: left;
   color: #444;
@@ -54,9 +53,8 @@
   line-height: 100rpx;
   background: #fff;
   position: absolute;
-  top: 41px;
+  top:0px;
   z-index: 1000;
-  border-bottom: #d1d1d1 solid 1px;
 }
 
 .temp label {
@@ -75,7 +73,6 @@
 /* 下拉框内容的样式 */
 
 .temp view {
-  font-size: 14px;
   color: #444;
   font-size: 16px;
   text-align: center;
@@ -91,7 +88,7 @@
   }
 
   to {
-    transform: translateY(0%);
+    transform: translateY(41px);
   }
 }
 

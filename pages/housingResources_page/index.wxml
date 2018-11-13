@@ -18,7 +18,7 @@
   </view>
   <!-- 下拉选择框 -->
   <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <label class="radio" wx:for="{{content}}" wx:key='item'>
+    <label class="radio" wx:for="{{content}}" wx:key='item' bindtap='cIndex' data-index='{{index}}' >
       <text>{{item}}</text>
       <radio />
     </label>
@@ -30,7 +30,8 @@
       <radio />
     </label>
   </radio-group>
-  <view class='bgs' wx:if="{{hidden}}"></view>
+  <!--catchtouchmove='true' ,蒙版出现时禁止滑动-->
+  <view class='bgs' wx:if="{{hidden}}" catchtouchmove='true'></view>
 
   <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
     <image src='../../images/housingResources_page/di.png' class="di"></image>

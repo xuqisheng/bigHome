@@ -25,6 +25,9 @@ Page({
       sort: ['价格从低到高', '价格从高到低', '距离从近到远']
     })
   },
+  cIndex:function(e){
+    console.log(e.currentTarget.dataset.index)
+  },
   //价格
   money: function(e) {
     if (this.data.pxopen) {
@@ -48,7 +51,7 @@ Page({
         active: false,
         hidden: true,
         shang: false,
-        xia: true
+        xia: true,
       })
     }
   },
@@ -63,7 +66,7 @@ Page({
         shangs: true,
         xias: false,
         shang: true,
-        xia: false
+        xia: false,
       })
     } else {
       this.setData({
@@ -76,6 +79,7 @@ Page({
         hidden: true,
         shangs: false,
         xias: true,
+        isScroll: 'hidden'
       })
     }
   },
@@ -84,52 +88,6 @@ Page({
     this.setData({
       hotelListData: []
     })
-  },
-  //后台获取新数据并追加渲染
-  onPullDownRefresh: function() {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    let that = this
-    let obj = {
-      url: 'http://ajfppq.natappfree.cc/api/hotel/getHotelList',
-      data: {
-        pageNo: 0,
-        pageSize: 10,
-        cityId: "4406",
-        hotelNameLike: ""
-      },
-      method: 'POST',
-      isMock: true
-    }
-    rq.wxGetData(obj).then((res) => {
-      if (res.statusCode == 200) {
-        that.setData({
-          hotelListData: this.res.data.data.hotels
-        })
-        wx.showToast({
-          title: '刷新成功!',
-          icon: 'success',
-          duration: 1000
-        })
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
-      } else {
-        wx.showToast({
-          title: '刷新失败！',
-          icon: 'none',
-          duration: 1000
-        })
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
-      }
-    }).catch((errMsg) => {
-      wx.showToast({
-        title: '刷新失败！',
-        icon: 'none',
-        duration: 1000
-      })
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    });
   },
   //请求列表
   getHotelList: function(e) {
