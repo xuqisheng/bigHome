@@ -3,7 +3,7 @@ var that = this;
 let { wxGetData} = require("../../utils/require.js")
 Page({
   data: {
-    addr: '',
+    addr: '', 
     swiper: {
       // banner
       imgUrls: [{

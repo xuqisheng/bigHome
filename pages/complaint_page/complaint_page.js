@@ -1,5 +1,5 @@
 // pages/complaint_page/complaint_page.js
-
+var rq = require("../../utils/require.js")
 
 var that
 var list = []
@@ -12,57 +12,58 @@ Page({
     min: 15, //最少字数
     max: 150, //最多字数 (根据自己需求改变) 
     array: ['预约看房', '租客维修', '租客保洁'],
-    xuanZe:true,
+    xuanZe: true,
     showRoomPicker: false, //设置data-picker默认为false,
     imgbox: '',
+    len: "", //问题描述输入长度
     multiIndex: [0, 0],
     multiArray: [
-      ['东莞市', '深圳市', "上海市"],
-      ['碧家国际社区东莞店']
+      // ['东莞市', '深圳市', "上海市"],
+      // ['碧家国际社区东莞店']
     ],
-    objectMultiArray: [{
-        "regid": "2",
-        "parid": "1",
-        "regname": "东莞市",
-        "regtype": "1",
-        "ageid": "0"
-      },
-      {
-        "regid": "3",
-        "parid": "1",
-        "regname": "深圳市",
-        "regtype": "1",
-        "ageid": "0"
-      },
-      {
-        "regid": "4",
-        "parid": "1",
-        "regname": "上海市",
-        "regtype": "1",
-        "ageid": "0"
-      },
-      {
-        "regid": "52",
-        "parid": "2",
-        "regname": "碧家国际社区东莞店",
-        "regtype": "2",
-        "ageid": "0"
-      },
-      {
-        "regid": "54",
-        "parid": "3",
-        "regname": "碧家国际社区深圳店",
-        "regtype": "2",
-        "ageid": "0"
-      },
-      {
-        "regid": "53",
-        "parid": "4",
-        "regname": "碧家国际社区上海店",
-        "regtype": "2",
-        "ageid": "0"
-      },
-    ],
+    // objectMultiArray: [{
+    //     "regid": "2",
+    //     "parid": "1",
+    //     "regname": "东莞市",
+    //     "regtype": "1",
+    //     "ageid": "0"
+    //   },
+    //   {
+    //     "regid": "3",
+    //     "parid": "1",
+    //     "regname": "深圳市",
+    //     "regtype": "1",
+    //     "ageid": "0"
+    //   },
+    //   {
+    //     "regid": "4",
+    //     "parid": "1",
+    //     "regname": "上海市",
+    //     "regtype": "1",
+    //     "ageid": "0"
+    //   },
+    //   {
+    //     "regid": "52",
+    //     "parid": "2",
+    //     "regname": "碧家国际社区东莞店",
+    //     "regtype": "2",
+    //     "ageid": "0"
+    //   },
+    //   {
+    //     "regid": "54",
+    //     "parid": "3",
+    //     "regname": "碧家国际社区深圳店",
+    //     "regtype": "2",
+    //     "ageid": "0"
+    //   },
+    //   {
+    //     "regid": "53",
+    //     "parid": "4",
+    //     "regname": "碧家国际社区上海店",
+    //     "regtype": "2",
+    //     "ageid": "0"
+    //   },
+    // ],
 
   },
   /**
@@ -71,29 +72,44 @@ Page({
   onLoad: function(options) {
     that = this
   },
-  bindMultiPickerChange: function(e) {
-    that.setData({
-      "multiIndex[0]": e.detail.value[0],
-      "multiIndex[1]": e.detail.value[1]
+  wenti: function() {
+    rq.wxGetData({
+      url: "http://py7tuv.natappfree.cc/api/member/addComplainXin",
+      data: {
+        complaintsType: "预约看房",
+        content: "内容",
+        hotelName: ""
+      },
+      method: "POST",
+      isMock: true
+    }).then(res => {
+      if (res.statusCode == '200') {
+        console.log(res.data);
+      }
     })
   },
-  bindMultiPickerColumnChange: function(e) {
-    switch (e.detail.column) {
-      case 0:
-        list = []
-        for (var i = 0; i < that.data.objectMultiArray.length; i++) {
-          if (that.data.objectMultiArray[i].parid == that.data.objectMultiArray[e.detail.value].regid) {
-            list.push(that.data.objectMultiArray[i].regname)
-          }
-        }
-        that.setData({
-          "multiArray[1]": list,
-          "multiIndex[0]": e.detail.value,
-          "multiIndex[1]": 0
-        })
-
-    }
-  },
+  // bindMultiPickerChange: function(e) {
+  //   that.setData({
+  //     "multiIndex[0]": e.detail.value[0],
+  //     "multiIndex[1]": e.detail.value[1]
+  //   })
+  // },
+  // bindMultiPickerColumnChange: function(e) {
+  //   switch (e.detail.column) {
+  //     case 0:
+  //       list = []
+  //       for (var i = 0; i < that.data.objectMultiArray.length; i++) {
+  //         if (that.data.objectMultiArray[i].parid == that.data.objectMultiArray[e.detail.value].regid) {
+  //           list.push(that.data.objectMultiArray[i].regname)
+  //         }
+  //       }
+  //       that.setData({
+  //         "multiArray[1]": list,
+  //         "multiIndex[0]": e.detail.value,
+  //         "multiIndex[1]": 0
+  //       })
+  //   }
+  // },
   // 删除照片 &&
   imgDelete1: function(e) {
     let that = this;
@@ -204,31 +220,41 @@ Page({
     // 获取输入框的内容
     var value = e.detail.value;
     // 获取输入框内容的长度
-    var len = parseInt(value.length);
+    this.setData({
+      len: parseInt(value.length)
+    })
 
     //最少字数限制
-    if (len <= this.data.min)
+    if (this.data.len <= this.data.min)
       this.setData({
         texts: ""
       })
-    else if (len > this.data.min)
+    else if (this.data.len > this.data.min)
       this.setData({
         texts: " "
       })
 
     //最多字数限制
-    if (len > this.data.max) return;
+    if (this.data.len > this.data.max) return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
     this.setData({
-      currentWordNumber: len //当前字数  
+      currentWordNumber: this.data.len //当前字数  
     });
   },
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
-      xuanZe:false
+      xuanZe: false
     })
   },
- 
+  submits: function() {   
+    if (this.data.len < 15) {
+      wx.showToast({
+        title: '问题描述过短!',
+        icon: 'success',
+        duration: 1500
+      })
+    }
+  }
 })

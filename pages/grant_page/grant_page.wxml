@@ -1,0 +1,7 @@
+<view>
+
+<p style="display:block" bindtap="wenti">123</p>
+
+
+
+</view>
