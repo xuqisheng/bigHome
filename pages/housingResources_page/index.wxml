@@ -1,4 +1,8 @@
 <view class="housingResources">
+      <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm'>
+        <text>地图搜房</text>
+        <image src='../../images/housingResources_page/map_search.png'></image>
+      </button>
   <view class='moneySort'>
     <!-- 价格 -->
     <view class="nav-son" bindtap="money">
@@ -18,23 +22,25 @@
   </view>
   <!-- 下拉选择框 -->
   <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <label class="radio" wx:for="{{content}}" wx:key='item' bindtap='cIndex' data-index='{{index}}' >
-      <text>{{item}}</text>
-      <radio />
+    <label class="radio" wx:for="{{money}}" wx:key='item' bindtap='money_sort'  data-index='{{index}}'>
+      <text>{{item.name}}</text>
+      <radio checked = "{{item.checked}}">
+      </radio>
     </label>
   </radio-group>
 
   <radio-group class="temp {{pxopens ? 'slidown' : 'slidup'}} {{pxshows ? 'disappear':''}}">
-    <label class="radio" wx:for="{{contents}}" wx:key='item'>
-      {{item}}
-      <radio />
+    <label class="radio" wx:for="{{sort}}" wx:key='item' bindtap='type_sort' data-index='{{index}}'>
+      <text>{{item.name}}</text>
+      <radio checked = "{{item.checked}}">
+      </radio>
     </label>
   </radio-group>
   <!--catchtouchmove='true' ,蒙版出现时禁止滑动-->
-  <view class='bgs' wx:if="{{hidden}}" catchtouchmove='true'></view>
+  <view class='bgs' wx:if="{{hidden}}" bindtap='hidtemp' catchtouchmove='true'></view>
 
   <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
-    <image src='../../images/housingResources_page/di.png' class="di"></image>
+    <image src='{{item.picUrl}}' class="di"></image>
     <p class="pt">{{item.hotelName}}
       <text class="yue">￥{{item.startingPrice}}/月起</text>
     </p>

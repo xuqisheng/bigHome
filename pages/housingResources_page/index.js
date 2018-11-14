@@ -1,10 +1,44 @@
 var rq = require("../../utils/require.js")
+var mlist = [[-1,-1],[-1,2000],[2000,3500],[3500,5000],[5000,-1]]
+var slist = [['price', 1], ['price', 2], ['distance',1]]
 Page({
   data: {
-    content: [],
-    contents: [],
-    money: [],
-    sort: [],
+    money_content: 5,
+    type_content: 3,
+    money: [{
+        name: '不限',
+        checked: false
+      },
+      {
+        name: '￥2000以下',
+        checked: false
+      },
+      {
+        name: '￥2000-￥3500',
+        checked: false
+      },
+      {
+        name: '￥3500-￥5000',
+        checked: false
+      },
+      {
+        name: '￥5000以上',
+        checked: false
+      }
+    ],
+    sort: [{
+        name: '价格从低到高',
+        checked: false
+      },
+      {
+        name: '价格从高到低',
+        checked: false
+      },
+      {
+        name: '距离从近到远',
+        checked: false
+      }
+    ],
     pxopen: false,
     pxshow: false,
     pxopens: false,
@@ -20,13 +54,60 @@ Page({
   onLoad: function() {
     this.clearCache() //清空缓存
     this.getHotelList() //第一次请求数据
-    this.setData({
-      money: ['不限', '￥2000以下', '￥2000-￥3500', '￥3500-￥5000', '￥5000以上'],
-      sort: ['价格从低到高', '价格从高到低', '距离从近到远']
-    })
   },
-  cIndex:function(e){
-    console.log(e.currentTarget.dataset.index)
+  //按价格排序
+  money_sort: function(e) {
+    var that = this
+    if (e.currentTarget.dataset.index == that.data.money_content) {
+      var idx = +e.currentTarget.dataset.index
+      var value = 'money[' + idx + '].checked'
+      that.setData({
+        [value]: false,
+        money_content: 5,
+      })
+    } else {
+      setTimeout(function () {
+      that.setData({
+        money_content: e.currentTarget.dataset.index,
+        pxopen: false,
+        pxshow: false,
+        active: true,
+        hidden: false,
+        shang: true,
+        xia: false,
+        shangs: true,
+        xias: false,
+      })
+        that.getSortList(that.data.money_content, that.data.type_content)
+      }, 100)
+    }
+  },
+  //按类型排序
+  type_sort: function(e) {
+    var that = this
+    if (e.currentTarget.dataset.index == that.data.type_content) {
+      var idx = +e.currentTarget.dataset.index
+      var value = 'sort[' + idx + '].checked'
+      that.setData({
+        [value]: false,
+        type_content: 3
+      })
+    } else {
+      setTimeout(function () {
+      that.setData({
+        type_content: e.currentTarget.dataset.index,
+        pxopens: false,
+        pxshows: false,
+        active: true,
+        hidden: false,
+        shangs: true,
+        xias: false,
+        shang: true,
+        xia: false,
+      })
+        that.getSortList(that.data.money_content, that.data.type_content)},100)
+
+    }
   },
   //价格
   money: function(e) {
@@ -43,7 +124,6 @@ Page({
       })
     } else {
       this.setData({
-        content: this.data.money,
         pxopen: true,
         pxshow: false,
         pxopens: false,
@@ -70,7 +150,6 @@ Page({
       })
     } else {
       this.setData({
-        contents: this.data.sort,
         pxopens: true,
         pxshows: false,
         pxopen: false,
@@ -79,7 +158,6 @@ Page({
         hidden: true,
         shangs: false,
         xias: true,
-        isScroll: 'hidden'
       })
     }
   },
@@ -90,15 +168,18 @@ Page({
     })
   },
   //请求列表
-  getHotelList: function(e) {
+  getHotelList: function (p1, p2, s1, s2) {
     let that = this
     let obj = {
-      url: 'http://ajfppq.natappfree.cc/api/hotel/getHotelList',
+      url: 'http://9cix5n.natappfree.cc/api/hotel/getHotelList',
       data: {
         pageNo: 0,
         pageSize: 10,
         cityId: "4406",
-        hotelNameLike: ""
+        priceFloorLimit: p1,
+        priceUpperLimit: p2,
+        sortKey: s1,
+        sortSeq: s2
       },
       method: 'POST',
       isMock: true
@@ -108,11 +189,60 @@ Page({
         that.setData({
           hotelListData: res.data.data.hotels
         })
+        console.log(res.data.data.hotels)
       } else {
-        console.log(111)
+        console.log('获取数据失败')
+        wx.showToast({
+          title: '加载失败！',
+          mask: true,
+          icon: 'none'
+        })
       }
+      wx.hideToast()
     }).catch((errMsg) => {
-      console.log('刷新失败！');
+      wx.showToast({
+        title: '加载失败！',
+        mask: true,
+        icon: 'none'
+      })
+      wx.hideLoading()
+      console.log(errMsg);
     });
-  }
+  },
+  //地图搜房跳转
+  jtm: function(e) {
+    wx.navigateTo({
+      url: '../shop_list/index'
+    })
+  },
+  //点击蒙版收起弹窗
+  hidtemp: function(e) {
+    this.setData({
+      pxopen: false,
+      pxshow: false,
+      active: true,
+      hidden: false,
+      shang: true,
+      xia: false,
+      shangs: true,
+      xias: false,
+      pxopens: false,
+      pxshows: false,
+      active: true,
+      hidden: false,
+      shangs: true,
+      xias: false,
+      shang: true,
+      xia: false,
+    })
+    this.getSortList(this.data.money_content, this.data.type_content)
+  },
+  //获取排序后的列表
+  getSortList:function(m,s){
+      let p1 = m<5? mlist[m][0] : ''
+      let p2 = m<5? mlist[m][1] : ''
+      let s1 = s<3? slist[s][0] : ''
+      let s2 = s<3? slist[s][1] : ''
+      this.getHotelList(p1,p2,s1,s2)
+  },
 })
