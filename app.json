@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home_page/index",
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
-    "pages/home_page/home_page",
     "pages/phone_page/phone_page",
     "pages/houseType_page/houseType_page",
     "pages/land_page/index",
@@ -33,7 +33,7 @@
     "box-shadow": "0 0 6px 0",
     "list": [
       {
-        "pagePath": "pages/home_page/home_page",
+        "pagePath": "pages/home_page/index",
         "iconPath": "images/tab/index.png",
         "selectedIconPath": "images/tab/index_02.png",
         "text": "首页"
