@@ -9,6 +9,12 @@
 let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQ2MDQyNDgyMDgsInBheWxvYWQiOiJ7XCJtb2JpbGVcIjpcIjEzODIzNDU4MTMwXCIsXCJwYXNzd29yZFwiOlwiZGM0ODNlODBhN2EwYmQ5ZWY3MWQ4Y2Y5NzM2NzM5MjRcIixcIm5ld1Bhc3N3b3JkXCI6bnVsbCxcInZhbGlkYXRlQ29kZVwiOm51bGwsXCJpZFwiOjUwNTMsXCJvcGVuSWRcIjpudWxsLFwicmVzZXJ2YXRpb25JZFwiOm51bGx9In0.wdtRJE6ZJ5MIobO5O724Lbo3HuArdZmg--fZ1Wbq6NY'
 
 function wxGetData(obj) {
+  wx.showToast({
+    title: '加载中...',
+    mask: true,
+    icon: 'loading',
+    duration:100000
+  })
   const {
     url,
     isMock = false,
@@ -34,12 +40,10 @@ function wxGetData(obj) {
       },
       fail: function(e) {
         reject(e);
+      },
+      complete:function(e){
+        wx.hideToast()
       }
-    })
-    wx.showToast({
-      title: '加载中...',
-      mask: true,
-      icon: 'loading'
     })
   });
   return promise;

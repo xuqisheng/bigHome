@@ -169,9 +169,14 @@ Page({
   },
   //请求列表
   getHotelList: function (p1, p2, s1, s2) {
+    wx.showToast({
+      title: '加载中...',
+      mask: true,
+      icon: 'loading'
+    })
     let that = this
     let obj = {
-      url: 'http://9cix5n.natappfree.cc/api/hotel/getHotelList',
+      url: 'http://t8tvdn.natappfree.cc/api/hotel/getHotelList',
       data: {
         pageNo: 0,
         pageSize: 10,
@@ -189,23 +194,23 @@ Page({
         that.setData({
           hotelListData: res.data.data.hotels
         })
-        console.log(res.data.data.hotels)
       } else {
         console.log('获取数据失败')
         wx.showToast({
           title: '加载失败！',
           mask: true,
-          icon: 'none'
+          icon: 'none',
+          duration:1000
         })
+        wx.hideToast()
       }
-      wx.hideToast()
     }).catch((errMsg) => {
       wx.showToast({
         title: '加载失败！',
         mask: true,
         icon: 'none'
       })
-      wx.hideLoading()
+      // wx.hideLoading()
       console.log(errMsg);
     });
   },
