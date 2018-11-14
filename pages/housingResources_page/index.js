@@ -50,6 +50,9 @@ Page({
     shangs: true,
     xias: false,
     hotelListData: [],
+    showAll:false ,//等数据渲染完毕再显示dom 
+    showData:true,
+    showError:false
   },
   onLoad: function() {
     this.clearCache() //清空缓存
@@ -169,11 +172,6 @@ Page({
   },
   //请求列表
   getHotelList: function (p1, p2, s1, s2) {
-    wx.showToast({
-      title: '加载中...',
-      mask: true,
-      icon: 'loading'
-    })
     let that = this
     let obj = {
       url: 'http://t8tvdn.natappfree.cc/api/hotel/getHotelList',
@@ -192,25 +190,43 @@ Page({
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
         that.setData({
-          hotelListData: res.data.data.hotels
+          hotelListData: res.data.data.hotels,
+          showData: true,
+          showError:false
         })
+        setTimeout(function(){
+          that.setData({
+            showAll: true
+          })
+        },200)
+        if (res.data.data.hotels.length == 0){
+          that.setData({
+            showData:false
+          })
+        }
       } else {
-        console.log('获取数据失败')
-        wx.showToast({
+        that.setData({
+          showAll:true,
+          showError: true
+        })
+        wx.showToast({            
           title: '加载失败！',
           mask: true,
           icon: 'none',
           duration:1000
         })
-        wx.hideToast()
       }
     }).catch((errMsg) => {
+      that.setData({
+        showAll: true,
+        showError: true
+      })
       wx.showToast({
         title: '加载失败！',
         mask: true,
-        icon: 'none'
+        icon: 'none',
+        duration: 1000
       })
-      // wx.hideLoading()
       console.log(errMsg);
     });
   },

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
@@ -19,7 +19,7 @@
     "pages/storeDetails_page/storeDetails_page",
     "pages/shop_list/index"
   ],
-  "window":{
+  "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#00ADA9",
     "navigationBarTitleText": "WeChat",

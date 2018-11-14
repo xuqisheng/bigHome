@@ -252,4 +252,27 @@ radio {
   width: 17px;
   height: 17px;
 }
+.noMore{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  position: relative
+}
+.noMore text{
+  font-size: 24rpx;
+  color: #d1d1d1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 0 10rpx
+}
 
+.nmLine{
+  width: 380rpx;
+  border-top: 1px solid #e6e6e6
+}

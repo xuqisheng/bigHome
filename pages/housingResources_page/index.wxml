@@ -1,5 +1,7 @@
-<view class="housingResources">
-      <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm'>
+<view class="housingResources" wx:if='{{showAll}}'>
+ <noData  wx:if='{{!showData}}'></noData>
+  <error  wx:if='{{showError}}'></error>
+      <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm' wx:if='{{showData && !showError}}'>
         <text>地图搜房</text>
         <image src='../../images/housingResources_page/map_search.png'></image>
       </button>
@@ -53,5 +55,9 @@
     <view class='locations'>
       <text wx:for='{{item.tags}}' wx:key='index'>{{item}}</text>
     </view>
+  </view>
+  <view class='noMore' wx:if='{{!showError && showData}}'>
+  <view class='nmLine'></view>
+  <text>没有更多了</text>
   </view>
 </view>
