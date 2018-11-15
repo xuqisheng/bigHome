@@ -112,8 +112,9 @@ Page({
         }
       })
     } else if (typeof (this.data.currentCity) != undefined) {
+      let city = this.data.currentCity
       wx.navigateTo({
-        url: '../shop_list/index',
+        url: `../shop_list/index?city=${city}`,
       })
     }
   },
@@ -180,13 +181,10 @@ Page({
   },
   //开启定位跳转至地图
   location: function () {
-    if (this.data.alearyAddr) {
-      app.getPermission(this);
-    } else {
-      this.setData({
-        showModal: true
-      })
-    }
+    let city = this.data.currentCity
+    wx.navigateTo({
+      url: `../select_city/index?city=${city}`
+    });
   },
   //不允许
   no: function () {
@@ -202,6 +200,7 @@ Page({
   },
   //更多房型
   houseType: function () {
+    let params = this.data.currentCity
     wx.navigateTo({
       url: '../houseType_page/houseType_page',
     })

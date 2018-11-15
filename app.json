@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/select_city/index",
     "pages/home_page/index",
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
@@ -17,8 +18,7 @@
     "pages/yy/index",
     "pages/yy_result/index",
     "pages/storeDetails_page/storeDetails_page",
-    "pages/shop_list/index",
-    "pages/select_city/index"
+    "pages/shop_list/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

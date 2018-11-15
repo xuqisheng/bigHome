@@ -13,6 +13,7 @@ Page({
     centerY: '',
     hotelInfoMap: {},
     currentId: '',
+    currentCity:''
   },
 
   regionchange(e) {
@@ -40,12 +41,6 @@ Page({
         })
       }
     })
-    
-    // this.setData({
-    //   currentId: e.markerId,
-    //   hotelInfoMap: this.createHotelInfoMap(currentData),
-    //   markers: this.createMarker(e.markerId)
-    // })
   },
   controltap(e) {
     console.log(e.controlId)
@@ -54,32 +49,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-  //   wx.login({
-  //     success: function (res) {
-  //       console.log(res)
-  //       wxGetData({
-  //         // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
-  //         url: 'http://rrk7vf.natappfree.cc/api/weixin/xcxLogin',
-  //         data: {
-  //          code:res.code
-  //         },
-  //         isMock: true
-  //       }).then(res => {
-  //         console.log(res)
-  //       })
-  //     }
-  //   })
-  // return
-
+    this.setData({
+      currentCity: options.city
+    })
     let that = this
-    // wxGetData({
-    //   // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
-    //   url:'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
-    //   data: { pageNo: 1, pageSize: 10, cityId: "22", hotelNameLike: "" },
-    //   method: 'GET'
-    // }).then(res=>{
-    //   console.log(res)
-    // })
     this.getMapMarks()
   },
   /**
@@ -270,6 +243,12 @@ Page({
       hotelRent: `¥${item.startingPrice} / 月起`,
       hotelInfo: item.tags
     }
+  },
+  toSelectCity() {
+    let city = this.data.currentCity
+    wx.navigateTo({
+      url: `../select_city/index?city=${city}`
+    });
   },
   /**
    * 生命周期函数--监听页面显示

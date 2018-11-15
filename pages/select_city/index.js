@@ -118,10 +118,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options.city)
     let that = this
     WXP.getSystemInfo().then(res => {
       this.setData({
-        scrollHeight: res.windowHeight
+        scrollHeight: res.windowHeight,
+        currentCity: options.city
       })
       this.getCityData()
     })
@@ -186,20 +188,14 @@ Page({
         title: '定位城市',
         id: 'dw',
         items: [{
-          name: '佛山市',
-          id: '222'
+          name: this.data.currentCity,
+          id: 'dw'
         }]
       },
       historyCity: { //在缓存去取历史记录城市,先写死
         title: '历史记录',
         id:'ls',
-        items: [{
-          name: '北京市',
-          id: '222'
-        }, {
-          name: '上海市',
-          id: '222'
-        }]
+        items: this._createrMapHistoryList()
       }
     }
 
@@ -235,6 +231,38 @@ Page({
       return a.title.charCodeAt(0) - b.title.charCodeAt(0)
     })
     return (local.concat(history)).concat(ret)
+  },
+  _createrMapHistoryList() {
+    if (!cityHistoryList) {
+      data = [{
+        name: this.data.currentCity,
+        id: 'dw'
+      }]
+    } else {
+      let arr = wx.getStorageSync('cityHistoryList')
+    }
+
+    let cityHistoryList = wx.getStorageSync('cityHistoryList')
+    let data = []
+    let insertArray = (arr, val, compare, maxLen)=>{
+      const index = arr.findIndex(compare)
+      if (index === 0) {
+        return
+      }
+      if (index > 0) {
+        arr.splice(index, 1)
+      }
+      arr.unshift(val)
+      if (maxLen && arr.length > maxLen) {
+        arr.pop()
+      }
+    }
+    insertArray(searches, query, (item) => {
+      return item === query
+    }, SEARCH_MAX_LEN)
+
+    wx.setStorageSync('cityHistoryList',data)
+    console.log(wx.getStorageSync('cityHistoryList'))
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
