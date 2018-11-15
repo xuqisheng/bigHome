@@ -1,6 +1,8 @@
+var rq = require("../../utils/require.js")
 var app = getApp();
 var that = this;
-let { wxGetData} = require("../../utils/require.js")
+var citys_json = require("../../utils/citys.json")
+let {wxGetData} = require("../../utils/require.js")
 Page({
   data: {
     addr: '', 
@@ -33,11 +35,13 @@ Page({
       showModal: false, //弹窗默认隐藏
       userName: null,
       currentCity: '',
-      placeHolder:'请选择位置'
+      placeHolder:'请选择位置',
+      showError:false
     },
   },
   onLoad() {
     this.getLocation()
+    this.getDatas()
   },
   getSetting() { //获取授权信息
     let that = this
@@ -119,7 +123,7 @@ Page({
   },
   onFocus:function(e){
     this.setData({
-      placeHolder: ''
+      placeHolder: ' '
     })
   },
   onBlur:function(e){
@@ -193,6 +197,47 @@ Page({
     this.setData({
       showModal: false
     })
+  },
+  //请求数据
+  getDatas:function(e){
+    let that = this
+    let obj = {
+      url: 'http://yuj6n7.natappfree.cc/api/common/getOpenedCity',
+      data: {
+        cityId: 4406,
+        acId: 101,
+      },
+      method: 'POST',
+      isMock: true
+    }
+    rq.wxGetData(obj).then((res) => {
+      if (res.statusCode == 200) {
+        console.log(res.data.data)
+        if (res.data.data) {
+        }
+      } else {
+        that.setData({
+          showError: true
+        })
+        wx.showToast({
+          title: '加载失败！',
+          mask: true,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    }).catch((errMsg) => {
+      that.setData({
+        showError: true
+      })
+      wx.showToast({
+        title: '加载失败！',
+        mask: true,
+        icon: 'none',
+        duration: 1000
+      })
+      console.log(errMsg);
+    });
   },
   //更多房源
   housingResources: function() {
