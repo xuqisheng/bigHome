@@ -9,7 +9,7 @@
 <view class="wxland">
 <p><image src="../../images/land_page/wx.png"></image></p>
 <text>微信授权登录</text>
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+<button wx:if="{{canIUse}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
 </view>
 
 

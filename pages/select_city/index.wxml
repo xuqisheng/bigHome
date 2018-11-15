@@ -1,0 +1,20 @@
+<!--pages/select_city/index.wxml-->
+<view class="select_city">
+<scroll-view class="list-box" style='height:{{scrollHeight}}px' scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="list-group" wx:for="{{cityList}}" wx:key="index" id="{{item.id}}">
+    <view class="list-group-title" data-id="{{cityList.title}}">
+      <view class="title">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="list-group-item" wx:for="{{item.items}}" wx:key="index">
+      <view class="name {{index == 0 ? 'first':''}}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="list-shortcut" bindtouchstart="onShortcutTouchStart" bindtouchmove="onShortcutTouchMove" bindtouchend="onShortcutTouchEnd">
+    <view class="item" wx:for="{{shortcutList}}" wx:key="index" id="{{item.id}}">
+      {{item.title}}
+    </view>
+  </view>
+  </scroll-view>
+</view>

@@ -1,31 +1,30 @@
 var rq = require("../../utils/require.js")
 var app = getApp();
 var that = this;
-var ct = require('../../utils/citys.js')
-let {wxGetData} = require("../../utils/require.js")
+let { wxGetData } = require("../../utils/require.js")
 Page({
   data: {
-    addr: '', 
+    addr: '',
     swiper: {
       // banner
       imgUrls: [{
-          imgs: "../../images/home_page/1.png",
-          title1: "BIG+碧家深圳东门店",
-          title2: "现代居家一居室·A15室",
-          title3: "￥2900/月起",
-        },
-        {
-          imgs: "../../images/home_page/7.png",
-          title1: "BIG+碧家深圳东门店",
-          title2: "现代居家一居室·A15室",
-          title3: "￥2900/月起",
-        },
-        {
-          imgs: "../../images/home_page/1.png",
-          title1: "BIG+碧家深圳东门店",
-          title2: "现代居家一居室·A15室",
-          title3: "￥2900/月起",
-        },
+        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
+        title1: "BIG+碧家深圳东门店",
+        title2: "现代居家一居室·A15室",
+        title3: "￥2900/月起",
+      },
+      {
+        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/7.png",
+        title1: "BIG+碧家深圳东门店",
+        title2: "现代居家一居室·A15室",
+        title3: "￥2900/月起",
+      },
+      {
+        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
+        title1: "BIG+碧家深圳东门店",
+        title2: "现代居家一居室·A15室",
+        title3: "￥2900/月起",
+      },
       ],
       indicatorDotss: true, //是否显示面板指示点
       autoplayss: true, //是否自动切换
@@ -88,22 +87,22 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         let city = res.data.result.address_component.city;
-        that.setData({ currentCity: city, placeHolder:city });
+        that.setData({ currentCity: city, placeHolder: city });
         app.globalData.localInfo = res.data.result.address_component
       },
       fail: function () {
-        that.setData({ currentCity: "获取定位失败", placeHolder:'获取定位失败'});
+        that.setData({ currentCity: "获取定位失败", placeHolder: '获取定位失败' });
       },
     })
   },
-  userNameInput: function(e) {
+  userNameInput: function (e) {
     this.setData({
       addr: e.detail.value
     })
   },
-  look: function(e) {
+  look: function (e) {
     if (this.data.currentCity == undefined || this.data.currentCity == '') {
       wx.openSetting({
         success: (res) => {
@@ -111,24 +110,24 @@ Page({
             this.getLocation()
           }
         },
-        fail: function(res) {
+        fail: function (res) {
           console.log(res)
         }
       })
-    } else if (typeof(this.data.currentCity) != undefined) {
+    } else if (typeof (this.data.currentCity) != undefined) {
       wx.navigateTo({
         url: '../shop_list/index',
       })
     }
   },
-  onFocus:function(e){
+  onFocus: function (e) {
     this.setData({
       placeHolder: ' '
     })
   },
-  onBlur:function(e){
+  onBlur: function (e) {
     this.setData({
-      placeHolder:this.data.currentCity
+      placeHolder: this.data.currentCity
     })
   },
   durationChange: function (e) {
@@ -137,7 +136,7 @@ Page({
     })
   },
   //允许
-  yes: function() {
+  yes: function () {
     this.setData({
       showModal: false
     })
@@ -159,7 +158,7 @@ Page({
     // })
   },
   // 首页图片展示轮播箭头
-  nextImg: function() {
+  nextImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
@@ -168,7 +167,7 @@ Page({
     })
   },
   // 首页图片展示轮播箭头
-  prevImg: function() {
+  prevImg: function () {
     var swiper = this.data.swiper;
     var current = swiper.current;
     swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
@@ -177,13 +176,13 @@ Page({
     })
   },
   //跳转我的页面
-  my: function() {
+  my: function () {
     wx.navigateTo({
       url: "../my_page/index"
     });
   },
   //开启定位跳转至地图
-  location: function() {
+  location: function () {
     if (this.data.alearyAddr) {
       app.getPermission(this);
     } else {
@@ -193,7 +192,7 @@ Page({
     }
   },
   //不允许
-  no: function() {
+  no: function () {
     this.setData({
       showModal: false
     })
@@ -240,13 +239,13 @@ Page({
     });
   },
   //更多房源
-  housingResources: function() {
+  housingResources: function () {
     wx.navigateTo({
       url: '../housingResources_page/index',
     })
   },
   //更多房型
-  houseType: function() {
+  houseType: function () {
     wx.navigateTo({
       url: '../houseType_page/houseType_page',
     })

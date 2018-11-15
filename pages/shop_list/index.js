@@ -59,13 +59,11 @@ Page({
   //       console.log(res)
   //       wxGetData({
   //         // url: 'http://bgy.h-world.com/api/hotel/getHotelList',
-  //         url: 'http://bq2rfx.natappfree.cc/api/weixin/login',
+  //         url: 'http://rrk7vf.natappfree.cc/api/weixin/xcxLogin',
   //         data: {
-  //           wxMemberQO: {
-  //             code:res.code
-  //           }
+  //          code:res.code
   //         },
-  //         method: 'GET'
+  //         isMock: true
   //       }).then(res => {
   //         console.log(res)
   //       })

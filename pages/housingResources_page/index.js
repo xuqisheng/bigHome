@@ -265,5 +265,5 @@ Page({
       let s1 = s<3? slist[s][0] : ''
       let s2 = s<3? slist[s][1] : ''
       this.getHotelList(p1,p2,s1,s2)
-  },
+  }
 })
