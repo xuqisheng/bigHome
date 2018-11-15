@@ -4,7 +4,8 @@
     <cover-view class="controls">
       <cover-view class="infocontainer">
         <cover-view class="infoTop">
-          <cover-image class="image" src="{{hotelInfoMap.hotelImgSrc}}"></cover-image>
+         <cover-image class="image" src="cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png"></cover-image>
+          <!-- <cover-image class="image" src="{{hotelInfoMap.hotelImgSrc}}"></cover-image> -->
         </cover-view>
         <cover-view class="infoMiddle">
           <cover-view class="shopName">{{hotelInfoMap.hotelName}}</cover-view>

@@ -7,19 +7,19 @@ Page({
     swiper: {
       // banner
       imgUrls: [{
-          imgs: "../../images/home_page/1.png",
+          imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
           title1: "BIG+碧家深圳东门店",
           title2: "现代居家一居室·A15室",
           title3: "￥2900/月起",
         },
         {
-          imgs: "../../images/home_page/7.png",
+          imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/7.png",
           title1: "BIG+碧家深圳东门店",
           title2: "现代居家一居室·A15室",
           title3: "￥2900/月起",
         },
         {
-          imgs: "../../images/home_page/1.png",
+          imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
           title1: "BIG+碧家深圳东门店",
           title2: "现代居家一居室·A15室",
           title3: "￥2900/月起",
