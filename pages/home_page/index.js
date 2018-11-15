@@ -202,7 +202,7 @@ Page({
   getDatas:function(e){
     let that = this
     let obj = {
-      url: 'http://yuj6n7.natappfree.cc/api/common/getOpenedCity',
+      url: 'http://izm9it.natappfree.cc/api/common/getOpenedCity',
       data: {
         cityId: 4406,
         acId: 101,
