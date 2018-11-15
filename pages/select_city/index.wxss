@@ -24,7 +24,6 @@
   background: rgb(246,246,246);
   height:80rpx;
 }
-
 .list-group .list-group-title .title{
   position: absolute;
   padding:0 20rpx;
@@ -36,6 +35,21 @@
   text-align: center;
   border-radius: 4rpx;
   left:30rpx;
+}
+.select_city .list-box .historyClass .list-group-items {
+  padding:30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-content:flex-start;
+  flex-flow:row wrap;
+}
+.select_city .list-box .historyClass .list-group-item .name{
+  height:60rpx;
+  width:200rpx;
+  line-height: 60rpx;
+  text-align: center;
+  padding:0rpx;
+  border:1px solid rgb(232,231,242);
 }
 .list-group .list-group-item .name{
   display: inline-block;
