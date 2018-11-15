@@ -13,7 +13,7 @@ function wxGetData(obj) {
     title: '加载中...',
     mask: true,
     icon: 'loading',
-    duration: 100000
+    duration:100000
   })
   const {
     url,
@@ -41,7 +41,7 @@ function wxGetData(obj) {
       fail: function(e) {
         reject(e);
       },
-      complete: function(e) {
+      complete:function(e){
         wx.hideToast()
       }
     })

@@ -1,6 +1,5 @@
 //app.js
 App({
-  
   //获取用户地理位置权限
   getPermission: function (obj) {
     wx.chooseLocation({

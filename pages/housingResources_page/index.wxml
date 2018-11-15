@@ -1,2 +1,68 @@
+<<<<<<< HEAD
 <!--pages/housingResources_page/index.wxml-->
 <text>pages/housingResources_page/index.wxml</text>
+=======
+<view class="housingResources" wx:if='{{showAll}}'>
+ <noData  wx:if='{{!showData}}'></noData>
+  <error  wx:if='{{showError}}'></error>
+      <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm' wx:if='{{showData && !showError}}'>
+        <text>地图搜房</text>
+        <image src='../../images/housingResources_page/map_search.png'></image>
+      </button>
+  <view class='moneySort'>
+    <!-- 价格 -->
+    <view class="nav-son" bindtap="money">
+      <view style='position: relative'>价格
+        <span class="jianShang" wx:if="{{shang}}"></span>
+        <span class="jianXia" wx:if="{{xia}}"></span>
+      </view>
+    </view>
+    <!-- 排序 -->
+    <view class="nav-son" bindtap="sort">
+      <view style='position: relative'>排序
+        <span class="jianShang" wx:if="{{shangs}}"></span>
+        <span class="jianXia" wx:if="{{xias}}"></span>
+      </view>
+    </view>
+
+  </view>
+  <!-- 下拉选择框 -->
+  <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
+    <label class="radio" wx:for="{{money}}" wx:key='item' bindtap='money_sort'  data-index='{{index}}'>
+      <text>{{item.name}}</text>
+      <radio checked = "{{item.checked}}">
+      </radio>
+    </label>
+  </radio-group>
+
+  <radio-group class="temp {{pxopens ? 'slidown' : 'slidup'}} {{pxshows ? 'disappear':''}}">
+    <label class="radio" wx:for="{{sort}}" wx:key='item' bindtap='type_sort' data-index='{{index}}'>
+      <text>{{item.name}}</text>
+      <radio checked = "{{item.checked}}">
+      </radio>
+    </label>
+  </radio-group>
+  <!--catchtouchmove='true' ,蒙版出现时禁止滑动-->
+  <view class='bgs' wx:if="{{hidden}}" bindtap='hidtemp' catchtouchmove='true'></view>
+
+  <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
+    <image src='{{item.picUrl}}' class="di"></image>
+    <p class="pt">{{item.hotelName}}
+      <text class="yue">￥{{item.startingPrice}}/月起</text>
+    </p>
+    <p class="fang">{{item.roomTypeSum}}个房型/剩余{{item.roomSum}}套房源</p>
+    <view class="xiangxi">
+      <image src='../../images/housingResources_page/bi.png' class="bi"></image>
+      <p class="xiang" wx:if='{{item.breafIntroduction}}'>{{item.breafIntroduction}}</p>
+      <p class="xiang" wx:if='{{!item.breafIntroduction}}'>这款房比较神秘，需要您实地去探索</p>
+    </view>
+    <view class='locations'>
+      <text wx:for='{{item.tags}}' wx:key='index'>{{item}}</text>
+    </view>
+  </view>
+  <view class='noMore' wx:if='{{!showError && showData}}'>
+  <view class='nmLine'></view>
+  <text>没有更多了</text>
+  </view>
+</view>
+>>>>>>> 1b75e634c4ad764cf1ac79c2f07282e20c51e8d9
