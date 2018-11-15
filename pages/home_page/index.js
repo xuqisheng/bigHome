@@ -1,31 +1,15 @@
 var rq = require("../../utils/require.js")
 var app = getApp();
-var that = this;
 let { wxGetData } = require("../../utils/require.js")
 Page({
   data: {
     addr: '',
+    adList: [],//广告列表
+    hourselist: [],//房源列表
+    typeList: [],//房型列表
+    articleList: [],//文章列表
     swiper: {
       // banner
-      imgUrls: [{
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      {
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/7.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      {
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      ],
       indicatorDotss: true, //是否显示面板指示点
       autoplayss: true, //是否自动切换
       intervals: 3000, //自动切换时间间隔,3s
@@ -35,13 +19,20 @@ Page({
       userName: null,
       currentCity: '',
       placeHolder:'请选择位置',
-      showError:false
+      showError:false,
     },
   },
   onLoad() {
     this.getLocation()
-    this.getDatas()
+    this.getData()
   },
+  getData:function(){
+    var that = this
+    let data1 = {
+      acId: 101
+    }
+      this.getDatas(data1, 'cms/getAdByPlace','adList')
+   },
   getSetting() { //获取授权信息
     let that = this
     wx.getSetting({
@@ -161,8 +152,9 @@ Page({
   // 首页图片展示轮播箭头
   nextImg: function () {
     var swiper = this.data.swiper;
+    var adlist = this.data.adList;
     var current = swiper.current;
-    swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
+    swiper.current = current > 0 ? current - 1 : adlist.advertsList.length - 1;
     this.setData({
       swiper: swiper,
     })
@@ -170,8 +162,9 @@ Page({
   // 首页图片展示轮播箭头
   prevImg: function () {
     var swiper = this.data.swiper;
+    var adlist = this.data.adList;
     var current = swiper.current;
-    swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
+    swiper.current = current < (adlist.advertsList.length - 1) ? current + 1 : 0;
     this.setData({
       swiper: swiper,
     })
@@ -196,22 +189,22 @@ Page({
     })
   },
   //请求数据
-  getDatas:function(e){
+  getDatas:function(data,url,store){
     let that = this
+    let st = that.data[store]
     let obj = {
-      url: 'http://izm9it.natappfree.cc/api/common/getOpenedCity',
-      data: {
-        cityId: 4406,
-        acId: 101,
-      },
+      url: 'http://ptrzac.natappfree.cc/api/'+url,
+      data:data,
       method: 'POST',
       isMock: true
     }
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
-        console.log(res.data.data)
-        if (res.data.data) {
-        }
+        st.toLocaleString()(res.data.data)
+        that.setData({
+          st
+        })
+        console.log(that.data.adList)
       } else {
         that.setData({
           showError: true
