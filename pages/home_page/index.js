@@ -1,7 +1,7 @@
 var rq = require("../../utils/require.js")
 var app = getApp();
 var that = this;
-var citys_json = require("../../utils/citys.json")
+var ct = require('../../utils/citys.js')
 let {wxGetData} = require("../../utils/require.js")
 Page({
   data: {
