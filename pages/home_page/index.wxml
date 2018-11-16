@@ -53,21 +53,21 @@
     </view>
     <!-- 碧家推荐图片 -->
     <swiper class='swiper'next-margin="120rpx">
-      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-        <image src="{{item.imgs}}" />
+      <swiper-item wx:for="{{houselist.rooms}}" class="swiperItem" wx:key="index">
+        <image src="{{item.pictures[0]}}" />
         <view class='swiperText'>
         <view style=' position: relative;'>
           <view class='text12'>
-            <text class='title1'>{{item.title1}}</text>
-            <text class='title2'>{{item.title2}}</text>
+            <text class='title1'>{{item.hotelInfo.hotelName}}</text>
+            <text class='title2'>{{item.roomTypeName}}</text>
           </view>
-          <text class='title3'>{{item.title3}}</text>
+          <text class='title3'>￥{{item.startingPrice}}/月起</text>
         </view>
         </view>
       </swiper-item>
     </swiper>
   </view>
-
+  <view class='cutline'></view>
 
     <!-- 房型推荐 -->
   <view class="font">
@@ -81,21 +81,21 @@
     </view>
     <!-- 碧家推荐图片 -->
     <swiper class='swiper'next-margin="120rpx">
-      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-        <image src="{{item.imgs}}" />
+      <swiper-item wx:for="{{typeList.roomTypes}}" class="swiperItem" wx:key="index">
+        <image src="{{item.picUrl}}" />
         <view class='swiperText'>
         <view style=' position: relative;'>
           <view class='text12'>
-            <text class='title1'>{{item.title1}}</text>
-            <text class='title2'>{{item.title2}}</text>
+            <text class='title1'>{{item.roomTypeName}}</text>
+            <text class='title4'>￥{{item.priceFloorLimit}}/月起</text>
           </view>
-          <text class='title3'>{{item.title3}}</text>
         </view>
         </view>
       </swiper-item>
     </swiper>
   </view>
-
+  <view class='cutline'></view>
+  <!-- 服务展示图片 -->
   <view class="fonts">
     <view class="recommends">
       <view class='line'></view>
@@ -105,11 +105,11 @@
     <text  class="heart">碧家心服务，比你更懂你</text>
   </view>
 
-  <!-- 服务展示图片 -->
+  
   <view class='dispalyimg'>
       <swiper indicator-dots="{{swiper.indicatorDotss}}" autoplay="{{swiper.autoplayss}}" interval="{{swiper.intervals}}" vertical="{{swiper.isVertical}}" duration="{{swiper.durations}}" circular='false' class='dispalyimgs'>
-        <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItems" wx:key="index">
-          <image src="{{item.imgs}}" />
+        <swiper-item  wx:for="{{serverList}}" class="swiperItems" wx:key="index">
+          <image src="{{item}}" />
         </swiper-item>
       </swiper>
   </view>
@@ -119,8 +119,4 @@
     <image src='../../images/home_page/6.png'></image>
     <text>碧家 · 城市梦想充电站</text>
   </view>
-
-
-
->>>>>>> 89edccaa01498c778656a3bfd1e64c648b734256:pages/home_page/index.wxml
 </view>

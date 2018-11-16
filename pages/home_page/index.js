@@ -5,9 +5,12 @@ Page({
   data: {
     addr: '',
     adList: [],//广告列表
-    hourselist: [],//房源列表
+    houselist: [],//房源列表
     typeList: [],//房型列表
-    articleList: [],//文章列表
+    serverList: ['',
+                 '',
+                 '',
+                 ''],//服务列表
     currentCity:'请选择位置',
     currentCityId: '',
     placeHolder: '',
@@ -33,8 +36,22 @@ Page({
     var that = this
     let data1 = {
       acId: 101
+    },data2={
+      cityId: 3101 ,
+      recommendType: "H_INDEX_HOTEL"
+    },data3={
+      cityId: 3101,
+      recommendType: "H_INDEX_ROOMTYPE"
+    },data4={
+      cityId: 3101,
+      page: 0,
+      pageSize: 4,
+      recommendType: "A_INDEX_FOOT"
     }
-      this.getDatas(data1, 'cms/getAdByPlace','adList')
+    this.getDatas(data1, 'cms/getAdByPlace','adList')
+    this.getDatas(data2, 'hotel/getRoomRecommendList', 'houselist')
+    this.getDatas(data3, 'hotel/getRoomTypeRecommendList', 'typeList')
+    // this.getDatas(data4, 'cms/getHelpCenterRecommendList', 'serverList')
    },
   getSetting() { //获取授权信息
     let that = this
@@ -204,20 +221,19 @@ Page({
   //请求数据
   getDatas:function(data,url,store){
     let that = this
-    let st = that.data[store]
+    let st = store
     let obj = {
-      url: 'http://ptrzac.natappfree.cc/api/'+url,
+      url: 'http://bgy.h-world.com/api/'+url,
       data:data,
       method: 'POST',
       isMock: true
     }
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
-        st.toLocaleString()(res.data.data)
         that.setData({
-          st
+          [st] : res.data.data
         })
-        console.log(that.data.adList)
+        console.log(res.data.data)
       } else {
         that.setData({
           showError: true
