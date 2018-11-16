@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
   },
 
   /**
@@ -13,8 +12,22 @@ Page({
    */
   onLoad: function (options) {
     let userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
+    let userName = userInfo.uname ? userInfo.uname : userInfo.mobile
+    userName = userName ? `${userName.substr(0, 3)} **** ${userName.substr(-4, 4)}`: ''
+    this.setData({
+      userInfo,
+      userName
+    })
   },
-
+  logOff() {
+    wx.setStorageSync('userInfo', '')
+    this.setData({
+      userInfo:'',
+      userName:''
+    })
+    this.onLoad()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
