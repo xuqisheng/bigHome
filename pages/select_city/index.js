@@ -236,13 +236,15 @@ Page({
   _createrMapHistoryList() {
     let arr = []
     let historyListData = wx.getStorageSync('cityHistoryList')
+    let currentCityInfo = wx.getStorageSync('currentCityInfo').localCity
     if (!historyListData) {
-      data = [{
-        name: this.data.currentCity,
-        id: 'dw'
+      arr = [{
+        name: currentCityInfo.localCity,
+        id: currentCityInfo.localCityId
       }]
+      wx.setStorageSync('cityHistoryList', arr)
     } else {
-      arr = wx.getStorageSync('cityHistoryList')
+      arr = historyListData
     }
     return arr
 
@@ -277,14 +279,36 @@ Page({
   },
   goBack(e) {
     let data = e.currentTarget.dataset
-    let currentCityInfo = wx.getStorageSync('currentCityInfo')
-    wx.setStorageSync('currentCityInfo', {
-      ...currentCityInfo,
-      ...data
-    })
+    this.setCurrentCityInfo(data)
+    this.setHistroryCityInfo(data)
     wx.navigateBack({
       delta: 1
     })
+  },
+  setCurrentCityInfo(currentItem){
+    let currentCityInfo = wx.getStorageSync('currentCityInfo') || ''
+    wx.setStorageSync('currentCityInfo', {
+      ...currentCityInfo,
+      ...currentItem
+    })
+  },
+  setHistroryCityInfo(currentItem){
+    let cityHistoryList = wx.getStorageSync('cityHistoryList') || []
+    this._insertArray(cityHistoryList, currentItem, 6)
+    wx.setStorageSync('cityHistoryList', cityHistoryList)
+  },
+  _insertArray(arr,val,maxLenth) {
+    let index = arr.findIndex(item => 
+      item.id === val.id
+    )
+    if (index === 0) return
+    if(index > 1) {
+      arr.splice(index,1)
+    }
+    arr.unshift(val)
+    if (maxLenth && arr.length > maxLenth){
+      arr.pop()
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
