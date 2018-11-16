@@ -112,13 +112,11 @@ Page({
     toView:''
   },
   scroll(e) {
-    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.city)
     let that = this
     WXP.getSystemInfo().then(res => {
       this.setData({
@@ -134,13 +132,11 @@ Page({
       isMock: true
     }).then(res => {
       let cityData = res.data.data.citys
-      console.log(cityData)
       let cityMap = this._normalizeCityList(cityData)
       this.setData({
         cityList: cityMap,
         shortcutList: this._createrShortcutList(cityMap)
       })
-      console.log(cityMap)
     })
   },
   onShortcutTouchStart(e) {
@@ -151,7 +147,6 @@ Page({
     this._scrollTo(startIndex)
   },
   onShortcutTouchMove(e) {
-    console.log(touchPageY)
     let diff = (e.changedTouches[0].pageY - touchPageY)/20 | 0
     let index = parseInt(startIndex) + diff
     this._scrollTo(index)
