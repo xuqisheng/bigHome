@@ -56,18 +56,34 @@
   flex-direction: row;
   position: relative;
   padding-left: 30rpx;
+  align-items:center;
 }
 .recommend{
   font-size: 24rpx;
   color: #999899;
   margin: auto 0 auto 21rpx;
 }
+.jumo_area{
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 31rpx;
+  align-items: center;
+  position: relative
+}
 .more{
-  position: absolute;
-  right:21rpx;
   font-size: 28rpx;
   color: #00ADA9;
-  bottom:2rpx;
+  padding-right: 20rpx
+}
+.gl{
+  width: 15rpx;
+  height: 15rpx;
+  border-left: 2rpx solid #00ADA9;
+  border-bottom: 2rpx solid #00ADA9;
+  -webkit-transform: rotate(-135deg);
+  transform : rotate(-135deg);
+  margin-top: 1rpx
 }
 .swiper{
   height: 500rpx;

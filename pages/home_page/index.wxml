@@ -49,7 +49,10 @@
     </view>
     <view class='fontInfo'>
       <text class="recommend">每次推荐，只为找到属于你的房</text>
-      <text class="more" bindtap="housingResources">更多房源 ></text>
+      <view class='jumo_area' bindtap='jumoTohr'>
+      <text class="more" bindtap="housingResources">更多房源</text>
+      <view class='gl'></view>
+      </view>
     </view>
     <!-- 碧家推荐图片 -->
     <swiper class='swiper'next-margin="120rpx">
@@ -77,7 +80,10 @@
     </view>
     <view class='fontInfo'>
       <text class="recommend">在碧家，一床一物都为住得更好</text>
-      <text class="more" bindtap="housingResources">更多房型 ></text>
+      <view class='jumo_area' bindtap='jumoToht'>
+      <text class="more" bindtap="housingResources">更多房型</text>
+      <view class='gl'></view>
+      </view>
     </view>
     <!-- 碧家推荐图片 -->
     <swiper class='swiper'next-margin="120rpx">

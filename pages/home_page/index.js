@@ -293,4 +293,15 @@ Page({
       })
     }
   },
+  jumoToht:function(){
+    wx.navigateTo({
+      url: 'houseType_page/index',
+    })
+  },
+  jumoTohr: function () {
+    wx.navigateTo({
+      url: 'housingResources_page/index',
+    })
+  },
+
 })
