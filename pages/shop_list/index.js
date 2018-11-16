@@ -13,7 +13,8 @@ Page({
     centerY: '',
     hotelInfoMap: {},
     currentId: '',
-    currentCity:''
+    currentCity:'',
+    currentCityId:''
   },
 
   regionchange(e) {
@@ -49,11 +50,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      currentCity: options.city
-    })
-    let that = this
-    this.getMapMarks()
   },
   /**
    * 初始化
@@ -254,7 +250,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
+    this.setData({
+      currentCity: getCurrentCityInfo.name,
+      currentCityId: getCurrentCityInfo.id
+    })
+    this.getMapMarks()
   },
 
   /**

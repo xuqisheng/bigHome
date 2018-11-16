@@ -9,7 +9,7 @@
     </view>
     <view class="list-group-items">
       <view class="list-group-item" wx:for="{{item.items}}" wx:key="index">
-      <view class="name {{index == 0 ? 'first':''}}">{{item.name}}</view>
+      <view class="name {{index == 0 ? 'first':''}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="goBack">{{item.name}}</view>
     </view>
     </view>
   </view>

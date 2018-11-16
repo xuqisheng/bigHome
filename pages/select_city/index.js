@@ -183,19 +183,20 @@ Page({
     })
   },
   _normalizeCityList(cityData) {
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
     let map = {
       localCity:{
         title: '定位城市',
         id: 'dw',
         items: [{
-          name: this.data.currentCity,
-          id: 'dw'
+          name: getCurrentCityInfo.localCity || '',
+          id: getCurrentCityInfo.localCityId || ''
         }]
       },
       historyCity: { //在缓存去取历史记录城市,先写死
         title: '历史记录',
         id:'ls',
-        items: this._createrMapHistoryList()
+        items: this._createrMapHistoryList('dw')
       }
     }
 
@@ -233,36 +234,57 @@ Page({
     return (local.concat(history)).concat(ret)
   },
   _createrMapHistoryList() {
-    if (!cityHistoryList) {
+    let arr = []
+    let historyListData = wx.getStorageSync('cityHistoryList')
+    if (!historyListData) {
       data = [{
         name: this.data.currentCity,
         id: 'dw'
       }]
     } else {
-      let arr = wx.getStorageSync('cityHistoryList')
+      arr = wx.getStorageSync('cityHistoryList')
     }
+    return arr
 
-    let cityHistoryList = wx.getStorageSync('cityHistoryList')
-    let data = []
-    let insertArray = (arr, val, compare, maxLen)=>{
-      const index = arr.findIndex(compare)
-      if (index === 0) {
-        return
-      }
-      if (index > 0) {
-        arr.splice(index, 1)
-      }
-      arr.unshift(val)
-      if (maxLen && arr.length > maxLen) {
-        arr.pop()
-      }
-    }
-    insertArray(searches, query, (item) => {
-      return item === query
-    }, SEARCH_MAX_LEN)
-
-    wx.setStorageSync('cityHistoryList',data)
-    console.log(wx.getStorageSync('cityHistoryList'))
+    // wx.setStorageSync('cityHistoryList', [{
+    //   name: '北京市',
+    //   id: 'dw'
+    // }, {
+    //     name: '北京市',
+    //     id: 'dw'
+    //   }])
+    // let historyListData = wx.getStorageSync('cityHistoryList')
+    // let data = []
+    // let insertArray = (arr, val, compare, maxLen)=>{
+    //   const index = arr.findIndex(compare)
+    //   if (index === 0) {
+    //     return
+    //   }
+    //   if (index > 0) {
+    //     arr.splice(index, 1)
+    //   }
+    //   arr.unshift(val)
+    //   if (maxLen && arr.length > maxLen) {
+    //     arr.pop()
+    //   }
+    // }
+    // insertArray(historyListData, queryId, (item) => {
+    //   return item.id === queryId
+    // }, 6)
+    // console.log(historyListData)
+    // wx.setStorageSync('cityHistoryList', historyListData)
+    // console.log(wx.getStorageSync('cityHistoryList'))
+  },
+  goBack(e) {
+    let data = e.currentTarget.dataset
+    let currentCityInfo = wx.getStorageSync('currentCityInfo')
+    wx.setStorageSync('currentCityInfo', {
+      ...currentCityInfo,
+      ...data
+    })
+    wx.navigateBack({
+      delta: 1
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -275,7 +297,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    
   },
 
   /**

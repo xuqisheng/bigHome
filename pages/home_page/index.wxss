@@ -80,24 +80,32 @@
 }
 .swiperText{
   position: absolute;
-  bottom: 5rpx;
   left: 35rpx;
   width: 539rpx;
+  bottom:20rpx;
 }
 .text12{
   display: flex;
   flex-direction: column;
-}
-.title1,.title2{
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #444   
+}
+
+.title4{
+  color: #00ADA9 
 }
 .title3{
   position: absolute;
-  bottom: 50rpx;
+  bottom: 45rpx;
   right: 10rpx;
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #00ADA9
+}
+
+.cutline{
+  text-align: center;
+  width: 90%;
+  border-bottom: 1px #eee solid
 }
 .fonts {
   width: 100%;
