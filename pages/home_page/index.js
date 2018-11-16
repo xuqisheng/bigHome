@@ -8,6 +8,10 @@ Page({
     hourselist: [],//房源列表
     typeList: [],//房型列表
     articleList: [],//文章列表
+    currentCity:'请选择位置',
+    currentCityId: '',
+    placeHolder: '',
+    firstloadMap:true,
     swiper: {
       // banner
       indicatorDotss: true, //是否显示面板指示点
@@ -17,7 +21,6 @@ Page({
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
-      currentCity: '',
       placeHolder:'请选择位置',
       showError:false,
     },
@@ -80,11 +83,20 @@ Page({
       },
       success: function (res) {
         let city = res.data.result.address_component.city;
-        that.setData({ currentCity: city, placeHolder: city });
-        app.globalData.localInfo = res.data.result.address_component
+        wx.setStorageSync('currentCityInfo', {
+          name: city,
+          id: '',//TODO
+          localCity: city,
+          localCityId:''
+        })
+        that.setData({
+          currentCity: city,
+          placeHolder: city,
+          currentCityId:''//TODO
+        });
       },
       fail: function () {
-        that.setData({ currentCity: "获取定位失败", placeHolder: '获取定位失败' });
+        that.setData({ currentCity: "获取定位失败" });
       },
     })
   },
@@ -114,12 +126,13 @@ Page({
   },
   onFocus: function (e) {
     this.setData({
-      placeHolder: ' '
+      currentCity: ' '
     })
   },
   onBlur: function (e) {
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
     this.setData({
-      placeHolder: this.data.currentCity
+      currentCity: this.data.placeHolder
     })
   },
   durationChange: function (e) {
@@ -241,5 +254,27 @@ Page({
     wx.navigateTo({
       url: '../houseType_page/houseType_page',
     })
-  }
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (e) {
+    console.log(e)
+    //首次进入页面，取定位数据，否则内存
+    if(this.data.firstloadMap){
+      this.setData({
+        firstloadMap: false
+      })
+      return
+    }
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
+    console.log(getCurrentCityInfo)
+    if (getCurrentCityInfo) {
+      this.setData({
+        currentCity: getCurrentCityInfo.name,
+        currentCityId: getCurrentCityInfo.id,
+        placeHolder: getCurrentCityInfo.name
+      })
+    }
+  },
 })

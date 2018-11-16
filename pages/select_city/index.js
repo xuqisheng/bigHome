@@ -183,13 +183,14 @@ Page({
     })
   },
   _normalizeCityList(cityData) {
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
     let map = {
       localCity:{
         title: '定位城市',
         id: 'dw',
         items: [{
-          name: this.data.currentCity,
-          id: 'dw'
+          name: getCurrentCityInfo.localCity || '',
+          id: getCurrentCityInfo.localCityId || ''
         }]
       },
       historyCity: { //在缓存去取历史记录城市,先写死
@@ -274,6 +275,13 @@ Page({
     // wx.setStorageSync('cityHistoryList', historyListData)
     // console.log(wx.getStorageSync('cityHistoryList'))
   },
+  goBack(e) {
+    let data = e.currentTarget.dataset
+    wx.setStorageSync('currentCityInfo', data)
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -285,7 +293,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    
   },
 
   /**
