@@ -1,0 +1,31 @@
+/* pages/noDate/index.wxss */
+.panel__nomore {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.panel__nomore image:nth-child(1) {
+  position: relative;
+  z-index: 100;
+  width: 277rpx;
+  height: 218rpx;
+  margin-top: 30%;
+}
+
+.panel__nomore image:nth-child(3) {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.none_text {
+  position: relative;
+  z-index: 100;
+  font-size: 28rpx;
+  color: #999;
+}

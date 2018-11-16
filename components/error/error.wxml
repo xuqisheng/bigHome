@@ -1,0 +1,6 @@
+<!--pages/noDate/index.wxml-->
+<view class='panel__nomore'>
+  <image src='../../images/yk_page/none.png'></image>
+  <view class='none_text'>网络错误！</view>
+  <image src='../../images/yk_page/none_bg.png'></image>
+</view>

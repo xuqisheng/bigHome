@@ -88,7 +88,9 @@ Page({
   onLoad: function(options) {
     //请求问题门店数据接口
     rq.wxGetData({
+
       url: "http://ptrzac.natappfree.cc/api/member/getHotels",
+
       data: {
       },
       method: "POST",

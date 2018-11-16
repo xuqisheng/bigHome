@@ -1,0 +1,6 @@
+<!--pages/noDate/index.wxml-->
+<view class='panel__nomore'>
+  <image src='../../images/yk_page/none.png'></image>
+  <view class='none_text'>还木有相关结果</view>
+  <image src='../../images/yk_page/none_bg.png'></image>
+</view>
