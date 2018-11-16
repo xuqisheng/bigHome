@@ -106,7 +106,9 @@
   font-size: 28rpx;
   color: #444   
 }
-
+.lazyloading{
+  margin-bottom: 20rpx
+}
 .title4{
   color: #00ADA9 
 }

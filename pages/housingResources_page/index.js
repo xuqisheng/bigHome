@@ -174,7 +174,7 @@ Page({
   getHotelList: function (p1, p2, s1, s2) {
     let that = this
     let obj = {
-      url: 'http://t8tvdn.natappfree.cc/api/hotel/getHotelList',
+      url: 'http://bgy.h-world.com/api/hotel/getHotelList',
       data: {
         pageNo: 0,
         pageSize: 10,
