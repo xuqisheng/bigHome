@@ -277,7 +277,11 @@ Page({
   },
   goBack(e) {
     let data = e.currentTarget.dataset
-    wx.setStorageSync('currentCityInfo', data)
+    let currentCityInfo = wx.getStorageSync('currentCityInfo')
+    wx.setStorageSync('currentCityInfo', {
+      ...currentCityInfo,
+      ...data
+    })
     wx.navigateBack({
       delta: 1
     })
