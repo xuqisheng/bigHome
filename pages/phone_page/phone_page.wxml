@@ -6,20 +6,18 @@
     <text class='phone'>手机快捷登录</text>
      
      <view class='please'>
-    <input type="text" maxlength='11'value="" bindinput ="mobileInput" placeholder="请输入手机号码" class="shuru"></input>
+    <input type="text" maxlength='11' value="" bindinput ="mobileInput" placeholder="请输入手机号码" class="shuru"></input>
      </view>
-    <view class='verification'>
-      <input placeholder="输入图形验证码" class="ipt"></input>
-      <text class='left' bindtap='huanyizhang'>{{code}}</text>
-    </view>
+    <!-- <view class='verification'>
+      <input placeholder="输入图形验证码" class="ipt" bindinput ="codeInput"></input>
+      <text class='left' bindtap='getCode'>{{code}}</text>
+    </view> -->
 
     <view class='phoneTest'>
-      <input placeholder='请输入手机验证码' class="ipts"></input>
-      <view class='getcode' wx:if="{{isGet == false}}" bindtap='getCode'>获取验证码</view>
+      <input placeholder='请输入手机验证码' maxlength='6' bindinput ="vCodeInput" class="ipts"></input>
+      <view class='getcode' wx:if="{{isGet == false}}" bindtap='getvCode'>获取验证码</view>
       <view class='getcode' wx:if="{{isGet == true}}">{{sec}}s后重新发送</view>
     </view>
-
-
     <view class="sign">
       <button bindtap='land'>登录</button>
       <p>*未注册的手机号将自动创建为碧桂园国际社区用户</p>

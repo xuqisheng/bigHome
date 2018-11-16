@@ -49,7 +49,6 @@ page{
 }
 
 .phoneText{
-  width:304rpx;
   height:39rpx;
   background: rgba(21,142,138,1);
   font-size: 24rpx;
@@ -58,6 +57,7 @@ page{
   line-height: 40rpx;
   text-align: center;
   border-radius: 10rpx;
+  padding: 0 20rpx;
 }
 .option{
   margin: -129rpx 29rpx 29rpx 29rpx;

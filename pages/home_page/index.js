@@ -275,8 +275,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    console.log(e)
-    //首次进入页面，取定位数据，否则内存
+    //首次进入页面，取定位数据，否则取内存
     if(this.data.firstloadMap){
       this.setData({
         firstloadMap: false
@@ -284,7 +283,6 @@ Page({
       return
     }
     let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
-    console.log(getCurrentCityInfo)
     if (getCurrentCityInfo) {
       this.setData({
         currentCity: getCurrentCityInfo.name,

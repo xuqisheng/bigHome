@@ -1,4 +1,7 @@
 // pages/phone_page/phone_page.js
+let {
+  wxGetData
+} = require("../../utils/require.js")
 Page({
 
   /**
@@ -7,7 +10,10 @@ Page({
   data: {
     isGet: false,
     sec: 59, //验证码倒计时
-    mobile: '' //获取手机号
+    mobile: '', //获取手机号
+    vCode: '',//获取验证码
+    code: '',
+    inputCode:''
   },
 
   /**
@@ -15,8 +21,7 @@ Page({
    */
   onLoad: function (options) {
     //刚进入页面随机先获取一个
-    this.createCode()
-
+    //this.getCode()
   },
 
   /**
@@ -71,7 +76,7 @@ Page({
     this.createCode()
   },
   // 随机验证码
-  createCode() {
+  getCode() {
     var code;
     //首先默认code为空字符串
     code = '';
@@ -92,13 +97,32 @@ Page({
     })
   },
   fork: function () {
-    wx.navigateTo({
-      url: '../land_page/index',
+    wx.navigateBack({
+      delta: 1
     })
   },
   //获取验证码倒计时
-  getCode() {
-    var self = this
+  getvCode() {
+    if (!this.checkPhone()) return
+    let self = this
+    wxGetData({
+      url: 'http://bgy.h-world.com/api/common/sendMessage',
+      data: {
+        mobile: self.data.mobile,
+        bizType: "dynamicLogin"
+      },
+      method: 'POST',
+      isMock:true
+    }).then((res)=>{
+      wx.showToast({
+        title: res.data.message
+      })
+      if(res.data.code == '1') return
+      self.reverseTime()
+    })
+  },
+  reverseTime() {
+    let self = this
     self.setData({
       isGet: true
     })
@@ -118,38 +142,71 @@ Page({
       })
     }, 1000)
   },
-
   //获取到用户输入的手机号
   mobileInput: function (e) {
     this.setData({
       mobile: e.detail.value
     })
   },
-  //登录
-  land:function(){
-    wx.navigateTo({
-      url: '../my_page/index',
-
+  vCodeInput: function (e) {
+    this.setData({
+      vCode: e.detail.value
+    })
+  },
+  codeInput: function (e) {
+    this.setData({
+      inputCode: e.detail.value
     })
   },
   //登录
-  land: function () {
+  land:function(){
+    if (!this.checkPhone()) return //检测手机号
+    if (!this.checkVcode()) return //检测验证码
+    //if (!this.checkCode()) return //检测图形验证码
+    wxGetData({
+      url: 'http://bgy.h-world.com/api/auth/dynamicLogin',
+      data: {
+        mobile: this.data.mobile,
+        validateCode: this.data.vCode
+      },
+      method: 'POST',
+      isMock: true
+    }).then((res) => {
+      if (res.data.code != '0') {
+        wx.hideLoading();
+        wx.showModal({
+          title: '提示',
+          content: '无法登录，请重试',
+          showCancel: false
+        })
+        return;
+      }
+      let userInfo = res.data.data.member
+      wx.setStorageSync('token', res.data.data.ccess_token)
+      wx.setStorageSync('userInfo', userInfo)
+      // 回到原来的页面
+      wx.navigateBack({
+        delta: 2
+      })
+    })
+  },
+  checkPhone() {
     var mobile = this.data.mobile;
-    var phonetel = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (mobile == '') {
       wx.showToast({
         title: '手机号不能为空',
+        icon: 'fail'
       })
-      return false
+      return false;
     } else if (mobile.length != 11) {
       wx.showToast({
         title: '号码长度有误！',
-        icon: 'success',
+        icon: 'fail',
         duration: 1500
       })
       return false;
     }
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    let myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (!myreg.test(mobile)) {
       wx.showToast({
         title: '手机号有误！',
@@ -158,6 +215,28 @@ Page({
       })
       return false;
     }
-    return true;
+    return true
   },
+  checkVcode() {
+    let vCode = this.data.vCode;
+    if (vCode == '' || vCode.length != 6){
+      wx.showToast({
+        title: '请输入正确的短信验证码',
+        icon: 'fail'
+      })
+      return false;
+    }
+    return true
+  },
+  checkCode() {
+    let code = this.data.code;
+    if (this.data.inputCode !== this.data.code) {
+      wx.showToast({
+        title: '请输入正确的图形验证码',
+        icon: 'fail'
+      })
+      return false;
+    }
+    return true
+  }
 })
