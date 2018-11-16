@@ -227,7 +227,6 @@ Page({
         that.setData({
           [st] : res.data.data
         })
-        console.log(res.data.data)
       } else {
         that.setData({
           showError: true
