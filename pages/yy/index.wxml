@@ -16,7 +16,7 @@
       <image src='../../images/yy_page/line.png' class='imgIine'></image>
       <image src='../../images/yy_page/go.png' class='imgGo' bindtap='showRt'></image>
     </view>
-    <view class='roomBox'>
+    <view class='roomBox'>  
       <text class='rt'>指定房间</text>
       <text class='tc' wx:if='{{!showRoomNameValue || showRoomNameValue1}}' bindtap='showR'>请选择房间</text>
       <text class='tn' wx:if='{{showRoomNameValue && !showRoomNameValue1}}' bindtap='showR'>{{roomName}}</text>

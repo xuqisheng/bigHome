@@ -3,7 +3,7 @@
 
   <view class='customerService'>
    
-   <view class="contact">
+   <view class="contact" bindtap='calling'>
     <image src='../../images/service_page/service.png'></image><text>客服电话</text>
     <p>400-0000-887</p>
     <p>(周一至周日: 8:30-17:30)</p>

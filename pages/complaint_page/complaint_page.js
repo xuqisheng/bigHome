@@ -4,123 +4,121 @@ var rq = require("../../utils/require.js")
 var that
 var list = []
 
+
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     min: 15, //最少字数
     max: 150, //最多字数 (根据自己需求改变) 
-    array: ['预约看房', '租客维修', '租客保洁'],
+    arrays: ['预约看房', '租客维修', '租客保洁'],
+    array: '预约看房',
+    arrayValue: [0],
     xuanZe: true,
     showRoomPicker: false, //设置data-picker默认为false,
     imgbox: '',
     len: "", //问题描述输入长度
-    multiIndex: [0, 0],
-    multiArray: [
-      // ['东莞市', '深圳市', "上海市"],
-      // ['碧家国际社区东莞店']
-    ],
-    // objectMultiArray: [{
-    //     "regid": "2",
-    //     "parid": "1",
-    //     "regname": "东莞市",
-    //     "regtype": "1",
-    //     "ageid": "0"
-    //   },
-    //   {
-    //     "regid": "3",
-    //     "parid": "1",
-    //     "regname": "深圳市",
-    //     "regtype": "1",
-    //     "ageid": "0"
-    //   },
-    //   {
-    //     "regid": "4",
-    //     "parid": "1",
-    //     "regname": "上海市",
-    //     "regtype": "1",
-    //     "ageid": "0"
-    //   },
-    //   {
-    //     "regid": "52",
-    //     "parid": "2",
-    //     "regname": "碧家国际社区东莞店",
-    //     "regtype": "2",
-    //     "ageid": "0"
-    //   },
-    //   {
-    //     "regid": "54",
-    //     "parid": "3",
-    //     "regname": "碧家国际社区深圳店",
-    //     "regtype": "2",
-    //     "ageid": "0"
-    //   },
-    //   {
-    //     "regid": "53",
-    //     "parid": "4",
-    //     "regname": "碧家国际社区上海店",
-    //     "regtype": "2",
-    //     "ageid": "0"
-    //   },
-    // ],
-
+    roomType: "", //初始问题门店数据为空
+    showRoomValue: 0,
+    showRoomValue1: 0,
+    showRoomTypePicker: 0,
+    roomTypes: [], //问题门店数据
+    roomTypeValue: [0],
+    city: [],
+    hotelName:[],
+    leiBie:""
+  },
+  //问题门店
+  chooseType: function (e) {
+    var value = e.detail.value
+    this.setData({
+      roomType: this.data.roomTypes[value[0]],
+      roomTypeValue: [value[0]]
+    });
+  },
+  closeRt: function(e) {
+    this.setData({
+      showRoomTypePicker: 0,
+      showRoomValue1: 0
+    })
+  },
+  confirmRT: function(e) {
+    this.setData({
+      showRoomTypePicker: 0,
+      showRoomValue: 1,
+      showRoomValue1: 0
+    })
+  },
+  showRt: function (e) {
+    this.setData({
+      showRoomTypePicker: 1,
+      showRoomValue1: 1
+    })
+  },
+  //问题类别
+  chooseName: function(e) {
+    var index = e.detail.value
+    this.setData({
+      array: this.data.arrays[index[0]],
+      arrayValue: [index[0]]
+    });
+  },
+  closeR: function (e) {
+    this.setData({
+      showRoomPicker: 0,
+      showRoomNameValue1: 0
+    })
+  },
+  confirmR: function (e) {
+    this.setData({
+      showRoomPicker: 0,
+      showRoomNameValue: 1,
+      showRoomNameValue1: 0
+    })
+  },
+  showR: function (e) {
+    this.setData({
+      showRoomPicker: 1,
+      showRoomNameValue1: 1,
+      xuanZe: false,
+      leiBie: e.currentTarget.dataset
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    that = this
-  },
-  wenti: function() {
+    //请求问题门店数据接口
     rq.wxGetData({
-      url: "http://ajfppq.natappfree.cc/api/member/addComplainXin",
+
+      url: "http://ptrzac.natappfree.cc/api/member/getHotels",
+
       data: {
-        complaintsType: "预约看房",
-        content: "内容",
-        hotelName: ""
       },
       method: "POST",
       isMock: true
     }).then(res => {
       if (res.statusCode == '200') {
-        console.log(res.data);
+        this.setData({
+          roomTypes: res.data
+        })
+        console.log(this.data.roomTypes)
+        let arr = []
+        for (let item of this.data.roomTypes) {
+          arr.push(item.city)
+        }
+        this.setData({
+          city: arr
+        })
+        let hotelName = []
+        for (let item of this.data.roomTypes) {
+          hotelName.push(item.hotelName)
+        }
+        this.setData({
+          hotelName: hotelName
+        })
       }
     })
   },
-  // bindMultiPickerChange: function(e) {
-  //   that.setData({
-  //     "multiIndex[0]": e.detail.value[0],
-  //     "multiIndex[1]": e.detail.value[1]
-  //   })
-  // },
-  // bindMultiPickerColumnChange: function(e) {
-  //   switch (e.detail.column) {
-  //     case 0:
-  //       list = []
-  //       for (var i = 0; i < that.data.objectMultiArray.length; i++) {
-  //         if (that.data.objectMultiArray[i].parid == that.data.objectMultiArray[e.detail.value].regid) {
-  //           list.push(that.data.objectMultiArray[i].regname)
-  //         }
-  //       }
-  //       that.setData({
-  //         "multiArray[1]": list,
-  //         "multiIndex[0]": e.detail.value,
-  //         "multiIndex[1]": 0
-  //       })
-  //   }
-  // },
-  // 删除照片 &&
-  imgDelete1: function(e) {
-    let that = this;
-    let index = e.currentTarget.dataset.deindex;
-    let imgbox = this.data.imgbox;
-    imgbox.splice(index, 1)
-    that.setData({
-      imgbox: imgbox
-    });
-  },
-  // 上传图片 &&&
+  // 上传图片
   addPic1: function(e) {
     var imgbox = this.data.imgbox;
     console.log(imgbox)
@@ -166,6 +164,16 @@ Page({
         });
       }
     })
+  },
+  // 删除照片
+  imgDelete1: function(e) {
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    let imgbox = this.data.imgbox;
+    imgbox.splice(index, 1)
+    that.setData({
+      imgbox: imgbox
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -242,13 +250,12 @@ Page({
     });
   },
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
       xuanZe: false
     })
   },
-  submits: function() {   
+  submits: function() {
     if (this.data.len < 15) {
       wx.showToast({
         title: '问题描述过短!',
@@ -256,5 +263,6 @@ Page({
         duration: 1500
       })
     }
+  
   }
 })

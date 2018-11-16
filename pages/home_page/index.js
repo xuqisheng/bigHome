@@ -1,30 +1,15 @@
+var rq = require("../../utils/require.js")
 var app = getApp();
-var that = this;
 let { wxGetData } = require("../../utils/require.js")
 Page({
   data: {
     addr: '',
+    adList: [],//广告列表
+    hourselist: [],//房源列表
+    typeList: [],//房型列表
+    articleList: [],//文章列表
     swiper: {
       // banner
-      imgUrls: [{
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      {
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/7.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      {
-        imgs: "cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png",
-        title1: "BIG+碧家深圳东门店",
-        title2: "现代居家一居室·A15室",
-        title3: "￥2900/月起",
-      },
-      ],
       indicatorDotss: true, //是否显示面板指示点
       autoplayss: true, //是否自动切换
       intervals: 3000, //自动切换时间间隔,3s
@@ -33,12 +18,21 @@ Page({
       showModal: false, //弹窗默认隐藏
       userName: null,
       currentCity: '',
-      placeHolder: '请选择位置'
+      placeHolder:'请选择位置',
+      showError:false,
     },
   },
   onLoad() {
     this.getLocation()
+    this.getData()
   },
+  getData:function(){
+    var that = this
+    let data1 = {
+      acId: 101
+    }
+      this.getDatas(data1, 'cms/getAdByPlace','adList')
+   },
   getSetting() { //获取授权信息
     let that = this
     wx.getSetting({
@@ -120,7 +114,7 @@ Page({
   },
   onFocus: function (e) {
     this.setData({
-      placeHolder: ''
+      placeHolder: ' '
     })
   },
   onBlur: function (e) {
@@ -158,8 +152,9 @@ Page({
   // 首页图片展示轮播箭头
   nextImg: function () {
     var swiper = this.data.swiper;
+    var adlist = this.data.adList;
     var current = swiper.current;
-    swiper.current = current > 0 ? current - 1 : swiper.imgUrls.length - 1;
+    swiper.current = current > 0 ? current - 1 : adlist.advertsList.length - 1;
     this.setData({
       swiper: swiper,
     })
@@ -167,8 +162,9 @@ Page({
   // 首页图片展示轮播箭头
   prevImg: function () {
     var swiper = this.data.swiper;
+    var adlist = this.data.adList;
     var current = swiper.current;
-    swiper.current = current < (swiper.imgUrls.length - 1) ? current + 1 : 0;
+    swiper.current = current < (adlist.advertsList.length - 1) ? current + 1 : 0;
     this.setData({
       swiper: swiper,
     })
@@ -191,6 +187,47 @@ Page({
     this.setData({
       showModal: false
     })
+  },
+  //请求数据
+  getDatas:function(data,url,store){
+    let that = this
+    let st = that.data[store]
+    let obj = {
+      url: 'http://ptrzac.natappfree.cc/api/'+url,
+      data:data,
+      method: 'POST',
+      isMock: true
+    }
+    rq.wxGetData(obj).then((res) => {
+      if (res.statusCode == 200) {
+        st.toLocaleString()(res.data.data)
+        that.setData({
+          st
+        })
+        console.log(that.data.adList)
+      } else {
+        that.setData({
+          showError: true
+        })
+        wx.showToast({
+          title: '加载失败！',
+          mask: true,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    }).catch((errMsg) => {
+      that.setData({
+        showError: true
+      })
+      wx.showToast({
+        title: '加载失败！',
+        mask: true,
+        icon: 'none',
+        duration: 1000
+      })
+      console.log(errMsg);
+    });
   },
   //更多房源
   housingResources: function () {

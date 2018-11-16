@@ -11,7 +11,6 @@
     "pages/index/index",
     "pages/integral_page/integral_page",
     "pages/cardBag_page/cardBag_page",
-    "pages/service_page/service_page",
     "pages/logs/logs",
     "pages/yk/index",
     "pages/yy/index",
@@ -24,7 +23,7 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#00ADA9",
     "navigationBarTitleText": "WeChat",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#6e6d6b",

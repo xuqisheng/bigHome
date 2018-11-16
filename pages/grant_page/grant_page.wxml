@@ -1,7 +1,86 @@
-<view>
+<!--pages/complaint_page/complaint_page.wxml-->
+<view class='complaint'>
 
-<p style="display:block" bindtap="wenti">123</p>
+  <!-- 问题类别 -->
+  <view class='problem'>
 
+    <view class='category'>
+      <p>
+        <span>*</span> 问题类别:</p>
+      <view class='check'>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <p wx:if="{{xuanZe}}">请选择</p>
+          <p>{{array[index]}}</p>
+          <image src="../../images/complaint_page/11.png"></image>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class='describe'>
+      <p>
+        <span>*</span> 问题描述:</p>
+      <textarea class="area" placeholder="请至少填写15字的问题描述" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs">
+        <text class="currentWordNumber">({{currentWordNumber|0}}/{{max}})</text>
+      </textarea>
+    </view>
+  </view>
+
+  <!-- 上传图片 -->
+  <view class='upload'>
+    <p>上传图片:</p>
+    <view class="xiang" bindtap='addPic1' wx:if="{{imgbox.length<6}}">
+      <image src='../../images/complaint_page/xiang.png'></image>
+      <text>单张不超过3M</text>
+      <p>(最多6张)</p>
+    </view>
+    <block wx:key="imgbox" wx:for="{{imgbox}}" class="blocks">
+      <image class="weui-uploader__img" src='{{item}}' data-index='{{index}}' class='img'>
+        <p bindtap='imgDelete1' class="iconfont icon-close-circle close"></p>
+      </image>
+    </block>
+
+  </view>
+
+  <!-- 选择问题门店 -->
+  <view class='store'>
+    <p>选择问题门店:</p>
+    <view class='address'>
+
+      <!-- 问题门店 -->
+      <view class='roomBox'>
+        <text class='rt'>问题门店</text>
+        <text class='tc' wx:if='{{!showRoomValue || showRoomValue1}}' bindtap='showRt'>选择问题门店</text>
+        <text class='tn' wx:if='{{showRoomValue && !showRoomValue1}}' bindtap='showRt'>{{roomType}}</text>
+      </view>
+
+      <image src="../../images/complaint_page/11.png"></image>
+    </view>
+  </view>
+
+  <view style='width:100%;height:20px;background:#eee'></view>
+
+  <!-- 提交 -->
+  <view class="Submission">
+    <text bindtap='submits'>提交</text>
+  </view>
+
+  <!-- 问题门店弹出层 -->
+  <view class='data_picker' wx:if='{{showRoomTypePicker}}'>
+    <view class='cBox'>
+      <view class='cancle' hover-class='hCancle' bindtap='closeRt'>取消</view>
+      <text class='cText'>选择问题门店</text>
+      <view class='cSure' hover-class='hCancle' bindtap='confirmRT'>确定</view>
+    </view>
+    <picker-view indicator-class="chosenClass" value="{{roomTypeValue}}" bindchange="chooseType" class='dpick'>
+      <picker-view-column>
+        <view wx:for="{{roomTypes}}" style="line-height: 50px">{{item.city}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{roomTypes}}" style="line-height: 50px">{{item.hotelName}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
 
 
 </view>

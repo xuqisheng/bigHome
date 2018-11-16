@@ -8,6 +8,7 @@
   background: #eee;
 }
 
+
 .problem {
   width: 100%;
   height: 244px;
@@ -20,6 +21,7 @@
   background: #fff;
   line-height: 60px;
   margin: auto;
+  position: relative;
 }
 
 .category p {
@@ -30,6 +32,20 @@
 
 .category span {
   color: red;
+}
+
+.category image {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: 9px;
+  height: 15px;
+}
+
+.xuanze{
+  position:absolute;
+  right: 6%;
+  top: 0;
 }
 
 .check {
@@ -171,12 +187,18 @@
   display: block;
 }
 
+.address{
+  width: 100%;
+  height: 48px;
+  position: relative;
+}
+
 .address image {
+  position: absolute;
+  right: 4%;
+  top: 36%;
   width: 9px;
   height: 15px;
-  float: right;
-  padding-right: 28px;
-  margin-top: -16px;
 }
 
 .pick {
@@ -208,14 +230,107 @@
   position: relative;
 }
 
-.wen{
-    position: absolute;
-    left: 0;
-    top: 0;
+.wen {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .close {
   position: absolute;
   top: -16%;
   right: 0%;
+}
+
+.roomBox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+.roomBoxs{
+  flex-direction: row;
+  float: right;
+  margin-top: -12px;
+  margin-right: 14px;
+}
+
+
+.ti {
+  position: absolute;
+  color: #000;
+  font-size: 28rpx;
+  left: 228rpx;
+  margin-top: -3rpx;
+}
+
+.tn {
+  margin-left: 28px;
+  font-size: 14px;
+  float: left;
+  margin-top: 14px;
+}
+
+.data_picker {
+  position: fixed;
+  z-index:1000;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 600rpx;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid rgb(165, 147, 135);
+  /* display: none; */
+}
+
+.cBox {
+  width: 100%;
+  height: 99rpx;
+  border-bottom: 1px solid rgb(165, 147, 135);
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cancle {
+  position: absolute;
+  color: #444;
+  font-size: 32rpx;
+  left: 25rpx;
+  background: #f1f1f1;
+  border: none;
+}
+
+.hCancle {
+  opacity: 0.7;
+}
+
+.cText {
+  color: #999;
+  font-size: 28rpx;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.cSure {
+  position: absolute;
+  right: 25rpx;
+  color: #00ada9;
+  font-size: 32rpx;
+}
+
+.dpick {
+  width: 80%;
+  height: 300rpx;
+  margin-left: 50%;
+  transform: translate(-51%, 0);
+  color: #00ada9;
+  font-size: 30rpx;
 }
