@@ -80,7 +80,7 @@ Page({
     WXP.login().then(res => {
       console.log(this.data.phoneInfo)
       wx.request({
-        url: 'http://ee5euw.natappfree.cc/api/weixin/xcxLogin', //登录接
+        url: 'http://bgy.h-world.com/api/weixin/xcxLogin', //登录接
         data: {
           code: res.code,
           encryptedData: this.data.phoneInfo.encryptedData,
@@ -116,7 +116,6 @@ Page({
         encryptedData: phoneInfo.encryptedData,
         iv: phoneInfo.iv
       }
-      console.log(prams)
       wxGetData({
         url: 'https://api.it120.cc/shopmall/user/wxapp/register/complex',
         data: prams, // 设置请求的 参数
