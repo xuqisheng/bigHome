@@ -108,8 +108,8 @@
   <!-- 服务展示图片 -->
   <view class='dispalyimg'>
       <swiper indicator-dots="{{swiper.indicatorDotss}}" autoplay="{{swiper.autoplayss}}" interval="{{swiper.intervals}}" vertical="{{swiper.isVertical}}" duration="{{swiper.durations}}" circular='false' class='dispalyimgs'>
-        <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItems" wx:key="index">
-          <image src="{{item.imgs}}" />
+        <swiper-item  wx:for="{{serverList}}" class="swiperItems" wx:key="index">
+          <image src="{{item}}" />
         </swiper-item>
       </swiper>
   </view>
