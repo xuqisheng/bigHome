@@ -128,8 +128,9 @@ Page({
   },
   getCityData() {
     wxGetData({
-      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/city',
-      isMock: true
+      url: 'http://bgy.h-world.com/api/common/getOpenedCity',
+      isMock: true,
+      method: "POST"
     }).then(res => {
       let cityData = res.data.data.citys
       let cityMap = this._normalizeCityList(cityData)
@@ -178,20 +179,29 @@ Page({
     })
   },
   _normalizeCityList(cityData) {
-    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo')
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo') || ''
+    let historyListData = wx.getStorageSync('cityHistoryList') || ''
+    let currentCityArr = [{
+      name: getCurrentCityInfo.localCity || '',
+      id: getCurrentCityInfo.localCityId || ''
+    }]
+    let historyCityArr = []
+    if (historyListData === '' || historyListData.length === 1) {
+      historyCityArr = currentCityArr
+      wx.setStorageSync('cityHistoryList', historyCityArr)
+    } else {
+      historyCityArr = historyListData
+    }
     let map = {
       localCity:{
         title: '定位城市',
         id: 'dw',
-        items: [{
-          name: getCurrentCityInfo.localCity || '',
-          id: getCurrentCityInfo.localCityId || ''
-        }]
+        items: currentCityArr
       },
       historyCity: { //在缓存去取历史记录城市,先写死
         title: '历史记录',
         id:'ls',
-        items: this._createrMapHistoryList('dw')
+        items: historyCityArr
       }
     }
 
@@ -228,50 +238,6 @@ Page({
     })
     return (local.concat(history)).concat(ret)
   },
-  _createrMapHistoryList() {
-    let arr = []
-    let historyListData = wx.getStorageSync('cityHistoryList')
-    let currentCityInfo = wx.getStorageSync('currentCityInfo').localCity
-    if (!historyListData) {
-      arr = [{
-        name: currentCityInfo.localCity,
-        id: currentCityInfo.localCityId
-      }]
-      wx.setStorageSync('cityHistoryList', arr)
-    } else {
-      arr = historyListData
-    }
-    return arr
-
-    // wx.setStorageSync('cityHistoryList', [{
-    //   name: '北京市',
-    //   id: 'dw'
-    // }, {
-    //     name: '北京市',
-    //     id: 'dw'
-    //   }])
-    // let historyListData = wx.getStorageSync('cityHistoryList')
-    // let data = []
-    // let insertArray = (arr, val, compare, maxLen)=>{
-    //   const index = arr.findIndex(compare)
-    //   if (index === 0) {
-    //     return
-    //   }
-    //   if (index > 0) {
-    //     arr.splice(index, 1)
-    //   }
-    //   arr.unshift(val)
-    //   if (maxLen && arr.length > maxLen) {
-    //     arr.pop()
-    //   }
-    // }
-    // insertArray(historyListData, queryId, (item) => {
-    //   return item.id === queryId
-    // }, 6)
-    // console.log(historyListData)
-    // wx.setStorageSync('cityHistoryList', historyListData)
-    // console.log(wx.getStorageSync('cityHistoryList'))
-  },
   goBack(e) {
     let data = e.currentTarget.dataset
     this.setCurrentCityInfo(data)
@@ -297,7 +263,7 @@ Page({
       item.id === val.id
     )
     if (index === 0) return
-    if(index > 1) {
+    if(index >= 1) {
       arr.splice(index,1)
     }
     arr.unshift(val)

@@ -42,7 +42,6 @@ Page({
     let userInfo = wx.getStorageSync('userInfo')
     let userName = userInfo.uname ? userInfo.uname : userInfo.mobile
     userName = userName ? `${userName.substr(0, 3)} **** ${userName.substr(-4, 4)}` : ''
-    console.log()
     this.setData({
       userInfo,
       userName

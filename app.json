@@ -5,7 +5,7 @@
     "pages/complaint_page/complaint_page",
     "pages/grant_page/grant_page",
     "pages/phone_page/phone_page",
-    "pages/houseType_page/houseType_page",
+    "pages/houseType_page/index",
     "pages/land_page/index",
     "pages/my_page/index",
     "pages/index/index",
