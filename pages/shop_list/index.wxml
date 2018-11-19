@@ -1,25 +1,33 @@
 <!--pages/shop-list/index.wxml-->
 <view class="mapContainer">
-  <map id="myMap" longitude="121.473701" latitude="31.230416" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
-    <cover-view class="currentCity" bindtap="toSelectCity">{{currentCity}}</cover-view>
-    <cover-view class="controls">
-      <cover-view class="infocontainer">
-        <cover-view class="infoTop">
-         <cover-image class="image" src="cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png"></cover-image>
-          <!-- <cover-image class="image" src="{{hotelInfoMap.hotelImgSrc}}"></cover-image> -->
-        </cover-view>
-        <cover-view class="infoMiddle">
-          <cover-view class="shopName">{{hotelInfoMap.hotelName}}</cover-view>
-          <cover-view class="shopInfo">
-            <cover-view class="bookStatus" wx:if="{{hotelInfoMap.hotelBookStatus}}">可签约</cover-view>
-            <cover-view class="bookStatus" wx:else="{{hotelInfoMap.hotelBookStatus}}">已签约</cover-view>
-            <cover-view class="rent">{{hotelInfoMap.hotelRent}}</cover-view>
-          </cover-view>
-        </cover-view>
-        <cover-view class="infobottom">
-      <cover-view class="btn" wx:for="{{hotelInfoMap.hotelInfo}}" wx:key="index">{{item}}</cover-view>
-    </cover-view>
-      </cover-view>
-    </cover-view>
-  </map>
+  <view class="mapBox">
+    <map id="myMap" latitude="{{centerX}}" longitude="{{centerY}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
+      <cover-view class="currentCity" bindtap="toSelectCity">{{currentCity}}</cover-view>
+    </map>
+  </view>
+
+  <view class="shopBox">
+    <swiper class='swiper' bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperIndex}}">
+      <block wx:for="{{hotelInfoMap}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="infocontainer">
+            <view class="infoTop">
+              <!-- <cover-image class="image" src="cloud://dev-7fef59.6465-dev-7fef59/home_page/1.png"></cover-image> -->
+              <image class="image" src="{{item.hotelImgSrc}}"/>
+            </view>
+            <view class="infoMiddle">
+              <view class="shopName">{{item.hotelName}}</view>
+              <view class="shopInfo">
+                <view class="bookStatus">{{item.hotelType}}</view>
+                <view class="rent">{{item.hotelRent}}</view>
+              </view>
+            </view>
+            <view class="infobottom">
+              <view class="btn" wx:for="{{item.hotelInfo}}" wx:key="index">{{item}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 </view>

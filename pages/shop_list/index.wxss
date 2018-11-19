@@ -6,12 +6,31 @@
   width: 100%;
   display:flex;
   flex-direction:column;
-  align-items:center;
-  justify-content: center;
+  align-items:flex-start;
+}
+.mapContainer .mapBox {
+  width: 100%;
+  height:691rpx;
+  position:absolute;
+  top:0;
+  bottom:516rpx;
 }
 .mapContainer #myMap {
   width: 100%;
   height:100%;
+}
+.mapContainer .shopBox{
+  width: 725rpx;
+  height:516rpx;
+  position:absolute;
+  top:691rpx;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.swiper{
+  height:100%;
+  width:100%;
 }
 .mapContainer #myMap .currentCity{
   background:#fff;

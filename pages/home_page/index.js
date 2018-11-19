@@ -48,6 +48,7 @@ let imagesHeight =
           pageSize: 4,
           recommendType: "A_INDEX_FOOT"
         }
+
       this.getDatas(data1, 'cms/getAdByPlace', 'adList')
       this.getDatas(data3, 'hotel/getRoomTypeRecommendList', 'typeList')
       this.getDatas(data2, 'hotel/getRoomRecommendList', 'houselist')

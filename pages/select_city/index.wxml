@@ -13,7 +13,7 @@
     </view>
     </view>
   </view>
-  <view class="list-shortcut" bindtouchstart="onShortcutTouchStart" bindtouchmove="onShortcutTouchMove" bindtouchend="onShortcutTouchEnd">
+  <view class="list-shortcut" catchtouchstart="onShortcutTouchStart" catchtouchmove="onShortcutTouchMove" catchtouchend="onShortcutTouchEnd">
     <view class="item" wx:for="{{shortcutList}}" wx:key="index" id="{{item.id}}">
       {{item.title}}
     </view>
