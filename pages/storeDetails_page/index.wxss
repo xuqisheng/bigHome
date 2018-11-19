@@ -5,23 +5,24 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  background: #fff;
+  padding-bottom: 98rpx
 }
 
-.details {
+.block {
   width: 100%;
-  height: auto;
-  background: #fff;
+  border-bottom: 12rpx solid #eee
 }
 
 .pic {
   width: 100%;
-  height: 206px;
+  height: 412rpx;
   position: relative;
 }
 
 .read_swiper {
   width: 100%;
-  height: 206px;
+  height: 412rpx;
 }
 
 swiper-item image {
@@ -30,116 +31,102 @@ swiper-item image {
 }
 
 .pic text {
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
+  background:#aaa; 
+  opacity: .6;
+  font-size: 22rpx;
   color: #fff;
   position: absolute;
-  right: 16px;
-  bottom: 8px;
+  right: 31rpx;
+  bottom: 13rpx;
   text-align: center;
-  line-height: 24px;
+  line-height: 48rpx;
 }
 
 .miao {
-  margin-left: 18px;
-  margin-top: 10px;
-}
-
-.miao p {
-  display: block;
+  margin:27rpx 36rpx 0;
+  display: flex;
+  flex-direction: column
 }
 
 .miao p:nth-child(1) {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #444;
   font-weight: bold;
 }
 
 .miao p:nth-child(2) {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #444;
 }
-
 .miao span {
-  width: 64px;
-  height: 24px;
-  line-height: 24px;
+  width: 127rpx;
+  height: 46rpx;
+  line-height: 46rpx;
   text-align: center;
   border-radius: 4px;
   display: inline-block;
-  font-size: 12px;
+  font-size: 24rpx;
   background: #00ada9;
-  color: #fff;
+  color: #fff; 
+}
+.tags > span{
+  margin-left: 10rpx
+}
+.tags > span:nth-of-type(5n+1){
+  margin-left: 0
+}
+.cuntlne {
+  width: 100%;
+  margin: 35rpx auto 28rpx;
+  border-top: 1px solid #eee;
 }
 
-.miao text {
-  width: 90%;
-  border: 1px dashed #000;
-  display: block;
-  margin-top: 14px;
-}
-
-.lu image {
-  width: 20px;
-  height: 20px;
+.local image {
+  width: 38rpx;
+  height: 38rpx;
   vertical-align: middle;
 }
-
-.xian {
-  width: 100%;
-  height: 8px;
-  background: #eee;
-}
-
-.lu {
-  width: 100%;
-  height: 30px;
-  font-size: 14px;
-  display: block;
+.local text{
+  font-size: 30rpx;
+  vertical-align: middle;
   color: #999;
-  vertical-align: middle;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-left: 6px;
 }
-
-.jieShao {
-  width: 90%;
-  margin: auto;
-  margin-top: 14px;
+.local {
+  width: 100%;
+  margin-bottom: 34rpx
 }
-
 .gongYu {
-  height: 80px;
   border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column
 }
-
-.gongYu p {
-  display: block;
-}
-
 .gongYu p:nth-child(1) {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #444;
   font-weight: bold;
 }
 
 .gongYu p:nth-child(2) {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #999;
-  margin-top: 14px;
+  margin-top: 40rpx;
+  padding-bottom: 38rpx
 }
 
 .guanJia {
-  height: 162px;
-  margin-top: 20px;
+  margin-top: 41rpx;
+  padding-bottom: 36rpx;
   border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column
 }
 
 .guanJia p:nth-child(1) {
-  font-size: 16px;
+  font-size: 32rpx;
   display: block;
   color: #444;
   font-weight: bold;
@@ -148,71 +135,78 @@ swiper-item image {
 
 .guanJia p:nth-child(2) {
   display: block;
-  font-size: 14px;
+  font-size: 28rpx;
   float: right;
-  width: 66px;
-  height: 24px;
+  width: 132rpx;
+  height: 46rpx;
   border: 1px solid #00ada9;
   text-align: center;
-  line-height: 24px;
+  line-height: 46rpx;
   color: #00ada9;
+  border-radius: 3px
 }
 
-.guanJia .txts {
-  width: 90%;
-  font-size: 14px;
-  text-indent: 25px;
+.guanJia text{
+  font-size: 28rpx;
+  letter-spacing:1px; 
+  margin-top: 43rpx;
+  color: #999;
 }
 
 .sheShi {
-  height: auto;
-  margin-top: 20px;
+  padding:42rpx 0 0;
 }
 
 .sheShi p {
   display: block;
-  width: 100%;
-  font-size: 16px;
+  font-size: 32rpx;
   color: #444;
   font-weight: bold;
+  margin-bottom: 64rpx
 }
 
-.sheShi dl {
-  float: left;
-  text-align: center;
-  width: 18%;
-  margin-top: 30px;
+.service_group {
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.sheShi dl dt image {
-  width: 24px;
-  height: 24px;
-  clear: both;
+.all{
+    height: 156rpx;
+    overflow: hidden
 }
-
-.sheShi dl dd {
-  font-size: 11px;
+.service_group li{
+  width: 20%;
+  padding-bottom: 46rpx
+}
+.li_img{
+  box-sizing: border-box;
+  display: block
+}
+.service_group li image {
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0 auto;
+  display: block
+}
+.service_group li text {
+  font-size: 24rpx;
   color: #444;
-  display: block;
-}
-
-.more {
-  display: block;
-  width: 90%;
-  height: 11px;
-  clear: both;
-  font-size: 10px;
-  color: #444;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin: 25rpx auto 0;
+  display: block
+}
+.introduction{
+  margin: 40rpx 34rpx 20rpx
+}
+.more_service {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  text-align: center;
+  padding-bottom: 20rpx;
 }
 
 .housess {
-  width: 90%;
-  height: auto;
-  margin: auto;
-  margin-top: 14px;
+  margin: 40rpx 24rpx 20rpx 34rpx;
 }
 
 .housess p {
@@ -220,45 +214,60 @@ swiper-item image {
   color: #444;
   font-weight: bold;
 }
-
-.housess dl {
-  display: block;
-  width: 90%;
-  margin-top: 20px;
+.housess ul li{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30rpx
 }
-
-.housess dl dt image {
-  width: 160px;
-  height: 126px;
-  float: left;
+.housess ul li image{
+  width: 332rpx;
+  height: 254rpx;
+  margin-right: 32rpx
 }
-
-.housess dl dd {
-  display: block;
+.info{
+  display: flex;
+  flex-direction: column;
 }
-
+.info text:nth-child(1){
+  font-size: 32rpx;
+  color: #444;
+  margin-top: 24rpx
+}
+.info text:nth-child(2){
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 28rpx
+}
+.info text:nth-child(3){
+  font-size: 34rpx;
+  color: #00ADA9;
+  margin-top: 51rpx
+}
 .address {
-  width: 90%;
-  margin: auto;
-  margin-top: 20px;
+  margin:20rpx 34rpx 10rpx
 }
 
 .address p:nth-child(1) {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #444;
   font-weight: bold;
 }
 
 .men {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #444;
-  margin-top: 8px;
-  margin-left: 10px;
+  margin-top: 20rpx;
+  margin-left: 16rpx;
 }
 
-.men image {
-  width: 15px;
-  height: 13px;
+.phone{
+  width: 30rpx;
+  height: 25rpx;
+}
+.localimg {
+  width: 25rpx;
+  height: 35rpx;
+  margin-left: 2rpx
 }
 
 .men span {
@@ -266,61 +275,65 @@ swiper-item image {
 }
 
 .men p {
-  padding-left: 10px;
+  padding-left: 20rpx;
 }
-
+.men:nth-child(3) p{
+  margin-left: 2rpx;
+}
+.men:nth-child(3) span{
+  color: #444
+}
 .maps {
-  width: 90%;
-  height: 178px;
-  border: 1px solid #000;
+  width: 100%;
+  height: 356rpx;
   margin: auto;
   margin-top: 20px;
 }
 
 .mores {
   display: block;
-  width: 90%;
-  height: 11px;
-  clear: both;
-  font-size: 10px;
+  font-size: 24rpx;
   color: #d1d1d1;
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
-
 
 .btns{
   width: 100%;
-  height: 50px;
+  height: 98rpx;
   display: flex;
+  position: fixed;
+  bottom: 0rpx;
+  z-index: 10
 }
 
 .yuyue{
-   width: 40%;
-   height: 50px;
+   width: 32%;
+   height: 98rpx;
    text-align: center;
-   line-height: 50px;
+   line-height: 98rpx;
+   background: #fff;
+   border-top: 1px solid #eee
 }
-
 .yuyue image{
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   vertical-align: middle;
 }
 
 .yuyue span{
-  font-size:14px;
+  font-size:28rpx;
   color: #00ADA9;
   vertical-align: middle;
 }
 
 .kan{
-  width: 60%;
-  height: 50px;
+  width: 68%;
+  height: 98rpx;
   background: #00ADA9;
   text-align: center;
-  line-height: 50px;
+  line-height: 98rpx;
   color: #fff;
-  font-size: 14px;
+  font-size: 28rpx;
 }
