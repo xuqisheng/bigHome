@@ -1,32 +1,26 @@
 var rq = require("../../utils/require.js")
 var app = getApp();
 let { wxGetData } = require("../../utils/require.js")
+let imagesHeight = 
+
 Page({
   data: {
+    defaultImg: ['../../images/loading.png',
+    '../../images/loading.png'],
     addr: '',
     adList: [],//广告列表
     houselist: [],//房源列表
     typeList: [],//房型列表
-    serverList: ['',
-                 '',
-                 '',
-                 ''],//服务列表
+    serverList: [],//服务列表
     currentCity:'请选择位置',
     currentCityId: '',
     placeHolder: '',
     firstloadMap:true,
-    swiper: {
-      // banner
-      indicatorDotss: true, //是否显示面板指示点
-      autoplayss: true, //是否自动切换
-      intervals: 3000, //自动切换时间间隔,3s
-      durations: 1000, //  滑动动画时长1s
       current: 0,
       showModal: false, //弹窗默认隐藏
       userName: null,
       placeHolder:'请选择位置',
       showError:false,
-    },
   },
   onLoad() {
     this.getLocation()
@@ -49,8 +43,8 @@ Page({
       recommendType: "A_INDEX_FOOT"
     }
     this.getDatas(data1, 'cms/getAdByPlace','adList')
-    this.getDatas(data2, 'hotel/getRoomRecommendList', 'houselist')
     this.getDatas(data3, 'hotel/getRoomTypeRecommendList', 'typeList')
+    this.getDatas(data2, 'hotel/getRoomRecommendList', 'houselist')
     // this.getDatas(data4, 'cms/getHelpCenterRecommendList', 'serverList')
    },
   getSetting() { //获取授权信息
@@ -249,7 +243,6 @@ Page({
         that.setData({
           [st] : res.data.data
         })
-        console.log(res.data.data)
       } else {
         that.setData({
           showError: true
@@ -307,4 +300,17 @@ Page({
       })
     }
   },
+  jumoToht:function(){
+    console.log(1)
+    wx.navigateTo({
+      url: '../houseType_page/index',
+    })
+  },
+  jumoTohr: function () {
+    console.log(2)
+    wx.navigateTo({
+      url: '../housingResources_page/index',
+    })
+  },
+
 })

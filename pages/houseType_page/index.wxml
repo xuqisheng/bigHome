@@ -1,2 +1,50 @@
-<!--pages/houseType_page/index.wxml-->
-<text>pages/houseType_page/index.wxml</text>
+<!--pages/houseType_page/houseType_page.wxml-->
+<view class='houseType'>
+
+  <view class='moneySort'>
+    <!-- 价格 -->
+    <view class="nav-son" bindtap="money">
+      <view style='position: relative'>价格<span class="jianShang" wx:if="{{shang}}"></span><span class="jianXia" wx:if="{{xia}}"></span></view>
+    </view>
+    <!-- 排序 -->
+    <view class="nav-son" bindtap="sort">
+      <view style='position: relative'>排序<span class="jianShang" wx:if="{{shangs}}"></span><span class="jianXia" wx:if="{{xias}}"></span></view>
+    </view>
+  </view>
+
+  <!-- 下拉选择框 -->
+  <view class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
+    <view wx:for="{{content}}">
+      <text class='txt'>{{item}}</text>
+      <span class="check"></span>
+    </view>
+  </view>
+
+  <view class='bgs' wx:if="{{hidden}}"></view>
+
+  <!-- 下面列表 -->
+  <view class='xiangqing'>
+    <view class='xiangqing_img'>
+      <image src='../../images/houseType_page/1.png'></image>
+    </view>
+    <view class='xiangqing_info'>
+      <text class='title'>舒适一居室</text>
+      <view class='house'>1房1厨1卫 | 45m²</view>
+      <view class='locats'>
+      <image src='../../images/houseType_page/dingWei.png'></image>
+      <text>广东省佛山市港隆国际盗宝隆国际盗宝隆国际盗宝</text>
+      </view>
+      <view class='prix'>
+        <text>环境优美</text>
+        <text>步入式衣柜</text>
+        <text>采光充足</text>
+      </view>
+      <view class='moneys'>
+       <text>￥2090元/月起</text>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>
