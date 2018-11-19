@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/storeDetails_page/index",
     "pages/home_page/index",
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
@@ -15,7 +16,7 @@
     "pages/yk/index",
     "pages/yy/index",
     "pages/yy_result/index",
-    "pages/storeDetails_page/storeDetails_page",
+  
     "pages/shop_list/index",
     "pages/select_city/index"
   ],
