@@ -39,15 +39,15 @@ Page({
         checked: false
       }
     ],
-    pxopen: false,
-    pxshow: false,
-    pxopens: false,
     pxshows: false,
-    active: false,
+    pxshow: false,
+    pxopen: '',
+    pxopens: '',
+    active: true,
     hidden: false,
-    shang: false,
+    shang: true,
     xia: false,
-    shangs: false,
+    shangs: true,
     xias: false,
     hotelListData: [],
     showAll:false ,//等数据渲染完毕再显示dom 
@@ -116,7 +116,7 @@ Page({
   money: function(e) {
     if (this.data.pxopen) {
       this.setData({
-        pxopen: false,
+        pxopen: 'slidup',
         pxshow: false,
         active: true,
         hidden: false,
@@ -127,7 +127,7 @@ Page({
       })
     } else {
       this.setData({
-        pxopen: true,
+        pxopen: 'slidown',
         pxshow: false,
         pxopens: false,
         pxshows: true,
@@ -142,7 +142,7 @@ Page({
   sort: function(e) {
     if (this.data.pxopens) {
       this.setData({
-        pxopens: false,
+        pxopens: 'slidup',
         pxshows: false,
         active: true,
         hidden: false,
@@ -153,7 +153,7 @@ Page({
       })
     } else {
       this.setData({
-        pxopens: true,
+        pxopens: 'slidown',
         pxshows: false,
         pxopen: false,
         pxshow: true,

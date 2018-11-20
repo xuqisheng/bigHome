@@ -23,7 +23,7 @@
 
   </view>
   <!-- 下拉选择框 -->
-  <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
+  <radio-group class="temp {{pxshow ? 'disappear':''}} {{pxopen}}">
     <label class="radio" wx:for="{{money}}" wx:key='item' bindtap='money_sort'  data-index='{{index}}'>
       <text>{{item.name}}</text>
       <radio checked = "{{item.checked}}">
@@ -31,7 +31,7 @@
     </label>
   </radio-group>
 
-  <radio-group class="temp {{pxopens ? 'slidown' : 'slidup'}} {{pxshows ? 'disappear':''}}">
+  <radio-group class="temp {{pxshows ? 'disappear':''}} {{pxopens}}">
     <label class="radio" wx:for="{{sort}}" wx:key='item' bindtap='type_sort' data-index='{{index}}'>
       <text>{{item.name}}</text>
       <radio checked = "{{item.checked}}">
