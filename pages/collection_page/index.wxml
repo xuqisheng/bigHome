@@ -1,6 +1,7 @@
 <!--pages/collection_page/index.wxml-->
 <view class="collection">
-  <block wx:for="{{houseData}}" wx:key="{{index}}">
+
+  <view wx:if="{{houseData.length}}" wx:for="{{houseData}}" wx:key="{{index}}">
     <!-- 房间 -->
     <view class='rooms'>
         <view class='roomsName'>
@@ -33,7 +34,11 @@
         </view>
 
     </view>
-  </block>
+  </view>
+  <view class="nodata" wx:if="{{!houseData.length}}">
+    <image class="nodata-image" src="../../images/collection_page/bg.png"></image>
+    <text class="nodata-text">暂无数据</text>
+  </view>
     <!-- 公寓 -->
     <!-- <view class='apartment'>
       <view class='roomsName'>

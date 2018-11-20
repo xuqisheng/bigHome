@@ -98,18 +98,7 @@ let imagesHeight =
           'Content-Type': 'application/json'
         },
         success: function(res) {
-          let city = res.data.result.address_component.city;
-          wx.setStorageSync('currentCityInfo', {
-            name: city,
-            id: '', //TODO
-            localCity: city,
-            localCityId: ''
-          })
-          that.setData({
-            currentCity: city,
-            placeHolder: city,
-            currentCityId: '' //TODO
-          });
+          that.getOpenedCity(res)
         },
         fail: function() {
           that.setData({
@@ -117,6 +106,33 @@ let imagesHeight =
           });
         },
       })
+    },
+    getOpenedCity(localInfo) {
+      let that = this
+      let obj = {
+        url: 'http://bgy.h-world.com/api/common/getOpenedCity',
+        isMock: true,
+        method: "POST"
+      }
+      rq.wxGetData(obj).then(res => {
+        let city = localInfo.data.result.address_component.city;
+        let cityId = that._getCityId(city, res.data.data.citys)
+        wx.setStorageSync('currentCityInfo', {
+          name: city,
+          id: cityId,
+          localCity: city,
+          localCityId: cityId
+        })
+        that.setData({
+          currentCity: city,
+          placeHolder: city,
+          currentCityId: cityId
+        });
+      })
+    },
+    _getCityId(cityName, cityList) {
+      let cityListMap = Array.prototype.slice.call(cityList)
+      return cityListMap.find((item => item.areaName === cityName)).areaId
     },
     userNameInput: function(e) {
       this.setData({

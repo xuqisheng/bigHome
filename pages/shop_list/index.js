@@ -144,13 +144,10 @@ Page({
     let that = this
 
     wxGetData({
-      url: 'http://bgy.h-world.com/api/hotel/getHotelDetail',
-      // url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotelDetail',
+      api: 'hotel/getHotelDetail',
       data: {
         hotelId: markersData[0].hotelId
-      },
-      method: 'POST',
-      isMock: true
+      }
     }).then(res => {
       console.log(res)
       if (res.statusCode == '200') {
