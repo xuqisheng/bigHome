@@ -5,7 +5,6 @@
  * @param  {method: String, default:'POST'} 请求方法
  * @example 参考上述例子
  */
-// let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQ2MDQyNDgyMDgsInBheWxvYWQiOiJ7XCJtb2JpbGVcIjpcIjEzODIzNDU4MTMwXCIsXCJwYXNzd29yZFwiOlwiZGM0ODNlODBhN2EwYmQ5ZWY3MWQ4Y2Y5NzM2NzM5MjRcIixcIm5ld1Bhc3N3b3JkXCI6bnVsbCxcInZhbGlkYXRlQ29kZVwiOm51bGwsXCJpZFwiOjUwNTMsXCJvcGVuSWRcIjpudWxsLFwicmVzZXJ2YXRpb25JZFwiOm51bGx9In0.wdtRJE6ZJ5MIobO5O724Lbo3HuArdZmg--fZ1Wbq6NY'
 const { configure } = require("./configure.js")
 function wxGetData(obj) {
   var showloadingtime = setTimeout(function () {
