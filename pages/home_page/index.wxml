@@ -33,9 +33,10 @@
     <image src='../images/ding.png' class='ding' bindtap='location'></image>
   </view> -->
   <view class="address">
-    <view class="search">
-      <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" bindfocus='onFocus' bindblur='onBlur' />
+    <view class="search" bindtap='location'>
+      <image src='../../images/home_page/ding.png' class='ding'></image>
+      <!-- <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" bindfocus='onFocus' bindblur='onBlur' /> -->
+      <view class="localAdress">{{currentCity}}</view>
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>
