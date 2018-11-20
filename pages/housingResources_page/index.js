@@ -43,11 +43,11 @@ Page({
     pxshow: false,
     pxopens: false,
     pxshows: false,
-    active: true,
+    active: false,
     hidden: false,
-    shang: true,
+    shang: false,
     xia: false,
-    shangs: true,
+    shangs: false,
     xias: false,
     hotelListData: [],
     showAll:false ,//等数据渲染完毕再显示dom 
@@ -191,7 +191,6 @@ Page({
       if (res.statusCode == 200) {
         that.setData({
           hotelListData: res.data.data.hotels,
-          showData: true,
           showError:false
         })
         setTimeout(function(){
@@ -199,11 +198,6 @@ Page({
             showAll: true
           })
         },200)
-        if (res.data.data.hotels.length == 0){
-          that.setData({
-            showData:false
-          })
-        }
       } else {
         that.setData({
           showAll:true,
