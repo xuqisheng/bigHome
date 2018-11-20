@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "碧家国际社区"
+  "navigationBarTitleText": "碧家国际社区",
+    "usingComponents": {
+      "error": "../../components/error/error"
+    }
 }

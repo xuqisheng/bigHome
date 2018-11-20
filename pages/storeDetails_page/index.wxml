@@ -61,14 +61,16 @@
   <view class='block'>
     <view class='housess'>
       <p>房型选择</p>
-      <ul style="height:{{!drop2? '71rpx' : ''}}">
+      <ul class="{{!drop2? 'type_group all2':'type_group'}}">
         <li wx:for='{{house.roomTypes}}' wx:key='index'>
+        <view class='li_content'>
           <image src="{{item.picUrl? 'item.picUrl' : '../../images/no_image.jpg'}}"></image>
           <view class='info'>
             <text>{{item.roomTypeName}}</text>
             <text>{{item.bedRoom}}房{{item.office}}厅{{item.wei}}卫/45m</text>
             <text>￥{{item.priceFloorLimit}}~{{item.priceUpperLimit}}元/月</text>
           </view>
+        </view>
         </li>
       </ul>
       <view class="more_service" wx:if='{{!drop2}}' bindtap='type_drop'>更多房型 ↓</view>
