@@ -32,7 +32,7 @@
           <image src='../../images/my_page/11.png'></image>
       </view>
 
-      <view class="look">
+      <view class="look" bindtap='look'>
         <image src='../../images/my_page/9.png'></image>
         <text>我的收藏</text>
           <image src='../../images/my_page/11.png'></image>

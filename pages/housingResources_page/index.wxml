@@ -43,6 +43,7 @@
 
   <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
     <image src='{{item.picUrl}}' class="di"></image>
+    <text class='noRoom' wx:if='{{item.roomSum == 0}}'>满房</text>
     <p class="pt">{{item.hotelName}}
       <text class="yue">￥{{item.startingPrice}}/月起</text>
     </p>

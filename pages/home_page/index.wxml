@@ -2,26 +2,20 @@
 
   <!-- 首页图片轮播展示 -->
   <view class='ceshi_swiper'>
-    <swiper class='read_swiper' current="0">
+    <swiper class='read_swiper' current="{{current}}">
       <block wx:for="{{adList.advertsList}}" wx:key="index">
         <swiper-item>
           <image src="{{item.picUrl}}" class="slide-image" lazy-load='true'></image>
         </swiper-item>
       </block>
-      <view wx:if="!adList.advertsLis">
-        <swiper-item wx:for='{{defaultImg}}' class="slide-image" wx:key="index" catchtouchmove='false'>
-          <image src="{{item}}" />
-        </swiper-item>
-      </view>
     </swiper>
-    <view class='ceshi_next' bindtap='prevImg'>
+    <view class='ceshi_next' bindtap='nextImg'>
       <image src='../../images/home_page/gonext.png'></image>
     </view>
-    <view class='ceshi_prew' bindtap='nextImg'>
+    <view class='ceshi_prew' bindtap='prevImg'>
       <image src='../../images/home_page/gopre.png'></image>
     </view>
   </view>
-
   <!-- 询问是否获取地理位置 -->
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modalDlg" wx:if="{{showModal}}">
@@ -74,18 +68,6 @@
           </view>
         </view>
       </swiper-item>
-      <view wx:if="!houselist.rooms">
-        <swiper-item wx:for='{{defaultImg}}' class="swiperItem" wx:key="index" catchtouchmove='false'>
-          <image src="{{item}}" />
-          <view class='swiperText'>
-            <view style=' position: relative;'>
-              <view class='text12'>
-                <text class='lazyloading'>正在赶来，请稍等...</text>
-              </view>
-            </view>
-          </view>
-        </swiper-item>
-      </view>
     </swiper>
   </view>
   <view class='cutline'></view>
@@ -116,18 +98,6 @@
           </view>
         </view>
       </swiper-item>
-      <view wx:if="!typeList.roomTypes">
-        <swiper-item wx:for='{{defaultImg}}' class="swiperItem" wx:key="index" catchtouchmove='false'>
-          <image src="{{item}}" />
-          <view class='swiperText'>
-            <view style=' position: relative;'>
-              <view class='text12'>
-                <text class='lazyloading'>正在赶来，请稍等...</text>
-              </view>
-            </view>
-          </view>
-        </swiper-item>
-      </view>
     </swiper>
   </view>
   <view class='cutline'></view>
@@ -154,5 +124,7 @@
   <view class="big">
     <image src='../../images/home_page/6.png'></image>
     <text>碧家 · 城市梦想充电站</text>
-  </view>
 </view>
+
+</view>
+
