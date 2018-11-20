@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/storeDetails_page/index",
     "pages/home_page/index",
+    "pages/storeDetails_page/index",
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
     "pages/yy/index",
@@ -16,7 +16,8 @@
     "pages/logs/logs",
     "pages/yy_result/index",
     "pages/shop_list/index",
-    "pages/select_city/index"
+    "pages/select_city/index",
+    "pages/collection_page/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
