@@ -1,10 +1,10 @@
-<view class='houseType'>
-  <noData wx:if='{{!showData}}'></noData>
-  <error wx:if='{{showError}}'></error>
-  <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm' wx:if='{{showData && !showError}}'>
-    <text>地图搜房</text>
-    <image src='../../images/housingResources_page/map_search.png'></image>
-  </button>
+<view class="housingResources" wx:if='{{showAll}}'>
+ <noData  wx:if='{{!showData}}'></noData>
+  <error  wx:if='{{showError}}'></error>
+      <button class='mapBtn' hover-class='mapBtnh' bindtap='jtm' wx:if='{{showData && !showError}}'>
+        <text>地图搜房</text>
+        <image src='../../images/housingResources_page/map_search.png'></image>
+      </button>
   <view class='moneySort'>
     <!-- 价格 -->
     <view class="nav-son" bindtap="money">
@@ -23,10 +23,10 @@
 
   </view>
   <!-- 下拉选择框 -->
-  <radio-group class="temp {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <label class="radio" wx:for="{{money}}" wx:key='item' bindtap='money_sort' data-index='{{index}}'>
+  <radio-group class="temp  {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
+    <label class="radio" wx:for="{{money}}" wx:key='item' bindtap='money_sort'  data-index='{{index}}'>
       <text>{{item.name}}</text>
-      <radio checked="{{item.checked}}">
+      <radio checked = "{{item.checked}}">
       </radio>
     </label>
   </radio-group>
@@ -34,28 +34,31 @@
   <radio-group class="temp {{pxopens ? 'slidown' : 'slidup'}} {{pxshows ? 'disappear':''}}">
     <label class="radio" wx:for="{{sort}}" wx:key='item' bindtap='type_sort' data-index='{{index}}'>
       <text>{{item.name}}</text>
-      <radio checked="{{item.checked}}">
+      <radio checked = "{{item.checked}}">
       </radio>
     </label>
   </radio-group>
   <!--catchtouchmove='true' ,蒙版出现时禁止滑动-->
   <view class='bgs' wx:if="{{hidden}}" bindtap='hidtemp' catchtouchmove='true'></view>
 
-
-  <view class='lie'>
-    <dl wx:for="{{house}}">
-      <dt class="dts">
-        <image src='{{item.picUrl}}'></image>
-      </dt>
-      <dd>
-        <p class="room">舒适一居室</p>
-        <p class="mones">￥2090/月起</p>
-        <p class="type">1房1卫1厨|45m²</p>
-        <p class="pngTxt"><image src="../../images/yyresult_page/local.png"></image>  <text>撒大大实打实大苏打上萨丢斯阿斯顿阿斯顿撒旦撒大大实打实大苏打上萨丢斯阿斯顿阿斯顿撒旦撒大大实打实大苏打上萨丢斯阿斯顿阿斯顿撒旦撒大大实打实大苏打上萨丢斯阿斯顿阿斯顿撒旦撒大大实打实大苏打上萨丢斯阿斯顿阿斯顿撒旦</text></p>
-        <p class="zhou"><span>环境优美</span><span>步入式衣柜</span><span>采光充足</span></p>
-      </dd>
-    </dl>
+  <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
+    <image src='{{item.picUrl}}' class="di"></image>
+    <!-- <text class='noRoom' wx:if='{{item.roomSum == 0}}'>满房</text> -->
+    <p class="pt">{{item.roomTypeName}}
+      <text class="yue">￥{{item.priceFloorLimit}}/月起</text>
+    </p>
+    <p class="fang">{{item.bedRoom}}房{{item.kitchen}}厨{{item.office}}卫</p>
+    <view class="xiangxi">
+      <image src='../../images/collection_page/wei.png' class="bi"></image>
+      <p class="xiang" wx:if='{{item.address}}'>{{item.address}}</p>
+      <p class="xiang" wx:if='{{!item.address}}'>这款房比较神秘，需要您实地去探索</p>
+    </view>
+    <view class='locations'>
+      <text wx:for='{{item.tags}}' wx:key='index'>{{item}}</text>
+    </view>
   </view>
-
-
+  <view class='noMore' wx:if='{{!showError && showData}}'>
+  <view class='nmLine'></view>
+  <text>没有更多了</text>
+  </view>
 </view>

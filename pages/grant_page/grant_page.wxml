@@ -1,5 +1,0 @@
-<view>
-
-<button open-type="launchApp" app-parameter="wechat" binderror="launchAppError">打开APP</button>
-
-</view>

@@ -7,13 +7,46 @@
   </view>
   <view class="{{selected?'show':'hidden'}}">
 
-    <view class="noTime">
+    <!-- <view class="noTime">
       <image src="../../images/card_page/none.png"></image>
       <text>暂无数据</text>
+    </view> -->
+
+    <view class='yous'>
+     
+     <view class='hui'>
+    <p class="jiu">九折优惠券<span class="xian">现金券</span></p>
+    <p class="moneys">￥200.00</p>
+     </view>
+
+     <view class='counts'>
+     <p>适用范围：冷水费、电费、燃气费、供暖费、长租房租、服务费、长租定金、长租押金、热水费、赔偿费、违约金、清洁费、逾期金</p>
+     </view>
+    
+
+    <view class='xianss'>
+    <p>2018-04-16至2019-04-15</p>
+    </view>
+     
     </view>
 
   </view>
-  <view class="{{selected1?'show':'hidden'}}">for activity</view>
+  <view class="{{selected1?'show':'hidden'}}">
+  
+  <view class='quan'>
+  
+  <view class='quans'>
+   <p class="qiao">淘票票代金券</p>
+   <p style="font-size:23px;"><span style="font-size:14px">￥</span>20</p>
+  </view>
+
+  <view>
+   <p class="datas">2018-04-16至2019-04-15 </p>
+  </view>
+  
+  </view>
+
+  </view>
   <view class='see'>
     <p>查看已失效的优惠券</p>
   </view>

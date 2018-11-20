@@ -1,33 +1,17 @@
-var rq = require("../../utils/require.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      grant:[]
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    rq.wxGetData({
-     url:"http://bgy.h-world.com/api/member/getMemberCollections",
-      data: {
-        pageNo:1,
-        pageSize:500
-      },
-      method: "POST",
-      isMock: true
-    }).then(res => {
-      if (res.statusCode == '200') {
-        this.setData({
-          grant: res.data
-        })
-        console.log(this.data.grant)
-      }
-    })
+    
   },
 
   /**
@@ -77,8 +61,5 @@ Page({
    */
   onShareAppMessage: function () {
     
-  },
-  launchAppError: function (e) {
-    console.log(e.detail.errMsg)
   }
 })

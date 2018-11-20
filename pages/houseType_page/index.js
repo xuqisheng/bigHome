@@ -1,22 +1,7 @@
-
 var rq = require("../../utils/require.js")
-var mlist = [
-  [-1, -1],
-  [-1, 2000],
-  [2000, 3500],
-  [3500, 5000],
-  [5000, -1]
-]
-var slist = [
-  ['price', 1],
-  ['price', 2],
-  ['distance', 1]
-]
+var mlist = [[-1, -1], [-1, 2000], [2000, 3500], [3500, 5000], [5000, -1]]
+var slist = [['price', 1], ['price', 2], ['distance', 1]]
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     money_content: 5,
     type_content: 3,
@@ -64,73 +49,71 @@ Page({
     xia: false,
     shangs: true,
     xias: false,
-    house: [],
-    showAll: false, //等数据渲染完毕再显示dom 
+    hotelListData: [],
+    showAll: false,//等数据渲染完毕再显示dom 
     showData: true,
-    showError: false
+    showError: false,
+    tagsThree:[],
+    tagsThrees:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad: function () {
     this.clearCache() //清空缓存
-    this.houseType() //第一次请求数据
+    this.getHotelList() //第一次请求数据
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //按价格排序
+  money_sort: function (e) {
+    var that = this
+    if (e.currentTarget.dataset.index == that.data.money_content) {
+      var idx = +e.currentTarget.dataset.index
+      var value = 'money[' + idx + '].checked'
+      that.setData({
+        [value]: false,
+        money_content: 5,
+      })
+    } else {
+      setTimeout(function () {
+        that.setData({
+          money_content: e.currentTarget.dataset.index,
+          pxopen: false,
+          pxshow: false,
+          active: true,
+          hidden: false,
+          shang: true,
+          xia: false,
+          shangs: true,
+          xias: false,
+        })
+        that.getSortList(that.data.money_content, that.data.type_content)
+      }, 100)
+    }
   },
+  //按类型排序
+  type_sort: function (e) {
+    var that = this
+    if (e.currentTarget.dataset.index == that.data.type_content) {
+      var idx = +e.currentTarget.dataset.index
+      var value = 'sort[' + idx + '].checked'
+      that.setData({
+        [value]: false,
+        type_content: 3
+      })
+    } else {
+      setTimeout(function () {
+        that.setData({
+          type_content: e.currentTarget.dataset.index,
+          pxopens: false,
+          pxshows: false,
+          active: true,
+          hidden: false,
+          shangs: true,
+          xias: false,
+          shang: true,
+          xia: false,
+        })
+        that.getSortList(that.data.money_content, that.data.type_content)
+      }, 100)
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  //点击地图搜房跳转
-  jtm: function (e) {
-    wx.navigateTo({
-      url: '../shop_list/index'
-    })
+    }
   },
   //价格
   money: function (e) {
@@ -187,29 +170,23 @@ Page({
   //清空缓存
   clearCache: function (e) {
     this.setData({
-      houseTypes: []
+      hotelListData: []
     })
   },
   //请求列表
-  houseType: function (p1, p2, s1, s2) {
+  getHotelList: function (p1, p2, s1, s2) {
     let that = this
     let obj = {
       url: 'http://bgy.h-world.com/api/hotel/getRoomTypeByCityList',
       data: {
-        // cityId: "4403",
-        // recommendType:"H_INDEX_ROOMTYPE",
-        // priceFloorLimit: p1,
-        // priceUpperLimit: p2,
-        // sortKey: s1,
-        // sortSeq: s2
-        "cityId": "4403",
-        "pageSize": 10,
-        "pageNo": 1,
-        "hotelType": "1",
-        "priceUpperLimit": 0,
-        "priceFloorLimit": 0,
-        "sortKey": "",
-        "sortSeq": ""
+        pageNo: 1,
+        pageSize: "5",
+        cityId: "3101",
+        hotelType: 1,
+        priceFloorLimit: p1,
+        priceUpperLimit: p2,
+        sortKey: s1,
+        sortSeq: s2
       },
       method: 'POST',
       isMock: true
@@ -217,17 +194,25 @@ Page({
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
         that.setData({
-          house: res.data,
+          hotelListData: res.data.data.roomTypes,
           showData: true,
           showError: false
         })
-        console.log(this.data.house)
+        console.log(this.data.hotelListData);
+        
+        //获取tags前三个数组
+        // for (var i = 0; i < this.data.hotelListData.length; i++) {
+        //   this.setData({
+        //     tagsThree:this.data.hotelListData[i].tags,
+        //     tagsThrees:tagsThree.slice(0, 3)
+        //   })
+        // }
         setTimeout(function () {
           that.setData({
             showAll: true
           })
         }, 200)
-        if (res.data.data.hotels.length == 0) {
+        if (res.data.data.roomTypes.length == 0) {
           that.setData({
             showData: false
           })
@@ -247,7 +232,7 @@ Page({
     }).catch((errMsg) => {
       that.setData({
         showAll: true,
-        showError: true
+        showError: true         
       })
       wx.showToast({
         title: '加载失败！',
@@ -257,6 +242,12 @@ Page({
       })
       console.log(errMsg);
     });
+  },
+  //地图搜房跳转
+  jtm: function (e) {
+    wx.navigateTo({
+      url: '../shop_list/index'
+    })
   },
   //点击蒙版收起弹窗
   hidtemp: function (e) {
@@ -286,6 +277,6 @@ Page({
     let p2 = m < 5 ? mlist[m][1] : ''
     let s1 = s < 3 ? slist[s][0] : ''
     let s2 = s < 3 ? slist[s][1] : ''
-    this.houseType(p1, p2, s1, s2)
+    this.getHotelList(p1, p2, s1, s2)
   }
 })

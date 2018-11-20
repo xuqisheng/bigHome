@@ -134,6 +134,7 @@
   }
 }
 
+
 .slidup {
   display: block;
   animation: slidup 0.2s ease-in both;
