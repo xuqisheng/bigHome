@@ -1,0 +1,130 @@
+/* pages/collection_page/index.wxss */
+
+page{
+  background: #f6f6f6;
+}
+
+.rooms{
+  width: 90%;
+  height: 135px;
+  margin:  auto;
+  background: #fff;
+  margin-top: 20px;
+  position: relative;
+}
+
+.roomsName{
+  width: 100%;
+  height: 40px;
+  padding-top: 20px;
+}
+.bgS{
+  width: 76px;
+  height: 38px;
+  display: inline-block;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAmCAYAAABu+H0XAAABPElEQVRoQ+3asU4CQQCE4Zm7AyKGFyCWxp7KmBgfwMSSxNjzAGhosDkrhdMzMfQUVBS+A76WJqzhjIWGwE4pztb/FvtluAridR7gEy1Ag0VbVaHBNC+DiV4GM5gqIPb+hhlMFBBzL8xgooCYe2EGEwXE3AszmCgg5l6YwUQBMffCDCYKiLkXZjBRQMy9MIOJAmLuhRlMFBBzL8xgooCYe2EGEwXE3AuTwWbTN75/nIn3EOq1BZrNhXrvr/esHlAWl0QoCB5EP4jIl/3BXXS/I+EX2OoUxT5SDolwQ6Cx9X3/HuxbqLw/JLKSwMVGNIP94nkan5N8JnC0Fs5ga1jyvI7WXp9Mbgm0fhQG2/ADHI3aScYxyKvqT3irY7Ctn3ng8eGUSfpCoGOwCK8q6XZTnBz3gJDhejCJvbYr3Sc2eXOdb14c5wAAAABJRU5ErkJggg==');
+  position: absolute;
+  left: -4%;
+}
+.bigs{
+  font-size: 16px;
+  display: flex;
+  margin-left: 76px;
+  color: #444444;
+}
+.diZhi{
+  width: 95%;
+  height: 30px;
+  border-bottom: 1px solid #E6E6E6;
+  display: block;
+  margin-left: 10px;
+}
+.diZhi image{
+  width: 11px;
+  height: 15px;
+  float: left;
+  margin-top: 6px;
+}
+.diZhi text{
+  font-size: 12px;
+  color: #999999;
+  float: left;
+  margin-left: 10px;
+  line-height: 30px;
+}
+.citysn{
+  padding-left: 66px;
+}
+.collectDate{
+  width: 100%;
+  height: 44px;
+}
+
+.dates p,span{
+  font-size: 12px;
+  color: #999999;
+  float: left;
+  line-height: 44px;
+}
+
+.dates{
+   margin-left: 18px;
+}
+
+.btnss{
+  border:1px solid #ccc;
+  font-size: 12px;
+  color: #999999;
+  float: right;
+  display: inline-block;
+  margin-right: 12px;
+  margin-top: 10px;
+  padding: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 4px;
+}
+
+.apartment{
+  width: 90%;
+  height: 135px;
+  margin:  auto;
+  background: #fff;
+  margin-top: 20px;
+  position: relative;
+}
+
+.bgSS{
+  width: 76px;
+  height: 38px;
+  display: inline-block;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAmCAYAAABu+H0XAAABSUlEQVRoQ+3aIUsDcRzG8e/vPDZBV0wiRhFEg3ZZFsEoiN2oIDYtszqYTPcqxDdgmy/AoDgwG80mRf9yA0FkbPdE53P5+w//D89duni52Uj4KS0QBitt1Q8NpnkZTPQymMFUAbH3N8xgooCYe2EGEwXE3AszmCgg5l6YwUQBMffCDCYKiLkXZjBRQMy9MIOJAmLuhRlMFBBzL8xgooCYe2EGEwXE3AszmCgg5l6YCvZ8vXr78fZaF8+RV6a7k7XZrnrur/dRXOCxw076pBnBfNkLBTSW9zkt249L1wcrnvsmU3mV4xQcAdVRF/z3YN9Ady0Wqjktgq1haAb7pfPQZjPLOAcWB8EZbIBKr0ElzXAInBDUfiYGG/L+PV0y9544i2C3+AmvSA026isP9Nqsp4wLYM1gJcCK5GqbiaU6e5HIVw7olDw2NtkX7wCDFFAzlFMAAAAASUVORK5CYII=');
+  position: absolute;
+  left: -4%;
+}
+
+.bgS image{
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin: 6px;
+}
+
+.bgS text{
+  font-size: 16px;
+  color: #ffffff;
+  float: left;
+}
+
+.bgSS image{
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin: 6px;
+}
+
+.bgSS text{
+  font-size: 16px;
+  color: #ffffff;
+  float: left;
+}

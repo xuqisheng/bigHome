@@ -218,9 +218,86 @@ let imagesHeight =
       this.setData({
         showModal: false
       })
+
     },
+  onFocus: function (e) {
+    this.setData({
+      placeHolder: ' '
+    })
+  },
+  onBlur: function (e) {
+    this.setData({
+      placeHolder: this.data.currentCity
+    })
+  },
+  durationChange: function (e) {
+    this.setData({
+      duration: e.detail.value
+    })
+  },
+  //允许
+  yes: function () {
+    this.setData({
+      showModal: false
+    })
+    this.getSetting()
+    // wx.authorize({
+    //   scope: 'scope.userLocation',
+    //   success(res) {
+    //     console.log(res)
+    //   },
+    //   fail(res) {
+    //     console.log(999)
+    //   }
+    // })
+
+    // var that = this;
+    // app.getPermission(that);
+    // this.setData({
+    //   showModal: false
+    // })
+  },
+  // 首页图片展示轮播箭头
+  nextImg: function () {
+    var swiper = this.data.swiper;
+    var adlist = this.data.adList;
+    var current = swiper.current;
+    swiper.current = current > 0 ? current - 1 : adlist.advertsList.length - 1;
+    this.setData({
+      swiper: swiper,
+    })
+  },
+  // 首页图片展示轮播箭头
+  prevImg: function () {
+    var swiper = this.data.swiper;
+    var adlist = this.data.adList;
+    var current = swiper.current;
+    swiper.current = current < (adlist.advertsList.length - 1) ? current + 1 : 0;
+    this.setData({
+      swiper: swiper,
+    })
+  },
+  //跳转我的页面
+  my: function () {
+    wx.navigateTo({
+      url: "../my_page/index"
+    });
+  },
+  //开启定位跳转至地图
+  location: function () {
+    let city = this.data.currentCity
+    wx.navigateTo({
+      url: `../select_city/index?city=${city}`
+    });
+  },
+  //不允许
+  no: function () {
+    this.setData({
+      showModal: false
+    })
+  },
     //请求数据
-    getDatas: function(data, url, store) {
+    getDatas:function(data, url, store) {
       let that = this
       let st = store
       let obj = {

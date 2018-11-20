@@ -100,6 +100,12 @@ Page({
       url: "../cardBag_page/cardBag_page",
     })
   },
+  //跳转我的收藏
+  look:function(){
+    wx.navigateTo({
+      url: '../collection_page/index',
+    })
+  },
   //跳转客服
   customerService: function() {
     wx.navigateTo({
