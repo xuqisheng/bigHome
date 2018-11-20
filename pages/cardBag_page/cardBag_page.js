@@ -1,4 +1,5 @@
 // pages/cardBag_page/cardBag_page.js
+var rq = require("../../utils/require.js")
 Page({
 
   /**
@@ -6,14 +7,32 @@ Page({
    */
   data: {
     selected: true,
-    selected1: false
+    selected1: false,
+    card:[],//卡包数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    rq.wxGetData({
+      url: "http://bgy.h-world.com/api/coupons/getMemberCouponCodeList",
+      data: {
+        couponType:"4",
+        pageNo:1,
+        pageSize:10,
+        status2:"1"
+      },
+      method: "POST",
+      isMock: true
+    }).then(res => {
+      if (res.statusCode == '200') {
+        this.setData({
+          card: res.data.data
+        })
+        console.log(this.data.card)
+      }
+    })
   },
 
   /**

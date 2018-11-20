@@ -3,7 +3,7 @@ var app = getApp();
 let { wxGetData } = require("../../utils/require.js")
 Page({
   data: {
-    addr: '',
+    addr: '',   
     adList: [],//广告列表
     hourselist: [],//房源列表
     typeList: [],//房型列表
@@ -193,7 +193,7 @@ Page({
     let that = this
     let st = that.data[store]
     let obj = {
-      url: 'http://ptrzac.natappfree.cc/api/'+url,
+      url: 'http://bgy.h-world.com/api/'+url,
       data:data,
       method: 'POST',
       isMock: true

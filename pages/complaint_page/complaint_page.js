@@ -10,37 +10,40 @@ Page({
     min: 15, //最少字数
     max: 150, //最多字数 (根据自己需求改变) 
     arrays: ['预约看房', '租客维修', '租客保洁'],
-    array: '预约看房',
+    array: '',
     arrayValue: [0],
     xuanZe: true,
-    showRoomPicker: false, //设置data-picker默认为false,
+    showRoomPicker: 0, //设置data-picker默认为false,
     imgbox: '',
     len: "", //问题描述输入长度
     roomType: "", //初始问题门店数据为空
     showRoomValue: 0,
     showRoomValue1: 0,
+    showRoomNameValue: 0,
+    showRoomNameValue1: 0,
     showRoomTypePicker: 0,
     roomTypes: [], //问题门店数据
     roomTypeValue: [0],
-    city: [],
-    hotelName:[],
-    leiBie:""
+    city: [],//市，数据
+    hotelName: [],//市区门店数据
+    tiJiao: [],
+    counts: "",//输入框的内容
   },
   //问题门店
   chooseType: function (e) {
-    var value = e.detail.value
+    var value = e.detail.value;
     this.setData({
       roomType: this.data.roomTypes[value[0]],
       roomTypeValue: [value[0]]
     });
   },
-  closeRt: function(e) {
+  closeRt: function (e) {
     this.setData({
       showRoomTypePicker: 0,
       showRoomValue1: 0
     })
   },
-  confirmRT: function(e) {
+  confirmRT: function (e) {
     this.setData({
       showRoomTypePicker: 0,
       showRoomValue: 1,
@@ -54,7 +57,7 @@ Page({
     })
   },
   //问题类别
-  chooseName: function(e) {
+  chooseName: function (e) {
     var index = e.detail.value
     this.setData({
       array: this.data.arrays[index[0]],
@@ -79,18 +82,15 @@ Page({
       showRoomPicker: 1,
       showRoomNameValue1: 1,
       xuanZe: false,
-      leiBie: e.currentTarget.dataset
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     //请求问题门店数据接口
     rq.wxGetData({
-
-      url: "http://ptrzac.natappfree.cc/api/member/getHotels",
-
+      url: "http://uf6fg8.natappfree.cc/api/member/getHotels",
       data: {
       },
       method: "POST",
@@ -119,7 +119,7 @@ Page({
     })
   },
   // 上传图片
-  addPic1: function(e) {
+  addPic1: function (e) {
     var imgbox = this.data.imgbox;
     console.log(imgbox)
     var picid = e.currentTarget.dataset.pic;
@@ -135,7 +135,7 @@ Page({
       count: n, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
+      success: function (res) {
         // console.log(res.tempFilePaths)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
@@ -166,7 +166,7 @@ Page({
     })
   },
   // 删除照片
-  imgDelete1: function(e) {
+  imgDelete1: function (e) {
     let that = this;
     let index = e.currentTarget.dataset.index;
     let imgbox = this.data.imgbox;
@@ -178,58 +178,60 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   //字数限制  
-  inputs: function(e) {
+  inputs: function (e) {
     // 获取输入框的内容
-    var value = e.detail.value;
+    this.setData({
+      counts: e.detail.value
+    })
     // 获取输入框内容的长度
     this.setData({
-      len: parseInt(value.length)
+      len: parseInt(this.data.counts.length)
     })
 
     //最少字数限制
@@ -249,20 +251,51 @@ Page({
       currentWordNumber: this.data.len //当前字数  
     });
   },
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value,
       xuanZe: false
     })
   },
-  submits: function() {
+  //提交
+  submits: function () {
     if (this.data.len < 15) {
       wx.showToast({
         title: '问题描述过短!',
         icon: 'success',
         duration: 1500
       })
+    }else if(this.data.roomType.hotelName == null){
+      wx.showToast({
+        title: '请选择问题门店!',
+        icon: 'success',
+        duration: 1500
+      })
+    }else if(this.data.array.arrays == null){
+      wx.showToast({
+        title: '请选择问题类别!',
+        icon:'success',
+        duration: 1500
+      })
+    }else{
+      rq.wxGetData({
+        url: "http://uf6fg8.natappfree.cc/api/member/addComplainXin",
+        data: {
+          complaintsType: this.data.array,
+          content: this.data.counts,
+          hotelName: this.data.roomType.hotelName
+        },
+        method: "POST",
+        isMock: true
+      }).then(res => {
+        if (res.statusCode == '200') {
+          this.setData({
+            tiJiao: res.data
+          })
+          console.log(this.data.tiJiao)
+        }
+      })
     }
-  
+   
   }
 })
