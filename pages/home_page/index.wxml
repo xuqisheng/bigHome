@@ -2,21 +2,20 @@
 
   <!-- 首页图片轮播展示 -->
   <view class='ceshi_swiper'>
-    <swiper class='read_swiper' current="{{swiper.current}}">
+    <swiper class='read_swiper' current="{{current}}">
       <block wx:for="{{adList.advertsList}}" wx:key="index">
         <swiper-item>
-          <image src="{{item.picUrl}}" class="slide-image"></image>
-        </swiper-item>    
+          <image src="{{item.picUrl}}" class="slide-image" lazy-load='true'></image>
+        </swiper-item>
       </block>
     </swiper>
-    <view class='ceshi_next' bindtap='prevImg'>
+    <view class='ceshi_next' bindtap='nextImg'>
       <image src='../../images/home_page/gonext.png'></image>
     </view>
-    <view class='ceshi_prew' bindtap='nextImg'>
+    <view class='ceshi_prew' bindtap='prevImg'>
       <image src='../../images/home_page/gopre.png'></image>
     </view>
   </view>
-
   <!-- 询问是否获取地理位置 -->
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modalDlg" wx:if="{{showModal}}">
@@ -36,7 +35,7 @@
   <view class="address">
     <view class="search">
       <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{placeHolder}}" bindfocus='onFocus' bindblur='onBlur' />
+      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" bindfocus='onFocus' bindblur='onBlur' />
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>
@@ -49,27 +48,30 @@
     </view>
     <view class='fontInfo'>
       <text class="recommend">每次推荐，只为找到属于你的房</text>
-      <text class="more" bindtap="housingResources">更多房源 ></text>
+      <view class='jumo_area' bindtap='jumoTohr'>
+        <text class="more">更多房源</text>
+        <view class='gl'></view>
+      </view>
     </view>
     <!-- 碧家推荐图片 -->
-    <swiper class='swiper'next-margin="120rpx">
-      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-        <image src="{{item.imgs}}" />
+    <swiper class='swiper' next-margin="120rpx">
+      <swiper-item wx:for="{{houselist.rooms}}" class="swiperItem" wx:key="index">
+        <image src="{{item.pictures[0]}}" lazy-load='true' />
         <view class='swiperText'>
-        <view style=' position: relative;'>
-          <view class='text12'>
-            <text class='title1'>{{item.title1}}</text>
-            <text class='title2'>{{item.title2}}</text>
+          <view style=' position: relative;'>
+            <view class='text12'>
+              <text>{{item.hotelInfo.hotelName}}</text>
+              <text>{{item.roomTypeName}}</text>
+            </view>
+            <text class='title3'>￥{{item.startingPrice}}/月起</text>
           </view>
-          <text class='title3'>{{item.title3}}</text>
-        </view>
         </view>
       </swiper-item>
     </swiper>
   </view>
+  <view class='cutline'></view>
 
-
-    <!-- 房型推荐 -->
+  <!-- 房型推荐 -->
   <view class="font">
     <view class='fontHead'>
       <image src="../../images/home_page/5.png"></image>
@@ -77,49 +79,51 @@
     </view>
     <view class='fontInfo'>
       <text class="recommend">在碧家，一床一物都为住得更好</text>
-      <text class="more" bindtap="housingResources">更多房型 ></text>
+      <view class='jumo_area' bindtap='jumoToht'>
+        <text class="more">更多房型</text>
+        <view class='gl'></view>
+      </view>
     </view>
     <!-- 碧家推荐图片 -->
-    <swiper class='swiper'next-margin="120rpx">
-      <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItem" wx:key="index">
-        <image src="{{item.imgs}}" />
+    <swiper class='swiper' next-margin="120rpx">
+      <swiper-item wx:for="{{typeList.roomTypes}}" class="swiperItem" wx:key="index">
+        <image src="{{item.picUrl}}" lazy-load='true' />
         <view class='swiperText'>
-        <view style=' position: relative;'>
-          <view class='text12'>
-            <text class='title1'>{{item.title1}}</text>
-            <text class='title2'>{{item.title2}}</text>
+          <view style=' position: relative;'>
+            <view class='text12'>
+              <text>{{item.roomTypeName}}</text>
+              <text class='title4'>￥{{item.priceFloorLimit}}/月起</text>
+            </view>
           </view>
-          <text class='title3'>{{item.title3}}</text>
-        </view>
         </view>
       </swiper-item>
     </swiper>
   </view>
-
+  <view class='cutline'></view>
+  <!-- 服务展示图片 -->
   <view class="fonts">
     <view class="recommends">
       <view class='line'></view>
       <text>碧家服务</text>
       <view class='line'></view>
     </view>
-    <text  class="heart">碧家心服务，比你更懂你</text>
+    <text class="heart">碧家心服务，比你更懂你</text>
   </view>
 
-  <!-- 服务展示图片 -->
+
   <view class='dispalyimg'>
-      <swiper indicator-dots="{{swiper.indicatorDotss}}" autoplay="{{swiper.autoplayss}}" interval="{{swiper.intervals}}" vertical="{{swiper.isVertical}}" duration="{{swiper.durations}}" circular='false' class='dispalyimgs'>
-        <swiper-item wx:for="{{swiper.imgUrls}}" class="swiperItems" wx:key="index">
-          <image src="{{item.imgs}}" />
-        </swiper-item>
-      </swiper>
+    <swiper autoplay="true" interval="3000" duration="1000" circular='false' class='dispalyimgs'>
+      <swiper-item wx:for="{{serverList}}" class="swiperItems" wx:key="index">
+        <image src="{{item}}" lazy-load='true' />
+      </swiper-item>
+    </swiper>
   </view>
 
 
   <view class="big">
     <image src='../../images/home_page/6.png'></image>
     <text>碧家 · 城市梦想充电站</text>
-  </view>
-
-
+</view>
 
 </view>
+

@@ -112,13 +112,11 @@ Page({
     toView:''
   },
   scroll(e) {
-    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.city)
     let that = this
     WXP.getSystemInfo().then(res => {
       this.setData({
@@ -130,17 +128,16 @@ Page({
   },
   getCityData() {
     wxGetData({
-      url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/city',
-      isMock: true
+      url: 'http://bgy.h-world.com/api/common/getOpenedCity',
+      isMock: true,
+      method: "POST"
     }).then(res => {
       let cityData = res.data.data.citys
-      console.log(cityData)
       let cityMap = this._normalizeCityList(cityData)
       this.setData({
         cityList: cityMap,
         shortcutList: this._createrShortcutList(cityMap)
       })
-      console.log(cityMap)
     })
   },
   onShortcutTouchStart(e) {
@@ -151,7 +148,6 @@ Page({
     this._scrollTo(startIndex)
   },
   onShortcutTouchMove(e) {
-    console.log(touchPageY)
     let diff = (e.changedTouches[0].pageY - touchPageY)/20 | 0
     let index = parseInt(startIndex) + diff
     this._scrollTo(index)
@@ -183,19 +179,29 @@ Page({
     })
   },
   _normalizeCityList(cityData) {
+    let getCurrentCityInfo = wx.getStorageSync('currentCityInfo') || ''
+    let historyListData = wx.getStorageSync('cityHistoryList') || ''
+    let currentCityArr = [{
+      name: getCurrentCityInfo.localCity || '',
+      id: getCurrentCityInfo.localCityId || ''
+    }]
+    let historyCityArr = []
+    if (historyListData === '' || historyListData.length === 1) {
+      historyCityArr = currentCityArr
+      wx.setStorageSync('cityHistoryList', historyCityArr)
+    } else {
+      historyCityArr = historyListData
+    }
     let map = {
       localCity:{
         title: '定位城市',
         id: 'dw',
-        items: [{
-          name: this.data.currentCity,
-          id: 'dw'
-        }]
+        items: currentCityArr
       },
       historyCity: { //在缓存去取历史记录城市,先写死
         title: '历史记录',
         id:'ls',
-        items: this._createrMapHistoryList()
+        items: historyCityArr
       }
     }
 
@@ -232,37 +238,38 @@ Page({
     })
     return (local.concat(history)).concat(ret)
   },
-  _createrMapHistoryList() {
-    if (!cityHistoryList) {
-      data = [{
-        name: this.data.currentCity,
-        id: 'dw'
-      }]
-    } else {
-      let arr = wx.getStorageSync('cityHistoryList')
+  goBack(e) {
+    let data = e.currentTarget.dataset
+    this.setCurrentCityInfo(data)
+    this.setHistroryCityInfo(data)
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  setCurrentCityInfo(currentItem){
+    let currentCityInfo = wx.getStorageSync('currentCityInfo') || ''
+    wx.setStorageSync('currentCityInfo', {
+      ...currentCityInfo,
+      ...currentItem
+    })
+  },
+  setHistroryCityInfo(currentItem){
+    let cityHistoryList = wx.getStorageSync('cityHistoryList') || []
+    this._insertArray(cityHistoryList, currentItem, 6)
+    wx.setStorageSync('cityHistoryList', cityHistoryList)
+  },
+  _insertArray(arr,val,maxLenth) {
+    let index = arr.findIndex(item => 
+      item.id === val.id
+    )
+    if (index === 0) return
+    if(index >= 1) {
+      arr.splice(index,1)
     }
-
-    let cityHistoryList = wx.getStorageSync('cityHistoryList')
-    let data = []
-    let insertArray = (arr, val, compare, maxLen)=>{
-      const index = arr.findIndex(compare)
-      if (index === 0) {
-        return
-      }
-      if (index > 0) {
-        arr.splice(index, 1)
-      }
-      arr.unshift(val)
-      if (maxLen && arr.length > maxLen) {
-        arr.pop()
-      }
+    arr.unshift(val)
+    if (maxLenth && arr.length > maxLenth){
+      arr.pop()
     }
-    insertArray(searches, query, (item) => {
-      return item === query
-    }, SEARCH_MAX_LEN)
-
-    wx.setStorageSync('cityHistoryList',data)
-    console.log(wx.getStorageSync('cityHistoryList'))
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -275,7 +282,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    
   },
 
   /**

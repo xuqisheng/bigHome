@@ -1,0 +1,229 @@
+.houseType {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.bgs {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.moneySort {
+  width: 100%;
+  float: left;
+  z-index: 999;
+  background: #fff;
+}
+
+.nav-son {
+  /* 让下拉提示信息永远放于下拉内容的上面 */
+  border-bottom: 1px solid #d1d3d4;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  width: 50%;
+  float: left;
+  color: #444;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 下拉框的样式 */
+
+.temp {
+  /* 默认为不显示 */
+  display: none;
+  /* 下拉框的宽度， */
+  width: 100%;
+  /* 下拉框的最大高度 */
+  max-height: 750rpx;
+  overflow-y: scroll;
+  padding: 0 0 0 20rpx;
+  line-height: 100rpx;
+  background: #fff;
+  position: absolute;
+  top: 41px;
+  z-index: 999;
+}
+
+/* 下拉框内容的样式 */
+
+.temp view {
+  font-size: 14px;
+  color: #444;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* 下拉动画 */
+
+/* @keyframes Css3 新标签，循环动画 */
+
+@keyframes slidown {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.slidown {
+  display: block;
+  animation: slidown 0.2s ease-in both;
+}
+
+/* 上拉动画 */
+
+@keyframes slidup {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.slidup {
+  display: block;
+  animation: slidup 0.2s ease-in both;
+  height: 0px;
+}
+
+.check {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.txt {
+  display: inline-block;
+  width: 160px;
+  height: 13px;
+}
+
+.xiangqing {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 25rpx;
+  padding-top: 10rpx;
+  position: relative;
+}
+
+.xiangqing_img {
+  width: 40%;
+  padding: 25rpx;
+}
+
+.xiangqing_img image {
+  width: 100%;
+  height: 220rpx;
+}
+
+.xiangqing_info {
+  width: 50%;
+  padding-top: 8px;
+  padding-bottom: 25rpx;
+}
+
+.xiangqing_info .title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+}
+
+.house {
+  margin-top: 20px;
+  color: #9b9b9b;
+  font-size: 12px;
+}
+
+.prix {
+  margin-top: 6rpx;
+}
+
+.prix text {
+  color: #a1a1a1;
+  font-size: 10px;
+  border: 1px solid #999;
+  display: inline-block;
+  width: 54px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+
+.locats {
+  width: 100%;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.locats image {
+  width: 11px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.locats text {
+  font-size: 12px;
+  width: 100%;
+  color: #9b9b9b;
+  display: inline-block;
+  padding-left: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-top: 6px;
+}
+
+.moneys {
+  width: 100px;
+  height: 14px;
+  font-size: 14px;
+  color: #00ada9;
+  position: absolute;
+  right: 12px;
+  top: 30px;
+}
+
+.jianShang {
+  border-style: solid dashed dashed dashed;
+  border-width: 6px;
+  border-color: #b5b5b5 transparent transparent transparent;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 65%;
+  top: 50%;
+}
+
+.jianXia {
+  border-style: dashed dashed solid dashed;
+  border-color: transparent transparent #b5b5b5 transparent;
+  border-width: 6px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 65%;
+  bottom: 52%;
+}

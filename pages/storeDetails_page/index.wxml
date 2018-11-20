@@ -1,0 +1,105 @@
+<!--pages/storeDetails_page/storeDetails_page.wxml-->
+<view class="storeDetails" wx:if='{{showAll}}'>
+  <view class='block'>
+    <view class='pic'>
+      <swiper class='read_swiper' current="{{current}}" bindchange="swiperChange">
+        <block wx:for="{{house.pictures}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <text>{{current + 1}}/{{house.pictures.length}}</text>
+    </view>
+    <view class='miao'>
+      <p>{{house.hotelName}}</p>
+      <p>{{house.onecharacter}}</p>
+      <view class='tags'>
+        <span wx:for='{{house.tags}}' wx:key='index'>{{item}}</span>
+      </view>
+      <view class='cuntlne'></view>
+      <view class='local'>
+        <image src='../../images/storeDetails_page/ditu.png'></image>
+        <text>{{house.address}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='block'>
+    <view class='introduction '>
+      <view class="gongYu">
+        <p>公寓介绍</p>
+        <p>{{house.breafIntroduction}}</p>
+      </view>
+      <view class='guanJia'>
+        <view>
+          <p>管家介绍</p>
+          <p>联系管家</p>
+        </view>
+        <text>{{house.stewardDesc}}</text>
+      </view>
+      <view class='guanJia'>
+        <p>公区介绍</p>
+        <text>{{house.publicZoneDesc}}</text>
+      </view>
+      <view class='sheShi'>
+        <p>设施服务</p>
+        <ul class="{{!drop1? 'service_group all':'service_group'}}">
+          <li wx:for='{{house.hotelParts}}' wx:key='index'>
+            <view class='li_img'>
+              <image src='{{item.picUrl}}'></image>
+            </view>
+            <text>{{item.partName}}</text>
+          </li>
+        </ul>
+      </view>
+      <view class="more_service" wx:if='{{!drop1}}' bindtap='service_drop'>更多设施服务 ↓</view>
+      <view class="more_service" wx:if='{{drop1}}' bindtap='service_drop'>收起设施服务 ↑</view>
+    </view>
+  </view>
+
+  <view class='block'>
+    <view class='housess'>
+      <p>房型选择</p>
+      <ul style="height:{{!drop2? '71rpx' : ''}}">
+        <li wx:for='{{house.roomTypes}}' wx:key='index'>
+          <image src='{{item.picUrl}}'></image>
+          <view class='info'>
+            <text>{{item.roomTypeName}}</text>
+            <text>{{item.bedRoom}}房{{item.office}}厅{{item.wei}}卫/45m</text>
+            <text>￥{{item.priceFloorLimit}}~{{item.priceUpperLimit}}元/月</text>
+          </view>
+        </li>
+      </ul>
+      <view class="more_service" wx:if='{{!drop2}}' bindtap='type_drop'>更多房型 ↓</view>
+      <view class="more_service" wx:if='{{drop2}}' bindtap='type_drop'>收起房型 ↑</view>
+    </view>
+  </view>
+  <view class='address'>
+    <p>门店电话和地址</p>
+    <view class='men'>
+      <image class='phone' src='../../images/storeDetails_page/dianhua.png'></image>
+      <p>门店电话： </p>
+      <span>{{house.telNo}}</span>
+    </view>
+    <view class='men'>
+      <image class='localimg' src='../../images/storeDetails_page/loacl.png'></image>
+      <p>门店地址： </p>
+      <span>{{house.address}}</span>
+    </view>
+    <view class='maps'>
+      <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14"  markers="{{markers}}"           bindtap="markertap" style="width: 100%; height: 356rpx;">
+      </map>
+    </view>
+    <p class="mores">我是有底线的</p>
+  </view>
+  <view class='btns'>
+    <view class='yuyue'>
+      <image src='../../images/storeDetails_page/xing.png'></image>
+      <span> 收藏</span>
+    </view>
+    <view class='kan'>
+      <span> 预约看房</span>
+    </view>
+  </view>
+</view>

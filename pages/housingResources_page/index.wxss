@@ -19,7 +19,8 @@
  align-items: center;
  position: fixed;
  top:220rpx;
- right: 30rpx
+ right: 30rpx;
+ z-index: 1000
 }
 .mapBtn text{
   font-size: 24rpx;
@@ -153,7 +154,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 30rpx
+  padding-bottom: 30rpx;
+  position: relative
 }
 
 .di {
@@ -276,3 +278,15 @@ radio {
   width: 380rpx;
   border-top: 1px solid #e6e6e6
 }
+.noRoom{
+  width: 88rpx;
+  height: 46rpx;
+  font-size: 24rpx;
+  background-color: #00ada9;
+  text-align: center;
+  line-height: 46rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  color: #fff
+  }

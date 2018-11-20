@@ -78,23 +78,18 @@ Page({
   login: function(e) {
     let that = this
     WXP.login().then(res => {
+      console.log(this.data.phoneInfo)
       wx.request({
-        url: 'http://jc2vcs.natappfree.cc/api/weixin/xcxLogin', //登录接
+        url: 'http://bgy.h-world.com/api/weixin/xcxLogin', //登录接
         data: {
           code: res.code,
-          encryptedData: phoneInfo.encryptedData,
-          iv: phoneInfo.iv
+          encryptedData: this.data.phoneInfo.encryptedData,
+          iv: this.data.phoneInfo.iv
         },
         method:'POST',
         success: function(res) {
           console.log(res)
-          if (res.data.code == 10000) {
-            // 去注册
-            console.log('未注册过')
-            that.registerUser();
-            return;
-          } else if (res.data.code != 0) {
-            // 登录错误
+          if (res.data.code != '0') {
             wx.hideLoading();
             wx.showModal({
               title: '提示',
@@ -103,9 +98,9 @@ Page({
             })
             return;
           }
-          console.log('已经注册过')
-          wx.setStorageSync('token', res.data.data.token)
-          wx.setStorageSync('uid', res.data.data.uid)
+          let userInfo = res.data.data.member
+          wx.setStorageSync('token', res.data.data.ccess_token)
+          wx.setStorageSync('userInfo',userInfo)
           // 回到原来的页面
           wx.navigateBack();
         }
@@ -121,7 +116,6 @@ Page({
         encryptedData: phoneInfo.encryptedData,
         iv: phoneInfo.iv
       }
-      console.log(prams)
       wxGetData({
         url: 'https://api.it120.cc/shopmall/user/wxapp/register/complex',
         data: prams, // 设置请求的 参数

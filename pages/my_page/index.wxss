@@ -31,8 +31,11 @@ page{
  .heart{
   width: 168rpx;
   height: 168rpx;
+  overflow:hidden;
+  display: block;
   border-radius: 50%;
   margin: 51rpx 0 0 47rpx;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 .landing{
   color: #fff;
@@ -46,7 +49,6 @@ page{
 }
 
 .phoneText{
-  width:304rpx;
   height:39rpx;
   background: rgba(21,142,138,1);
   font-size: 24rpx;
@@ -55,9 +57,10 @@ page{
   line-height: 40rpx;
   text-align: center;
   border-radius: 10rpx;
+  padding: 0 20rpx;
 }
 .option{
-  margin: -129rpx 29rpx 129rpx 29rpx;
+  margin: -129rpx 29rpx 29rpx 29rpx;
   height: 100%;
   z-index: 999;
   display: flex;
@@ -94,5 +97,16 @@ page{
   margin-top: 48rpx;
 }
 .collection:last-child{
-   height: 120rpx
+   height: 120rpx;
+}
+
+.log-off{
+  width:689rpx;
+  height:98rpx;
+  background: #fff;
+  border-radius:4px;
+  text-align: center;
+  line-height: 98rpx;
+  color: rgba(21,142,138,1);
+  margin:19rpx auto 0;
 }

@@ -3,10 +3,15 @@
 
  <image src="../../images/my_page/city.png" class='city'></image>
   <view wx:if="{{userInfo}}" class="land">
-    <image src="{{ userInfo.avatarUrl }}" class="heart"></image>
+    <image wx:if="{{userInfo.headPortrait}}" src="{{ userInfo.headPortrait }}" class="heart"></image>
+    <view wx:else class="heart">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
     <view class="landing">
-      <text class='landingName'>{{ userInfo.nickName }}</text>
-      <text class="phoneText">绑定手机，享受更多优惠></text>
+      <text class='landingName' wx:if="{{userInfo.nickName}}">{{ userInfo.nickName }}</text>
+      <open-data wx:else class='landingName' type="userNickName"></open-data>
+      <text class="phoneText" wx:if="{{!userInfo.mobile}}">绑定手机，享受更多优惠></text>
+      <text class="phoneText" wx:else>{{userName}}</text>
     </view>
   </view>
   <view wx:else class="land">
@@ -58,12 +63,6 @@
           <image src='../../images/my_page/11.png'></image>
       </view>
      </view>
-
   </view> 
-
-
-
-
-
-
+<view wx:if="{{userInfo}}" bindtap="logOff" class="log-off">退出登录</view>
 </view>
