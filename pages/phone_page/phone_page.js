@@ -106,13 +106,11 @@ Page({
     if (!this.checkPhone()) return
     let self = this
     wxGetData({
-      url: 'http://bgy.h-world.com/api/common/sendMessage',
+      api: 'common/sendMessage',
       data: {
         mobile: self.data.mobile,
         bizType: "dynamicLogin"
-      },
-      method: 'POST',
-      isMock:true
+      }
     }).then((res)=>{
       wx.showToast({
         title: res.data.message
@@ -164,13 +162,11 @@ Page({
     if (!this.checkVcode()) return //检测验证码
     //if (!this.checkCode()) return //检测图形验证码
     wxGetData({
-      url: 'http://bgy.h-world.com/api/auth/dynamicLogin',
+      api: 'auth/dynamicLogin',
       data: {
         mobile: this.data.mobile,
         validateCode: this.data.vCode
-      },
-      method: 'POST',
-      isMock: true
+      }
     }).then((res) => {
       if (res.data.code != '0') {
         wx.hideLoading();

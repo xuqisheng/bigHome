@@ -116,21 +116,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function() {
     let that = this
     WXP.getSystemInfo().then(res => {
       this.setData({
-        scrollHeight: res.windowHeight,
-        currentCity: options.city
+        scrollHeight: res.windowHeight
       })
       this.getCityData()
     })
   },
   getCityData() {
     wxGetData({
-      url: 'http://bgy.h-world.com/api/common/getOpenedCity',
-      isMock: true,
-      method: "POST"
+      api: 'common/getOpenedCity'
     }).then(res => {
       let cityData = res.data.data.citys
       let cityMap = this._normalizeCityList(cityData)
@@ -156,6 +153,62 @@ Page({
     // this.setData({
     //   toView: e.target.id
     // })
+  },
+  refresh(){
+    let that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        that.getLocalName(res)
+      },
+      fail(res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+  getLocalName(loacl) { //获取定位城市
+    let that = this
+    wx.request({
+      url: 'https://apis.map.qq.com/ws/geocoder/v1/?key=CTJBZ-6HVH3-2XO32-Y4SSL-MTOWK-KFF4A&location=' + loacl.latitude + ',' + loacl.longitude + '&output=json&get_poi=1',
+      data: {},
+      isMock: true,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        that.getOpenedCity(res)
+      },
+      fail: function () {
+        that.setData({
+          currentCity: "获取定位失败"
+        });
+      },
+    })
+  },
+  getOpenedCity(localInfo) {
+    let that = this
+    let obj = {
+      api: 'common/getOpenedCity'
+    }
+    wxGetData(obj).then(res => {
+      let city = localInfo.data.result.address_component.city;
+      let cityId = that._getCityId(city, res.data.data.citys)
+      wx.setStorageSync('currentCityInfo', {
+        name: city,
+        id: cityId,
+        localCity: city,
+        localCityId: cityId
+      })
+      that.onLoad()
+      // cityList
+      // this.setData({
+
+      // })
+    })
+  },
+  _getCityId(cityName, cityList) {
+    let cityListMap = Array.prototype.slice.call(cityList)
+    return cityListMap.find((item => item.areaName === cityName)).areaId
   },
   _scrollTo(index) {
     if (!index && index !== 0) {

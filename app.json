@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/yk/index",
     "pages/home_page/index",
+    "pages/select_city/index",
+    "pages/collection_page/index",
+    "pages/yk/index",
     "pages/storeDetails_page/index",
     "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
     "pages/yy/index",
-
     "pages/my_page/index",
     "pages/service_page/service_page",
     "pages/phone_page/phone_page",
@@ -16,9 +17,7 @@
     "pages/integral_page/integral_page",
     "pages/logs/logs",
     "pages/yy_result/index",
-    "pages/shop_list/index",
-    "pages/select_city/index",
-    "pages/collection_page/index"
+    "pages/shop_list/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

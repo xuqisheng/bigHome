@@ -1,22 +1,27 @@
 <!--pages/select_city/index.wxml-->
 <view class="select_city">
-<scroll-view class="list-box" style='height:{{scrollHeight}}px' scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <view wx:for="{{cityList}}" class="list-group {{ index == 1 ? 'historyClass' : '' }}" wx:key="index" id="{{item.id}}">
-    <view class="list-group-title" data-id="{{cityList.title}}">
-      <view class="title">
+  <scroll-view class="list-box" style='height:{{scrollHeight}}px' scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view wx:for="{{cityList}}" class="list-group {{ index == 1 ? 'historyClass' : '' }}" wx:key="index" id="{{item.id}}">
+      <view class="list-group-title" data-id="{{cityList.title}}">
+        <view class="title">
+          {{item.title}}
+        </view>
+      </view>
+      <view class="list-group-items {{index == 0 ? 'localAdress' : '' }}">
+        <image wx:if="{{index == 0}}" src="../../images/select_city/address.png" class="list-group-title"></image>
+        <view class="list-group-item" wx:for="{{item.items}}" wx:key="index">
+          <view class="name {{index == 0 ? 'first':''}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="goBack">{{item.name}}</view>
+        </view>
+        <view class="refresh" catchtap="refresh" wx:if="{{index == 0}}">
+          <image wx:if="{{index == 0}}" src="../../images/select_city/refresh.png" class="list-group-title"></image>
+          <text>重新定位</text>
+        </view>
+      </view>
+    </view>
+    <view class="list-shortcut" catchtouchstart="onShortcutTouchStart" catchtouchmove="onShortcutTouchMove" catchtouchend="onShortcutTouchEnd">
+      <view class="item" wx:for="{{shortcutList}}" wx:key="index" id="{{item.id}}">
         {{item.title}}
       </view>
     </view>
-    <view class="list-group-items">
-      <view class="list-group-item" wx:for="{{item.items}}" wx:key="index">
-      <view class="name {{index == 0 ? 'first':''}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="goBack">{{item.name}}</view>
-    </view>
-    </view>
-  </view>
-  <view class="list-shortcut" catchtouchstart="onShortcutTouchStart" catchtouchmove="onShortcutTouchMove" catchtouchend="onShortcutTouchEnd">
-    <view class="item" wx:for="{{shortcutList}}" wx:key="index" id="{{item.id}}">
-      {{item.title}}
-    </view>
-  </view>
   </scroll-view>
 </view>

@@ -1,12 +1,11 @@
 // pages/collection_page/index.js
 let rq = require("../../utils/require.js")
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    houseData:[]
+    houseData:null
   },
 
   /**
@@ -17,14 +16,13 @@ Page({
   },
   getCollectData(){
     rq.wxGetData({
-      url: "https://www.easy-mock.com/mock/5bf35fbbcc4d7e6060d04c4d/collection/getMemberCollections",
-      data: {},
-      method: "GET",
-      isMock: true
+      api: "member/getMemberCollections",
+      data: {}
     }).then((res) => {
+      console.log(res)
       let dataArr = res.data.data.collections
       this.setData({
-        houseData: dataArr
+        houseData: dataArr || []
       })
     })
   },
@@ -37,13 +35,11 @@ Page({
         let bizId = e.target.dataset.item.bizId
         if (res.confirm) {
           rq.wxGetData({
-            url: "https://www.easy-mock.com/mock/5bf35fbbcc4d7e6060d04c4d/collection/getMemberCollections",
+            api: "member/cancelCollection",
             data: {
               bizType,
               bizId
-            },
-            method: "GET",
-            isMock: true
+            }
           }).then((res) => {
             if (res.data.statusCode == '200') {
               this.getCollectData()

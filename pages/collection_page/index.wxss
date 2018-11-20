@@ -128,3 +128,13 @@ page{
   color: #ffffff;
   float: left;
 }
+.nodata{
+  text-align: center;
+  margin-top:200rpx;
+}
+.nodata-image{
+  width:100%;
+}
+.nodata-text{
+  text-align: center;
+}

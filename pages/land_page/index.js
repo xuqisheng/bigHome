@@ -79,52 +79,28 @@ Page({
     let that = this
     WXP.login().then(res => {
       console.log(this.data.phoneInfo)
-      wx.request({
-        url: 'http://bgy.h-world.com/api/weixin/xcxLogin', //登录接
+      wxGetData({
+        api: 'weixin/xcxLogin', //登录接
         data: {
           code: res.code,
           encryptedData: this.data.phoneInfo.encryptedData,
           iv: this.data.phoneInfo.iv
-        },
-        method:'POST',
-        success: function(res) {
-          console.log(res)
-          if (res.data.code != '0') {
-            wx.hideLoading();
-            wx.showModal({
-              title: '提示',
-              content: '无法登录，请重试',
-              showCancel: false
-            })
-            return;
-          }
-          let userInfo = res.data.data.member
-          wx.setStorageSync('token', res.data.data.ccess_token)
-          wx.setStorageSync('userInfo',userInfo)
-          // 回到原来的页面
-          wx.navigateBack();
         }
-      })
-    })
-  },
-  registerUser: function() { //注册
-    let that = this;
-    let phoneInfo = this.data.phoneInfo
-    WXP.login().then(res => {
-      let prams = {
-        code: res.code,
-        encryptedData: phoneInfo.encryptedData,
-        iv: phoneInfo.iv
-      }
-      wxGetData({
-        url: 'https://api.it120.cc/shopmall/user/wxapp/register/complex',
-        data: prams, // 设置请求的 参数
-        isMock: true,
-        success: (res) => {
-          console.log(res)
+      }).then(res => {
+        if (res.data.code != '0') {
           wx.hideLoading();
-          that.login();
+          wx.showModal({
+            title: '提示',
+            content: '无法登录，请重试',
+            showCancel: false
+          })
+          return;
         }
+        let userInfo = res.data.data.member
+        wx.setStorageSync('token', res.data.data.ccess_token)
+        wx.setStorageSync('userInfo', userInfo)
+        // 回到原来的页面
+        wx.navigateBack();
       })
     })
   },
