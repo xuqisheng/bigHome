@@ -20,7 +20,7 @@
       <view class='cuntlne'></view>
       <view class='local'>
         <image src='../../images/storeDetails_page/ditu.png'></image>
-        <text>{{house.address}}</text>
+        <text bindtap='jumpToHotel'>{{house.address}}</text>
       </view>
     </view>
   </view>
@@ -61,14 +61,16 @@
   <view class='block'>
     <view class='housess'>
       <p>房型选择</p>
-      <ul style="height:{{!drop2? '71rpx' : ''}}">
+      <ul class="{{!drop2? 'type_group all2':'type_group'}}">
         <li wx:for='{{house.roomTypes}}' wx:key='index'>
-          <image src='{{item.picUrl}}'></image>
+        <view class='li_content'>
+          <image src="{{item.picUrl? 'item.picUrl' : '../../images/no_image.jpg'}}"></image>
           <view class='info'>
             <text>{{item.roomTypeName}}</text>
             <text>{{item.bedRoom}}房{{item.office}}厅{{item.wei}}卫/45m</text>
             <text>￥{{item.priceFloorLimit}}~{{item.priceUpperLimit}}元/月</text>
           </view>
+        </view>
         </li>
       </ul>
       <view class="more_service" wx:if='{{!drop2}}' bindtap='type_drop'>更多房型 ↓</view>
@@ -88,7 +90,7 @@
       <span>{{house.address}}</span>
     </view>
     <view class='maps'>
-      <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14"  markers="{{markers}}"           bindtap="markertap" style="width: 100%; height: 356rpx;">
+      <map id="map" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14"  markers="{{markers}}" bindtap="jumpToHotel" style="width: 100%; height: 356rpx;" wx:if='{{mapShow}}'>
       </map>
     </view>
     <p class="mores">我是有底线的</p>

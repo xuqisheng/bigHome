@@ -1,61 +1,65 @@
 <!--pages/collection_page/index.wxml-->
 <view class="collection">
+  <block wx:for="{{houseData}}" wx:key="{{index}}">
+    <!-- 房间 -->
+    <view class='rooms'>
+        <view class='roomsName'>
+          <view class="{{item.bizType == 'hotel'?'bgSS':'bgS'}}">
+            <block wx:if="{{item.bizType == 'room'}}">
+              <image src='../../images/collection_page/roomHao.png'></image>
+              <text>房间</text>
+            </block>
+            <block wx:else>
+              <image src='../../images/collection_page/houseHao.png'></image>
+              <text>公寓</text>
+            </block>
+          </view>
+          <text class="bigs">{{item.displayName}}</text>
+        </view>
+        <view class='diZhi'>
+          <view class='citysn'>
+            <image src='../../images/collection_page/wei.png'></image>
+            <text>{{item.address}}</text>
+          </view>
+        </view>
+        <view class='collectDate'>
+          <view class='dates'>
+            <p>收藏时间:</p>
+            <span>{{item.strCreateTime}}</span>
+          </view>
+          <p class='btnss'  data-item="{{item}}" bindtap="cancelCollect">
+            取消收藏
+          </p>
+        </view>
 
-  <!-- 房间 -->
-  <view class='rooms'>
-  
-  <view class='roomsName'>
-  <view class='bgS'>
-  <image src='../../images/collection_page/roomHao.png'></image>
-  <text>房间</text>
-  </view>
-  <text class="bigs">BIG+碧家小住-桃花源 C室</text>
-  </view>
-
-  <view class='diZhi'>
-  <view class='citysn'>
-  <image src='../../images/collection_page/wei.png'></image>
-  <text>桃园</text>
-  </view>
-  </view>
-   
-
-   <view class='collectDate'>
-    <view class='dates'>
-     <p>收藏时间:</p> <span> 2018-11-19</span>
     </view>
-    <p class='btnss'>
-     取消收藏
-    </p>
-   </view>
+  </block>
+    <!-- 公寓 -->
+    <!-- <view class='apartment'>
+      <view class='roomsName'>
+        <view class='bgSS'>
+          <image src='../../images/collection_page/houseHao.png'></image>
+          <text>房间</text>
+        </view>
+        <text class="bigs">BIG+碧家小住-桃花源 C室</text>
+      </view>
+      <view class='diZhi'>
+        <view class='citysn'>
+          <image src='../../images/collection_page/wei.png'></image>
+          <text>桃园</text>
+        </view>
+      </view>
 
-  </view>
-  <!-- 公寓 -->
-  <view class='apartment'>
-  <view class='roomsName'>
-  <view class='bgSS'>
-  <image src='../../images/collection_page/houseHao.png'></image>
-  <text>房间</text>
-  </view>
-  <text class="bigs">BIG+碧家小住-桃花源 C室</text>
-  </view>
 
-  <view class='diZhi'>
-  <view class='citysn'>
-  <image src='../../images/collection_page/wei.png'></image>
-  <text>桃园</text>
-  </view>
-  </view>
-   
-
-   <view class='collectDate'>
-    <view class='dates'>
-     <p>收藏时间:</p> <span> 2018-11-19</span>
-    </view>
-    <p class='btnss'>
-     取消收藏
-    </p>
-   </view>
-  </view>
+      <view class='collectDate'>
+        <view class='dates'>
+          <p>收藏时间:</p>
+          <span>2018-11-19</span>
+        </view>
+        <p class='btnss'>
+          取消收藏
+        </p>
+      </view>
+    </view> -->
 
 </view>

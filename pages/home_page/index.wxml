@@ -1,11 +1,11 @@
 <view class="container home_page">
-
+  <error  wx:if='{{showError}}'></error>
   <!-- 首页图片轮播展示 -->
   <view class='ceshi_swiper'>
     <swiper class='read_swiper' current="{{current}}">
       <block wx:for="{{adList.advertsList}}" wx:key="index">
         <swiper-item>
-          <image src="{{item.picUrl}}" class="slide-image" lazy-load='true'></image>
+          <image src="{{item.picUrl}}" class="slide-image" ></image>
         </swiper-item>
       </block>
     </swiper>
@@ -33,9 +33,10 @@
     <image src='../images/ding.png' class='ding' bindtap='location'></image>
   </view> -->
   <view class="address">
-    <view class="search">
-      <image src='../../images/home_page/ding.png' class='ding' bindtap='location'></image>
-      <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" bindfocus='onFocus' bindblur='onBlur' />
+    <view class="search" bindtap='location'>
+      <image src='../../images/home_page/ding.png' class='ding'></image>
+      <!-- <input type="text" class="inputBox" bindinput="userNameInput" name="userName" value="{{addr}}" placeholder="{{currentCity}}" bindfocus='onFocus' bindblur='onBlur' /> -->
+      <view class="localAdress">{{currentCity}}</view>
     </view>
     <text class="btn" bindtap='look'>查看门店</text>
   </view>
@@ -54,19 +55,21 @@
       </view>
     </view>
     <!-- 碧家推荐图片 -->
-    <swiper class='swiper' next-margin="120rpx">
-      <swiper-item wx:for="{{houselist.rooms}}" class="swiperItem" wx:key="index">
-        <image src="{{item.pictures[0]}}" lazy-load='true' />
+    <swiper class='swiper' next-margin="{{nmargin}}" previous-margin='{{pmargin}}' catchtap="choosecu1">
+    <block wx:for="{{hotelist.hotels}}" wx:key="index">
+      <swiper-item  class="swiperItem"  >
+        <image src="{{item.picUrl? item.picUrl:'../../images/no_image.jpg'}}" data-id="{{item.hotelId}}"/>
         <view class='swiperText'>
           <view style=' position: relative;'>
             <view class='text12'>
-              <text>{{item.hotelInfo.hotelName}}</text>
-              <text>{{item.roomTypeName}}</text>
+              <text>{{item.hotelName}}</text>
+              <text>{{item.onecharacter}}</text>
             </view>
             <text class='title3'>￥{{item.startingPrice}}/月起</text>
           </view>
         </view>
       </swiper-item>
+      </block>
     </swiper>
   </view>
   <view class='cutline'></view>
@@ -87,7 +90,7 @@
     <!-- 碧家推荐图片 -->
     <swiper class='swiper' next-margin="120rpx">
       <swiper-item wx:for="{{typeList.roomTypes}}" class="swiperItem" wx:key="index">
-        <image src="{{item.picUrl}}" lazy-load='true' />
+        <image src="{{item.picUrl}}"  />
         <view class='swiperText'>
           <view style=' position: relative;'>
             <view class='text12'>
@@ -114,7 +117,7 @@
   <view class='dispalyimg'>
     <swiper autoplay="true" interval="3000" duration="1000" circular='false' class='dispalyimgs'>
       <swiper-item wx:for="{{serverList}}" class="swiperItems" wx:key="index">
-        <image src="{{item}}" lazy-load='true' />
+        <image src="{{item}}"  />
       </swiper-item>
     </swiper>
   </view>

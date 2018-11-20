@@ -7,14 +7,10 @@ let imagesHeight =
 
   Page({
     data: {
-      defaultImg: ['../../images/loading.png',
-        '../../images/loading.png'
-      ],
       addr: '',
       adList: [], //广告列表
-      houselist: [], //房源列表
+      hotelist: [], //门店列表
       typeList: [], //房型列表
-      serverList: [], //服务列表
       currentCity: '请选择位置',
       currentCityId: '',
       placeHolder: '',
@@ -24,6 +20,8 @@ let imagesHeight =
       userName: null,
       placeHolder: '请选择位置',
       showError: false,
+      nmargin:'120rpx',
+      pmargin:0
     },
     onLoad() {
       this.getLocation()
@@ -51,7 +49,7 @@ let imagesHeight =
 
       this.getDatas(data1, 'cms/getAdByPlace', 'adList')
       this.getDatas(data3, 'hotel/getRoomTypeRecommendList', 'typeList')
-      this.getDatas(data2, 'hotel/getRoomRecommendList', 'houselist')
+      this.getDatas(data2, 'hotel/getHotelRecommendList', 'hotelist')
       // this.getDatas(data4, 'cms/getHelpCenterRecommendList', 'serverList')
     },
     getSetting() { //获取授权信息
@@ -257,26 +255,6 @@ let imagesHeight =
     //   showModal: false
     // })
   },
-  // 首页图片展示轮播箭头
-  nextImg: function () {
-    var swiper = this.data.swiper;
-    var adlist = this.data.adList;
-    var current = swiper.current;
-    swiper.current = current > 0 ? current - 1 : adlist.advertsList.length - 1;
-    this.setData({
-      swiper: swiper,
-    })
-  },
-  // 首页图片展示轮播箭头
-  prevImg: function () {
-    var swiper = this.data.swiper;
-    var adlist = this.data.adList;
-    var current = swiper.current;
-    swiper.current = current < (adlist.advertsList.length - 1) ? current + 1 : 0;
-    this.setData({
-      swiper: swiper,
-    })
-  },
   //跳转我的页面
   my: function () {
     wx.navigateTo({
@@ -380,5 +358,7 @@ let imagesHeight =
         url: '../housingResources_page/index',
       })
     },
-
+    choosecu1:function(e){
+      console.log(e.target.dataset.id)
+    }
   })

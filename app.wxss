@@ -1,6 +1,5 @@
 /**app.wxss**/
 
-@import 'weui.wxss';
 
 @import 'style/iconfont.wxss';
 

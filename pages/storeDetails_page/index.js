@@ -6,34 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
     current:0,
     drop1:0,
     drop2: 0,
     showAll:false,//过渡蒙版
     showError:false,//请求错误
-    id:'',
     house:[],
     markers: [{
       id: 0,
-      latitude: '',
-      longitude: '',
+      latitude: 23.086,
+      longitude: 112.89,
       width: 33,
-      height: 46
+      height:46
     }],
+    mapShow:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getHotelInfo(this.data.id)
+      let idn = options.detail
+      this.setData({
+        id:idn
+      })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    if(this.data.id){
+    this.getHotelInfo(this.data.id)
+    }
   },
 
   /**
@@ -79,11 +85,9 @@ Page({
   },
   // 轮播图切换事件
   swiperChange: function (e) {
-    console.log(e);
     this.setData({
-      swiperCurrent: e.detail.current   //获取当前轮播图片的下标
+      current: e.detail.current   //获取当前轮播图片的下标
     })
-    console.log(this.data.swiperCurrent);
   },
   service_drop:function(e){
     let d = !this.data.drop1
@@ -99,27 +103,25 @@ Page({
   },
   getHotelInfo: function (e) {
     let that = this
-    let id = e ? e : 64
+    let id = e 
     let obj = {
-      url: 'http://bgy.h-world.com/api/hotel/getHotelDetail',
+      api: '/hotel/getHotelDetail',
       data: {
         hotelId : id
       },
       method: 'POST',
-      isMock: true
     }
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
-        let la = 'this.data.markers.latitude'
-        let lo = 'this.data.markers.longitude'
+        let la = 'markers[0].latitude'
+        let lo = 'markers[0].longitude'
         that.setData({
           house:res.data.data.detail,
-          [lo]: res.data.data.detail.longitude,
           [la]: res.data.data.detail.latitude,
+          [lo]: res.data.data.detail.longitude,
           showError: false,
+          mapShow:true
         })
-        console.log(res.data.data.detail)
-        console.log(this.data.markers)
         setTimeout(function () {
           that.setData({
             showAll: true
@@ -151,4 +153,13 @@ Page({
       console.log(errMsg);
     });
   },
+  jumpToHotel:function(e){
+    wx.openLocation({
+      latitude: this.data.house.latitude,
+      longitude: this.data.house.longitude,
+      scale: 18,
+      name: this.data.house.hotelName,
+      address: this.data.house.address
+    })
+  }
 })
