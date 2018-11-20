@@ -15,7 +15,9 @@
     "pages/integral_page/integral_page",
     "pages/logs/logs",
     "pages/yy_result/index",
-    "pages/shop_list/index"
+    "pages/shop_list/index",
+    "pages/select_city/index",
+    "pages/collection_page/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
