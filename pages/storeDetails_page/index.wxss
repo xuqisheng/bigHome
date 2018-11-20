@@ -170,7 +170,7 @@ swiper-item image {
     flex-wrap: wrap;
 }
 .all{
-    height: 156rpx;
+    height: 150rpx;
     overflow: hidden
 }
 .service_group li{
@@ -202,7 +202,7 @@ swiper-item image {
   font-size: 22rpx;
   color: #999;
   text-align: center;
-  padding-bottom: 20rpx;
+  padding: 30rpx 0;
 }
 
 .housess {
@@ -214,12 +214,23 @@ swiper-item image {
   color: #444;
   font-weight: bold;
 }
-.housess ul li{
+.type_group{
   display: flex;
-  flex-direction: row;
-  margin-bottom: 30rpx
+  flex-direction: column
 }
-.housess ul li image{
+.all2{
+  height: 330rpx;
+  overflow: hidden
+}
+.type_group li{
+  display: block;
+  padding: 39rpx 0
+}
+.li_content{
+  display: flex;
+  flex-direction: row
+}
+.li_content image{
   width: 332rpx;
   height: 254rpx;
   margin-right: 32rpx

@@ -28,7 +28,6 @@ Page({
    */
   onLoad: function(options) {
       let idn = options.detail
-      console.log(idn)
       this.setData({
         id:idn
       })
@@ -86,11 +85,9 @@ Page({
   },
   // 轮播图切换事件
   swiperChange: function (e) {
-    console.log(e);
     this.setData({
-      swiperCurrent: e.detail.current   //获取当前轮播图片的下标
+      current: e.detail.current   //获取当前轮播图片的下标
     })
-    console.log(this.data.swiperCurrent);
   },
   service_drop:function(e){
     let d = !this.data.drop1
@@ -108,12 +105,11 @@ Page({
     let that = this
     let id = e 
     let obj = {
-      url: 'http://bgy.h-world.com/api/hotel/getHotelDetail',
+      api: '/hotel/getHotelDetail',
       data: {
         hotelId : id
       },
       method: 'POST',
-      isMock: true
     }
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {

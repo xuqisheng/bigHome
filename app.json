@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/housingResources_page/index",
     "pages/home_page/index",
+    "pages/housingResources_page/index",
     "pages/storeDetails_page/index",
     "pages/complaint_page/complaint_page",
     "pages/yy/index",

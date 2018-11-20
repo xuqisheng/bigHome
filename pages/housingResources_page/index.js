@@ -39,10 +39,10 @@ Page({
         checked: false
       }
     ],
-    pxshows: false,
+    pxopen: 0,
     pxshow: false,
-    pxopen: '',
-    pxopens: '',
+    pxopens: 0,
+    pxshows: false,
     active: true,
     hidden: false,
     shang: true,
@@ -52,7 +52,8 @@ Page({
     hotelListData: [],
     showAll:false ,//等数据渲染完毕再显示dom 
     showData:true,
-    showError:false
+    showError:false,
+    cityId:''
   },
   onLoad: function() {
     this.clearCache() //清空缓存
@@ -72,7 +73,7 @@ Page({
       setTimeout(function () {
       that.setData({
         money_content: e.currentTarget.dataset.index,
-        pxopen: false,
+        pxopen: 2,
         pxshow: false,
         active: true,
         hidden: false,
@@ -99,7 +100,7 @@ Page({
       setTimeout(function () {
       that.setData({
         type_content: e.currentTarget.dataset.index,
-        pxopens: false,
+        pxopens: 2,
         pxshows: false,
         active: true,
         hidden: false,
@@ -114,9 +115,9 @@ Page({
   },
   //价格
   money: function(e) {
-    if (this.data.pxopen) {
+    if (this.data.pxopen == 1) {
       this.setData({
-        pxopen: 'slidup',
+        pxopen: 2,
         pxshow: false,
         active: true,
         hidden: false,
@@ -127,22 +128,28 @@ Page({
       })
     } else {
       this.setData({
-        pxopen: 'slidown',
+        pxopen: 1,
         pxshow: false,
-        pxopens: false,
         pxshows: true,
         active: false,
         hidden: true,
         shang: false,
         xia: true,
+        shangs: true,
+        xias: false,
       })
+      if (this.data.pxopens == 1) {
+        this.setData({
+          pxopens: 0,
+        })
+      }
     }
   },
   //排序
   sort: function(e) {
-    if (this.data.pxopens) {
+    if (this.data.pxopens == 1) {
       this.setData({
-        pxopens: 'slidup',
+        pxopens: 2,
         pxshows: false,
         active: true,
         hidden: false,
@@ -153,15 +160,21 @@ Page({
       })
     } else {
       this.setData({
-        pxopens: 'slidown',
+        pxopens: 1,
         pxshows: false,
-        pxopen: false,
         pxshow: true,
         active: false,
         hidden: true,
         shangs: false,
         xias: true,
+        shang: true,
+        xia: false,
       })
+      if (this.data.pxopen == 1) {
+        this.setData({
+          pxopen: 0
+        })
+      }
     }
   },
   //清空缓存
@@ -174,7 +187,7 @@ Page({
   getHotelList: function (p1, p2, s1, s2) {
     let that = this
     let obj = {
-      url: 'http://bgy.h-world.com/api/hotel/getHotelList',
+      api: '/hotel/getHotelList',
       data: {
         pageNo: 0,
         pageSize: 10,
@@ -185,7 +198,6 @@ Page({
         sortSeq: s2
       },
       method: 'POST',
-      isMock: true
     }
     rq.wxGetData(obj).then((res) => {
       if (res.statusCode == 200) {
@@ -193,7 +205,6 @@ Page({
           hotelListData: res.data.data.hotels,
           showError:false
         })
-        console.log(this.data.hotelListData)
         setTimeout(function(){
           that.setData({
             showAll: true
@@ -234,7 +245,7 @@ Page({
   //点击蒙版收起弹窗
   hidtemp: function(e) {
     this.setData({
-      pxopen: false,
+      pxopen: 2,
       pxshow: false,
       active: true,
       hidden: false,
@@ -242,9 +253,8 @@ Page({
       xia: false,
       shangs: true,
       xias: false,
-      pxopens: false,
+      pxopens: 2,
       pxshows: false,
-      active: true,
       hidden: false,
       shangs: true,
       xias: false,
