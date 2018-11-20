@@ -39,10 +39,10 @@ Page({
         checked: false
       }
     ],
-    pxopen: false,
-    pxshow: false,
-    pxopens: false,
     pxshows: false,
+    pxshow: false,
+    pxopen: '',
+    pxopens: '',
     active: true,
     hidden: false,
     shang: true,
@@ -116,7 +116,7 @@ Page({
   money: function(e) {
     if (this.data.pxopen) {
       this.setData({
-        pxopen: false,
+        pxopen: 'slidup',
         pxshow: false,
         active: true,
         hidden: false,
@@ -127,7 +127,7 @@ Page({
       })
     } else {
       this.setData({
-        pxopen: true,
+        pxopen: 'slidown',
         pxshow: false,
         pxopens: false,
         pxshows: true,
@@ -142,7 +142,7 @@ Page({
   sort: function(e) {
     if (this.data.pxopens) {
       this.setData({
-        pxopens: false,
+        pxopens: 'slidup',
         pxshows: false,
         active: true,
         hidden: false,
@@ -153,7 +153,7 @@ Page({
       })
     } else {
       this.setData({
-        pxopens: true,
+        pxopens: 'slidown',
         pxshows: false,
         pxopen: false,
         pxshow: true,
@@ -191,7 +191,6 @@ Page({
       if (res.statusCode == 200) {
         that.setData({
           hotelListData: res.data.data.hotels,
-          showData: true,
           showError:false
         })
         setTimeout(function(){
@@ -199,11 +198,6 @@ Page({
             showAll: true
           })
         },200)
-        if (res.data.data.hotels.length == 0){
-          that.setData({
-            showData:false
-          })
-        }
       } else {
         that.setData({
           showAll:true,
