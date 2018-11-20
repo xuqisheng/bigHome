@@ -249,7 +249,7 @@ swiper.read_swiper image {
   min-width: 473rpx;
   max-width: 473rpx;
 }
-.inputBox {
+/* .inputBox {
   max-width: 473rpx;
   min-width: 473rpx;
   height: 78rpx;
@@ -257,6 +257,15 @@ swiper.read_swiper image {
   font-size: 28rpx;
   position: relative;
   border-radius: 4px;
+} */
+.localAdress{
+  max-width: 473rpx;
+  min-width: 473rpx;
+  background: #fff;
+  font-size: 28rpx;
+  position: relative;
+  border-radius: 4px;
+  color:#999899;
 }
 
 .ding {

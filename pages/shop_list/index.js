@@ -117,16 +117,32 @@ Page({
    * 渲染页面
    */
   renderPage() {
-
-    let currentHotelId = markersData[0].hotelId //先默认取第一条ID
-
-    //let currentData = hotelData.find(item => item.id == this.data.currentHotelId)
-    this.setData({
-      centerX: markersData[0].latitude,
-      centerY: markersData[0].longitude,
-      markers: this.createMarker(currentHotelId),
-      hotelInfoMap: this.createHotelInfoMap()
-    })
+    try{
+      let currentHotelId = markersData[0].hotelId //先默认取第一条ID
+      this.setData({
+        centerX: markersData[0].latitude,
+        centerY: markersData[0].longitude,
+        markers: this.createMarker(currentHotelId),
+        hotelInfoMap: this.createHotelInfoMap()
+      })
+    }catch(e){
+      wx.showModal({
+        title: '提示',
+        content: '城市列表没有该城市数据',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateBack({
+              delta: 1
+            })
+          } else if (res.cancel) {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        }
+      })
+      console.log(e)//城市列表没有该城市数据
+    }
   },
   getHotelDetail(id) {
     let that = this
