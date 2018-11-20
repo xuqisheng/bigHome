@@ -193,6 +193,7 @@ Page({
           hotelListData: res.data.data.hotels,
           showError:false
         })
+        console.log(this.data.hotelListData)
         setTimeout(function(){
           that.setData({
             showAll: true
@@ -259,5 +260,11 @@ Page({
       let s1 = s<3? slist[s][0] : ''
       let s2 = s<3? slist[s][1] : ''
       this.getHotelList(p1,p2,s1,s2)
+  },
+  jumpDetail:function(e){
+    let id = e.currentTarget.id
+    wx.navigateTo({
+      url: "/pages/storeDetails_page/index?detail=" + id
+    })
   }
 })

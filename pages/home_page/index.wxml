@@ -1,5 +1,5 @@
 <view class="container home_page">
-
+  <error  wx:if='{{showError}}'></error>
   <!-- 首页图片轮播展示 -->
   <view class='ceshi_swiper'>
     <swiper class='read_swiper' current="{{current}}">

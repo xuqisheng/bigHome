@@ -44,7 +44,7 @@
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
+  transition:  -webkit-transform .3s;
 }
 .weui-navbar__title {
   display: inline-block;
@@ -91,7 +91,7 @@ page, .page, .page__bd {
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
 }
 
 .weui-navbar {

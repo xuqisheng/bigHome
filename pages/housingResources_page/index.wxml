@@ -40,9 +40,8 @@
   </radio-group>
   <!--catchtouchmove='true' ,蒙版出现时禁止滑动-->
   <view class='bgs' wx:if="{{hidden}}" bindtap='hidtemp' catchtouchmove='true'></view>
-
   <view class='house' wx:for='{{hotelListData}}' wx:key='index'>
-    <image src='{{item.picUrl}}' class="di"></image>
+    <image src='{{item.picUrl}}' class="di" id='{{item.hotelId}}' bindtap='jumpDetail'></image>
     <text class='noRoom' wx:if='{{item.roomSum == 0}}'>满房</text>
     <p class="pt">{{item.hotelName}}
       <text class="yue">￥{{item.startingPrice}}/月起</text>

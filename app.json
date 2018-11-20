@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/yk/index",
+    "pages/housingResources_page/index",
     "pages/home_page/index",
     "pages/storeDetails_page/index",
-    "pages/housingResources_page/index",
     "pages/complaint_page/complaint_page",
     "pages/yy/index",
-
+    "pages/yk/index",
     "pages/my_page/index",
     "pages/service_page/service_page",
     "pages/phone_page/phone_page",

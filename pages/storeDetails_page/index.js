@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
     current:0,
     drop1:0,
     drop2: 0,
     showAll:false,//过渡蒙版
     showError:false,//请求错误
-    id:'',
     house:[],
     markers: [{
       id: 0,
@@ -27,14 +27,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+      let idn = options.detail
+      console.log(idn)
+      this.setData({
+        id:idn
+      })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    if(this.data.id){
     this.getHotelInfo(this.data.id)
+    }
   },
 
   /**
@@ -100,7 +106,7 @@ Page({
   },
   getHotelInfo: function (e) {
     let that = this
-    let id = e ? e : 64
+    let id = e 
     let obj = {
       url: 'http://bgy.h-world.com/api/hotel/getHotelDetail',
       data: {
@@ -120,7 +126,6 @@ Page({
           showError: false,
           mapShow:true
         })
-        console.log(that.data.house)
         setTimeout(function () {
           that.setData({
             showAll: true
