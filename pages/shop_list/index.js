@@ -95,21 +95,17 @@ Page({
   getMapMarks() {
     let that = this
     wxGetData({
-      url: 'http://bgy.h-world.com/api/hotel/getHotelList',
-      // url: 'https://www.easy-mock.com/mock/5be3ac67ff88a57e78f70a10/mapList/hotel02',
+      api: 'hotel/getHotelList',
       data: {
         pageNo: 1,
         pageSize: 10,
         cityId: this.data.currentCityId,
         hotelNameLike: ""
-      },
-      method: 'POST',
-      isMock: true
+      }
     }).then(res => {
       if (res.statusCode) {
         markersData = res.data.data.hotels
         that.renderPage()
-        //that.getHotelDetail()
       }
     })
   },
